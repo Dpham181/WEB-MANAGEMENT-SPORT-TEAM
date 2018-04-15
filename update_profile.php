@@ -1,11 +1,8 @@
 <?php
      require "header.php";
-     session_start();
-     if(!isset($_SESSION['email']) || empty($_SESSION['email'])){
-       header("location: welcome.php");
-       exit;
-     }
-     if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
+
+        session_start();
+     if(!isset($_SESSION['ID_M']) || empty($_SESSION['ID_M'])){
        header("location: welcome.php");
        exit;
      }
@@ -68,13 +65,15 @@
          else
          $zip=trim( preg_replace("/\t|\R/",' ',$_POST['zip']) );
        }
-       $ID = $_SESSION['id'];
+       $ID = $_SESSION['ID_M'];
+
          // Check input errors before inserting in database
      if(empty($zipcode_err) && empty($city_err) && empty($street_err)&& empty($state_err)&&empty($fname_err) &&empty($lname_err)){
 
              // Prepare an insert statement
              $sql = "INSERT INTO PROFILE SET
                        PROFILE.PROFILE_ID  = ?,
+                      PROFILE.PUSER_ID  = ?,
                        PROFILE.FIRST_NAME=?,
                        PROFILE.LAST_NAME =?,
                        PROFILE.STREET =?,
@@ -84,7 +83,8 @@
                        PROFILE.ZIPCODE =?
                        ";
              $stmt=$link->prepare($sql);
-             $stmt->bind_param('sssssssd',
+             $stmt->bind_param('ssssssssd',
+             $ID,
              $ID,
              $firstname,
              $lastname,
@@ -93,7 +93,7 @@
              $state,
              $country,
              $zip);
-             // Attempt to execute the prepared statement
+
            if($stmt->execute()){
 
                header("location: update_Profile_true.php");
@@ -127,8 +127,7 @@
     </head>
     <body>
         <div class="wrapper" >
-            <h2>Update Profile</h2>
-
+            <h2>Empty Profile need to Update Profile</h2>
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 

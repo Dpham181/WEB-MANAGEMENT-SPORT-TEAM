@@ -75,7 +75,7 @@
         </li>
 
         <li id="Profile"class="nav-item active">
-          <a class="nav-link" href="update_profile.php">PROFILE</a>
+          <a class="nav-link" href="check_profileEmpty.php">PROFILE</a>
 
         </li>
         <li id="logout"class="nav-item active">
@@ -106,7 +106,7 @@
     <?php
 
     if($choice == 'E'){
-        
+
         require_once ('editPlayerbymanager.php');
     }
     else if ($choice == 'P'){

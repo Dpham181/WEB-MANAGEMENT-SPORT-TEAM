@@ -102,6 +102,8 @@
                   echo "<td  style='vertical-align:top; border:1px solid black;'>". $TN ."</td>\n";
                   echo "<td style='vertical-align:top; border:1px solid black;'> ". $W ."</td>\n";
                   echo "<td style='vertical-align:top; border:1px solid black;'>". $L ."</td>\n";
+                  
+
                 }
 
           echo "</tr>";
@@ -112,7 +114,7 @@
 
         $stmt->free_result();
 
-
+        $stmt1->free_result();
 
 
 
