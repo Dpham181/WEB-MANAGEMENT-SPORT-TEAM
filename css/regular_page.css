@@ -1,0 +1,41 @@
+#logout {
+  float: right;
+  padding-left:90px;
+}
+#info{
+  float: right;
+  padding-left: 10px;
+}
+#Profile {
+  float: right;
+  padding-left:90px;
+}
+
+#body .container{
+
+  position: relative;
+  display: flex;
+  align-items: left;
+  width: max-width;
+  bottom:0;
+  padding-top: 100px;
+  padding-bottom: 500px;
+  font:white;
+}
+section {
+  background-color:#35424a;
+  border:#e8491d 3px solid;
+  padding-bottom: 5px;
+  font:color="red";
+}
+nav{
+  border:#e8491d 3px solid;
+
+}
+header{
+    border:#e8491d 3px solid;
+    background-color:#35424a;
+}
+footer{
+  border:#35424a 5px solid;
+}
