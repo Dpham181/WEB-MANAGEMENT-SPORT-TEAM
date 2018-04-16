@@ -73,7 +73,7 @@
              // Prepare an insert statement
              $sql = "INSERT INTO PROFILE SET
                        PROFILE.PROFILE_ID  = ?,
-                      PROFILE.PUSER_ID  = ?,
+                       PROFILE.PUSER_ID  = ?,
                        PROFILE.FIRST_NAME=?,
                        PROFILE.LAST_NAME =?,
                        PROFILE.STREET =?,

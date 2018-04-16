@@ -22,7 +22,7 @@ label {
 }
 
 section {
-  background-image:radial-gradient(circle at 47% 9%, #3e825f, #1a4172);
+  background-image: radial-gradient(circle at 47% 0%,#ef544b -15%,#282b43 60%);
   padding-bottom: 5px;
 }
 

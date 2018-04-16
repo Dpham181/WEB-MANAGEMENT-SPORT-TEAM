@@ -23,7 +23,7 @@
 
       $ID=$_SESSION['id'];
              $sql = "SELECT
-
+                      PROFILE.PUSER_ID,
                        PROFILE.FIRST_NAME,
                        PROFILE.LAST_NAME,
                        PROFILE.STREET,
@@ -43,7 +43,7 @@
 
                         $stmt->store_result();
                         $stmt->bind_result(
-
+                  $USER_ID,        
                   $firstname,
                   $lastname,
                   $street ,
@@ -53,7 +53,8 @@
                   $zip);
 
                   if ($stmt->num_rows == 1)
-                  {require_once "edit-profile.php";
+                  {
+                    require_once "edit-profile.php";
 
                   }
                   else{

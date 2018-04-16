@@ -1,12 +1,12 @@
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 573px;
-  height: 446px;
-  padding-top: 88px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  bottom:0;
+  padding-top: 100px;
+  padding-bottom: 180px;
 }
 
 #submit {
@@ -22,7 +22,7 @@
 }
 
 section {
-  /* background-image: linear-gradient(-180deg, #816BF9 0%, #000 100%); */
+
   background-image: radial-gradient(circle at 47% 9%, #3e825f, #1a4172);
   height: 703px;
 }
