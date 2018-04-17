@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   width: 400px;
-  bottom:0;
   padding-top: 100px;
   padding-bottom: 180px;
 }
@@ -22,8 +21,8 @@ label {
 }
 
 section {
-  background-image:radial-gradient(circle at 47% 9%, #3e825f, #1a4172);
-  padding-bottom: 5px;
+  background-image: radial-gradient(circle at 47% 0%,#ef544b -15%,#282b43 60%);
+  height: 703px;
 }
 
 .col {
