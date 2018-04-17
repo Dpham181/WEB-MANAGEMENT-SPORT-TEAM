@@ -12,7 +12,6 @@
   <?php
     require 'header.php';
   ?>
-  <?php require_once('login.php') ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">TEAM MANAGEMENT</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,11 +44,10 @@
     <section>
 
       <div class="container">
-
+        <?php require_once('login.php') ?>
         <div class="row align-items-center">
           <div class="col">
-                <?php require_once('login.php') ?>
-            <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form class="form-login" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
               <h2 class="form-login-header">Account Login</h2>
               <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                 <label>Email:<sup>*</sup></label>
@@ -64,7 +62,7 @@
               </div>
 
               <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
+                <button id="submit-button" type="submit" class="btn btn-primary" value="Submit">Submit</button>
                 <button type="reset" class="btn btn-primary" name="button">Reset</button>
               </div>
               <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
@@ -85,8 +83,6 @@
     <?php
     require 'footer.php';
   ?>
-
-</script>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
