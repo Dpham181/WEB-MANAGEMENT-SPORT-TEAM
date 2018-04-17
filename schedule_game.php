@@ -35,7 +35,10 @@
 
               TEAMS.TEAM_NAME,
               TEAMS.WIN,
-              TEAMS.LOSS
+              TEAMS.LOSS,
+              ROUND ((TEAMS.WIN /(TEAMS.WIN +TEAMS.LOSS) * 100) ,0)  AS PERSENTAGE
+
+
               FROM PLAY
               RIGHT JOIN TEAMS ON
               PLAY.PTEAM_ID= TEAMS.TEAM_ID
@@ -49,31 +52,31 @@
       $stmt->bind_result(
          $STD,
         $ETD,
-        $SC
-
-      );
+        $SC);
       $stmt1 -> execute();
       $stmt1->store_result();
       $stmt1->bind_result(
 
         $TN,
         $W,
-        $L
+        $L,
+        $PERSENT
+
       );
     ?>
 
 
     <?php
-      echo "GAME:  ".$stmt->num_rows."<br/>";
+      echo "GAME:  ".$stmt->num_rows. "<br/>";
     ?>
 
 
     <table style="border:1px solid black; border-collapse:collapse;">
       <tr>
-        <th colspan="9" style="vertical-align:top; border:1px solid black; background: lightgreen;">Schedule</th>
+        <th colspan="12" style="vertical-align:top; border:1px solid black; background: lightgreen; text-align :center;">Schedule</th>
       </tr>
       <tr>
-
+        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">GAME</th>
         <th style="vertical-align:top; border:1px solid black; background: lightgreen;">START_DAYS</th>
           <th style="vertical-align:top; border:1px solid black; background: lightgreen;">END_DAYS</th>
         <th style="vertical-align:top; border:1px solid black; background: lightgreen;">SCORES</th>
@@ -81,30 +84,38 @@
         <th style="vertical-align:top; border:1px solid black; background: lightgreen;">TEAM A NAME</th>
           <th style="vertical-align:top; border:1px solid black; background: lightgreen;">WIN  </th>
         <th style="vertical-align:top; border:1px solid black; background: lightgreen;">LOSS</th>
+        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">% WIN</th>
 
         <th style="vertical-align:top; border:1px solid black; background: lightgreen;">TEAM B NAME</th>
           <th style="vertical-align:top; border:1px solid black; background: lightgreen;">WIN  </th>
         <th style="vertical-align:top; border:1px solid black; background: lightgreen;">LOSS</th>
+        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">% WIN</th>
       </tr>
       <?php
 
+        $row = 0;
 
         while($stmt->fetch()){
 
           echo "<tr>\n";
 
 
-
+          echo "<td  style='vertical-align:top; border:1px solid black;'>". ++$row ."</td>\n";
           echo "<td  style='vertical-align:top; border:1px solid black;'>". $STD ."</td>\n";
           echo "<td style='vertical-align:top; border:1px solid black;'> ". $ETD ."</td>\n";
           echo "<td style='vertical-align:top; border:1px solid black;'>". $SC ."</td>\n";
-          while($stmt1->fetch()){
-                  echo "<td  style='vertical-align:top; border:1px solid black;'>". $TN ."</td>\n";
-                  echo "<td style='vertical-align:top; border:1px solid black;'> ". $W ."</td>\n";
-                  echo "<td style='vertical-align:top; border:1px solid black;'>". $L ."</td>\n";
-                  
+          $stmt1->fetch();
+        echo "<td  style='vertical-align:top; border:1px solid black;'>". $TN ."</td>\n";
+        echo "<td style='vertical-align:top; border:1px solid black;'> ". $W ."</td>\n";
+          echo "<td style='vertical-align:top; border:1px solid black;'>". $L ."</td>\n";
+            echo "<td style='vertical-align:top; border:1px solid black;'>". $PERSENT . '%' ."</td>\n";
+          $stmt1->fetch();
+          echo "<td  style='vertical-align:top; border:1px solid black;'>". $TN ."</td>\n";
+          echo "<td style='vertical-align:top; border:1px solid black;'> ". $W ."</td>\n";
+          echo "<td style='vertical-align:top; border:1px solid black;'>". $L ."</td>\n";
+          echo "<td style='vertical-align:top; border:1px solid black;'>". $PERSENT . '%' ."</td>\n";
 
-                }
+
 
           echo "</tr>";
 
