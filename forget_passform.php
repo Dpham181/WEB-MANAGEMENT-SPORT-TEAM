@@ -56,21 +56,8 @@
     <title>Forgot Password</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="css/forgot_pass.css">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float|fire-animation">
-
-    <!-- <style type="text/css">
-      body {
-        font: 14px sans-serif;
-      }
-
-      .wrapper {
-        width: 350px;
-        padding: 20px;
-        background-color: lightblue;
-
-      }
-    </style> -->
 
   </head>
 
@@ -117,7 +104,7 @@
 
               <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                 <label>EMAIL:<sup>*</sup></label>
-                <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
+                <input type="text" name="email" class="form-control" value="<?php echo $email; ?>" placeholder="example@email.com">
                 <span class="help-block"><?php echo $email_err; ?></span>
               </div>
 

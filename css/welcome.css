@@ -1,3 +1,7 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 .container {
   position: relative;
   display: flex;
@@ -6,6 +10,7 @@
   width: 400px;
   padding-top: 100px;
   padding-bottom: 180px;
+  height: 737px;
 }
 
 label {
@@ -21,8 +26,8 @@ label {
 }
 
 section {
-  background-image: radial-gradient(circle at 47% 0%,#ef544b -15%,#282b43 60%);
-  height: 703px;
+  background-image: radial-gradient(circle at 47% 0%, #ef544b -15%, #282b43 60%);
+  height: 73 7px;
 }
 
 .col {
