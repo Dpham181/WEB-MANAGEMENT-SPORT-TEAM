@@ -70,7 +70,7 @@
                 <button type="reset" class="btn btn-primary" name="button">Reset</button>
               </div>
               <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-              <a href="forgot_pass.php">Forgot password?</a>
+              <a href="forget_passform.php">Forgot password?</a>
             </form>
           </div>
         </div>

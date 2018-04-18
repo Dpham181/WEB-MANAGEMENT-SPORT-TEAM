@@ -1,12 +1,4 @@
-#logout {
-  float: right;
-  padding-left:90px;
-}
-#info{
-  float: right;
-  padding-left: 10px;
-}
-#Profile {
-  float: right;
-  padding-left:90px;
+.ml-auto .dropdown-menu {
+  left: auto !important;
+  right: 0px;
 }
