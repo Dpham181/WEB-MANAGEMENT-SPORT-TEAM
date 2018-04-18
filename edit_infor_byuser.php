@@ -105,9 +105,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          $nzip);
 
            if($stmt->execute()){
-
-             Echo" already update";
-
+             header('location:welcome.php');
+             exit;
            }
            else{
                echo "Something went wrong. Please try again later.";

@@ -110,7 +110,7 @@
         $_SESSION['Ln'] = $lastname;
         $_SESSION['Fn'] = $firstname;
         $_SESSION['SE'] = $street;
-        $_SESSION['CU'] = $contry;
+        $_SESSION['CU'] = $country;
         $_SESSION['CI'] = $city;
         $_SESSION['SA'] = $state;
         $_SESSION['Z']  = $zip;
