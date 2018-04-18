@@ -18,6 +18,7 @@ function reset_password($email) {
   // to make it a slightly better password
   $rand_number = rand(0, 999);
   $new_passwordhash = $new_password . $rand_number;
+  $realpassword=   $new_passwordhash;
 
   if(!empty($new_passwordhash))  // Verify required fields are present
   {
@@ -48,7 +49,7 @@ function reset_password($email) {
    }
 
 
-return $new_passwordhash;
+return $realpassword;
 }
 
 ?>
