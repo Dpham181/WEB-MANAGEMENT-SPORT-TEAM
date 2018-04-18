@@ -10,9 +10,13 @@ function notify_password($email, $password) {
 // $email and $message are the data that is being
 
 
+if (!empty($password)){
 $message = "Your password has been changed to ".$password."\r\n".
-        "Please change it next time you log in.\r\n";
+            "Please change it next time you log in.\r\n";
+          }else {
+  $message = "Congratulations you already sign up for your website\n";
 
+          }
 /**
  * This example shows settings to use when sending via Google's Gmail servers.
  * This uses traditional id & password authentication - look at the gmail_xoauth.phps
