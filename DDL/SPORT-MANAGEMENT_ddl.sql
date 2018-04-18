@@ -128,4 +128,17 @@ CREATE TABLE PARTICIPATE
 INSERT INTO USERS VALUES
 (1, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'admin@email.com', 'A'),
 (2, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager@email.com', 'M'),
-(3, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'user@email.com', 'U')
+(3, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'user@email.com', 'U');
+
+INSERT INTO GAMES VALUES
+(1, '04-18-2018', '04-20-2018'),
+(2, '05-18-2018', '05-20-2018'),
+(3, '06-18-2018', '06-20-2018');
+
+INSERT INTO MANAGER VALUES
+(1, 2);
+
+INSERT INTO TEAMS VALUES
+(1, 1, 'APPLE', 4, 2),
+(2, 1, 'ORANGE', 5, 8),
+(3, 1, 'FIRE', 0, 0);
