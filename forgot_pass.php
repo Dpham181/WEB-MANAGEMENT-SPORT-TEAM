@@ -6,9 +6,6 @@ if(!isset($_SESSION['email']) || empty($_SESSION['email'])){
   header("location: forget_passform.php");
   exit;
 }
-/// HERERERERERERERERERERERERERERERERERERERERERERERERERERE
-// NEW EMAIL IF WE NEED SESSTION
-  // creating short variable name
   $email =htmlspecialchars($_SESSION['email']);
 
 
