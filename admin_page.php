@@ -21,37 +21,50 @@
      $type = $type_err ="";
 
 
-      $sql = "SELECT PROFILE.PROFILE_ID,
-                     PROFILE.FIRST_NAME,
-                     PROFILE.LAST_NAME ,
-                     PROFILE.STREET ,
-                     PROFILE.CITY,
-                     PROFILE.STATE ,
-                     PROFILE.COUNTRY,
-                     PROFILE.ZIPCODE
-             FROM PROFILE
+      // $sql = "SELECT PROFILE.PROFILE_ID,
+      //                PROFILE.FIRST_NAME,
+      //                PROFILE.LAST_NAME ,
+      //                PROFILE.STREET ,
+      //                PROFILE.CITY,
+      //                PROFILE.STATE ,
+      //                PROFILE.COUNTRY,
+      //                PROFILE.ZIPCODE
+      //        FROM PROFILE
+      //
+      //
+      //             GROUP BY
+      //               PROFILE.LAST_NAME,
+      //               PROFILE.FIRST_NAME
+      //             ORDER BY
+      //               PROFILE.LAST_NAME,
+      //               PROFILE.FIRST_NAME";
 
 
-                  GROUP BY
-                    PROFILE.LAST_NAME,
-                    PROFILE.FIRST_NAME
-                  ORDER BY
-                    PROFILE.LAST_NAME,
-                    PROFILE.FIRST_NAME";
+      // $stmt = $link->prepare($sql);
+      // $stmt->execute();
+      // $stmt->store_result();
+      // $stmt->bind_result($Name_ID,
+      //                    $Name_First,
+      //                    $Name_Last,
+      //                    $Street,
+      //                    $City,
+      //                    $State,
+      //                    $Country,
+      //                    $ZipCode);
 
+      $sql = "
+      SELECT USER_ID, EMAIL
+      FROM USERS
+      GROUP BY EMAIL
+      ORDER BY EMAIL
+      ";
       $stmt = $link->prepare($sql);
       $stmt->execute();
       $stmt->store_result();
-      $stmt->bind_result($Name_ID,
-                         $Name_First,
-                         $Name_Last,
-                         $Street,
-                         $City,
-                         $State,
-                         $Country,
-                         $ZipCode);
-
-
+      $stmt->bind_result(
+        $user_id,
+        $email
+      );
 
 
 
@@ -69,14 +82,20 @@
             <h1> Promote form </h1>
           <form action="promote_update.php" method="post">
 
-                <div><select name="name_ID" required>
-                  <option value="" selected disabled hidden>Choose User's name here</option>
+                <!-- <div><select name="name_ID" required> -->
+                <div><select name="profile_id" required>
+                  <option value="" selected disabled hidden>Choose user's acount order by email</option>
                   <?php
+                    // $stmt->data_seek(0);
+                    // while( $stmt->fetch() )
+                    // {
+                    //   $player = new Address([$Name_First, $Name_Last]);
+                    //   echo "<option value=\"$Name_ID\">".$player->name()."</option>\n";
+                    // }
                     $stmt->data_seek(0);
                     while( $stmt->fetch() )
                     {
-                      $player = new Address([$Name_First, $Name_Last]);
-                      echo "<option value=\"$Name_ID\">".$player->name()."</option>\n";
+                      echo "<option value=\"$user_id\">".$email."</option>\n";
                     }
                   ?>
 
