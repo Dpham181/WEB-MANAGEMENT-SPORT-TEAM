@@ -1,7 +1,5 @@
 <?php
-
-
-$ID       = (int) $_POST['name_ID'];
+$ID       = (int) $_POST['user_id'];
 $type     = trim( preg_replace("/\t|\R/",' ',$_POST['type']) );
 
 
