@@ -81,8 +81,9 @@ if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
       );
         // Attempt to execute the prepared statement
       if($stmt->execute()){
-                // Redirect to login page
-          header("location: welcome.php");
+          require_once 'notify_password.php';
+          $password = "";
+          notify_password($email, $password);
           exit;
       }
       else{
