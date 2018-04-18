@@ -72,26 +72,41 @@
     ?>
 
 
-    <table style="border:1px solid black; border-collapse:collapse;">
-      <tr>
-        <th colspan="12" style="vertical-align:top; border:1px solid black; background: lightgreen; text-align :center;">Schedule</th>
-      </tr>
-      <tr>
-        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">GAME</th>
-        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">START_DAYS</th>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr class="info">
+          <th scope="col">GAME</th>
+          <th scope="col">START TIME</th>
+          <th scope="col">END TIME</th>
+
+          <th scope="col">TEAM NAME</th>
+          <th scope="col">WIN</th>
+          <th scope="col">LOSS</th>
+          <th scope="col">% WIN</th>
+
+          <th scope="col">TEAM NAME</th>
+          <th scope="col">WIN</th>
+          <th scope="col">LOSS</th>
+          <th scope="col">% WIN</th>
+        </tr>
+      </thead>
+        <!-- <tr>
+          <th style="vertical-align:top; border:1px solid black; background: lightgreen;">GAME</th>
+          <th style="vertical-align:top; border:1px solid black; background: lightgreen;">START_DAYS</th>
           <th style="vertical-align:top; border:1px solid black; background: lightgreen;">END_DAYS</th>
-        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">SCORES</th>
 
-        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">TEAM A NAME</th>
+          <th style="vertical-align:top; border:1px solid black; background: lightgreen;">TEAM A NAME</th>
           <th style="vertical-align:top; border:1px solid black; background: lightgreen;">WIN  </th>
-        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">LOSS</th>
-        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">% WIN</th>
+          <th style="vertical-align:top; border:1px solid black; background: lightgreen;">LOSS</th>
+          <th style="vertical-align:top; border:1px solid black; background: lightgreen;">% WIN</th>
 
-        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">TEAM B NAME</th>
+          <th style="vertical-align:top; border:1px solid black; background: lightgreen;">TEAM B NAME</th>
           <th style="vertical-align:top; border:1px solid black; background: lightgreen;">WIN  </th>
-        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">LOSS</th>
-        <th style="vertical-align:top; border:1px solid black; background: lightgreen;">% WIN</th>
-      </tr>
+          <th style="vertical-align:top; border:1px solid black; background: lightgreen;">LOSS</th>
+          <th style="vertical-align:top; border:1px solid black; background: lightgreen;">% WIN</th>
+        </tr> -->
+
+
       <?php
         if ($stmt =  $link->prepare($sql) && $stmt1 = $link->prepare($sql1)) {
         $row = 0;
@@ -101,20 +116,28 @@
           echo "<tr>\n";
 
 
-          echo "<td  style='vertical-align:top; border:1px solid black;'>". ++$row ."</td>\n";
-          echo "<td  style='vertical-align:top; border:1px solid black;'>". $STD ."</td>\n";
-          echo "<td style='vertical-align:top; border:1px solid black;'> ". $ETD ."</td>\n";
-          echo "<td style='vertical-align:top; border:1px solid black;'>". $SC ."</td>\n";
-          $stmt1->fetch();
-        echo "<td  style='vertical-align:top; border:1px solid black;'>". $TN ."</td>\n";
-        echo "<td style='vertical-align:top; border:1px solid black;'> ". $W ."</td>\n";
-          echo "<td style='vertical-align:top; border:1px solid black;'>". $L ."</td>\n";
-            echo "<td style='vertical-align:top; border:1px solid black;'>". $PERSENT . '%' ."</td>\n";
-          $stmt1->fetch();
-          echo "<td  style='vertical-align:top; border:1px solid black;'>". $TN ."</td>\n";
-          echo "<td style='vertical-align:top; border:1px solid black;'> ". $W ."</td>\n";
-          echo "<td style='vertical-align:top; border:1px solid black;'>". $L ."</td>\n";
-          echo "<td style='vertical-align:top; border:1px solid black;'>". $PERSENT . '%' ."</td>\n";
+          echo "<th scope=\"row\">".++$row."</th>\n";
+          echo "<td>".$STD."</td>\n";
+          echo "<td>".$ETD."</td>\n";
+          echo "<td>".$SC."</td>\n";
+
+          for ($i=0; $i < 2 ; $i++) {
+            $stmt1->fetch();
+            echo "<td>".$TN."</td>\n";
+            echo "<td>".$W."</td>\n";
+            echo "<td>".$L."</td>\n";
+            echo "<td>".$PERSENT."</td>\n";
+          }
+        //   $stmt1->fetch();
+        // echo "<td  style='vertical-align:top; border:1px solid black;'>". $TN ."</td>\n";
+        // echo "<td style='vertical-align:top; border:1px solid black;'> ". $W ."</td>\n";
+        //   echo "<td style='vertical-align:top; border:1px solid black;'>". $L ."</td>\n";
+        //     echo "<td style='vertical-align:top; border:1px solid black;'>". $PERSENT . '%' ."</td>\n";
+        //   $stmt1->fetch();
+        //   echo "<td  style='vertical-align:top; border:1px solid black;'>". $TN ."</td>\n";
+        //   echo "<td style='vertical-align:top; border:1px solid black;'> ". $W ."</td>\n";
+        //   echo "<td style='vertical-align:top; border:1px solid black;'>". $L ."</td>\n";
+        //   echo "<td style='vertical-align:top; border:1px solid black;'>". $PERSENT . '%' ."</td>\n";
 
 
 

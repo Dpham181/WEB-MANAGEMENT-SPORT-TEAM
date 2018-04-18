@@ -26,10 +26,23 @@ if( ! empty($ID ))
           ";
     $stmt = $link->prepare($sql);
     $stmt->bind_param('s', $type);
-  if( $stmt->execute()){
+    $stmt->execute();
+
+  $query = "INSERT INTO MANAGER (MUSER_ID) VALUES (?)";
+  $stmt = $link->prepare($query);
+  $stmt->bind_param('d', $ID);
+  if($type === "A"){
+    $stmt->execute();
     echo " Already updated thanks now go back to your admin page !!";
-    header('admin_page.php');
+    header('location: admin_page.php');
     exit;
+  } elseif ($type === "M") {
+    $stmt->execute();
+    echo " Already updated thanks now go back to your manager page !!";
+    header('location: manager_page.php');
+    exit;
+  } else {
+    echo 'There is an error. Cannot promote user with '.$ID."\n";
   }
 
 
