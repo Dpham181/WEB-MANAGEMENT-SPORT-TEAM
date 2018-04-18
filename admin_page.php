@@ -82,7 +82,7 @@
           <form action="promote_update.php" method="post">
 
                 <!-- <div><select name="name_ID" required> -->
-                <div><select name="profile_id" required>
+                <div><select name="user_id" required>
                   <option value="" selected disabled hidden>Choose user's acount order by email</option>
                   <?php
                     // $stmt->data_seek(0);
