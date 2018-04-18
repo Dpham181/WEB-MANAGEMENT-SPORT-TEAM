@@ -1,12 +1,14 @@
 <?php
-  require"header.php";
+  require "header.php";
+  require 'Address.php';
+
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <title>EDIT PROFILE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="./css/edit_profile.css">
+      <link rel="stylesheet" href="css/edit_profile.css">
   </head>
 
 
@@ -40,37 +42,36 @@
           </ul>
         </div>
       </nav>
-    <p>HERE IS YOUR INFORMATION </h1>
-    <table style="border:1px solid black; border-collapse:collapse;">
-      <tr>
-        <th rowspan="6" ></th>
-      </tr>
-      <tr>
 
-        <th style="vertical-align:top; border:1px solid black; background: #e8491d;">FIRST_NAME</th>
-        <th style="vertical-align:top; border:1px solid black; background: #e8491d;">LAST_NAME</th>
-        <th style="vertical-align:top; border:1px solid black; background: #e8491d;">STREET</th>
-
-        <th style="vertical-align:top; border:1px solid black; background: #e8491d;">STATE</th>
-        <th style="vertical-align:top; border:1px solid black; background: #e8491d;">COUNTRY  </th>
-        <th style="vertical-align:top; border:1px solid black; background: #e8491d;">ZIPCODE</th>
-
-
-      </tr>
+    <section>
+      <h2>
+    <p>HERE IS YOUR INFORMATION </p>
     <?php
+
     while($stmt->fetch()){
 
 
+      $user = new Address([$firstname, $lastname], $street, $city, $state, $country, $zip);
 
-    echo "<tr>\n";
 
-    echo "<td style='vertical-align:top; border:1px solid black;'> ". $firstname ."</td>\n";
-    echo "<td style='vertical-align:top; border:1px solid black;'>". $lastname ."</td>\n";
-    echo "<td  style='vertical-align:top; border:1px solid black;'>". $city ."</td>\n";
-    echo "<td style='vertical-align:top; border:1px solid black;'> ". $state ."</td>\n";
-    echo "<td style='vertical-align:top; border:1px solid black;'>". $country ."</td>\n";
-    echo "<td style='vertical-align:top; border:1px solid black;'>". $zip ."</td>\n";
-    echo "</tr>";
+              echo "<br>\n";
+              echo " <br>".'Your Name:  '. $user->name()."</br>\n";
+
+                echo "<br>\n";
+              echo " <br>".'Street: '.$user->street()."</br>\n";
+                echo "<br>\n";
+              echo " <br>".'State:  '.$user->state()."</br>\n";
+                echo "<br>\n";
+              echo " <br>".'Country: '.$user->country()."</br>\n";
+                echo "<br>\n";
+              echo " <br>".'Zipcode: '.$user->zip()."</br>\n";
+                echo "<br>\n";
+
+
+
+
+
+
 
 
   }
@@ -78,7 +79,7 @@
     $stmt->close();
 
   ?>
-    </table>
+</h2>
   </section>
     <section>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -92,7 +93,7 @@
 
   </from>
       <?php
-      $choice="";
+
       if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(empty(trim($_POST["choice"]))){
@@ -102,31 +103,26 @@
         }
 
 
-   }
+
 
       if($choice == 'E'){
-          $sql= " UPDATE  PROFILE SET
-          PROFILE.PROFILE_ID  = ?,
-          PROFILE.PUSER_ID  = ?,
-          PROFILE.FIRST_NAME=?,
-          PROFILE.LAST_NAME =?,
-          PROFILE.STREET =?,
-          PROFILE.CITY =?,
-          PROFILE.STATE =?,
-          PROFILE.COUNTRY =?,
-          PROFILE.ZIPCODE =?
-          WHERE PROFILE.FIRST_NAME='$USER_ID'
-           ";
+        session_start();
+        $_SESSION['Ln'] = $lastname;
+        $_SESSION['Fn'] = $firstname;
+        $_SESSION['SE'] = $street;
+        $_SESSION['CU'] = $contry;
+        $_SESSION['CI'] = $city;
+        $_SESSION['SA'] = $state;
+        $_SESSION['Z']  = $zip;
 
-      $stmt=$link->prepare($sql);
-
-
+        header("location: edit_infor_byuser.php");
+        exit;
 
       }
       else if ($choice == 'V'){
         echo " viewing something from table player and stats ";
       }
-
+}
        ?>
     </section>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
