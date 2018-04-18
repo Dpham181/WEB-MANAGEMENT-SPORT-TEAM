@@ -22,7 +22,6 @@
 
               GAMES.START_DAY,
               GAMES.END_DAY,
-              GAMES.SCORE
 
               FROM PLAY
               RIGHT JOIN GAMES ON
@@ -45,29 +44,31 @@
 
 
             ";
-      $stmt = $link->prepare($sql);
-      $stmt1 = $link->prepare($sql1);
-      $stmt -> execute();
-      $stmt->store_result();
-      $stmt->bind_result(
-         $STD,
-        $ETD,
-        $SC);
-      $stmt1 -> execute();
-      $stmt1->store_result();
-      $stmt1->bind_result(
+      if ($stmt =  $link->prepare($sql) && $stmt1 = $link->prepare($sql1)) {
+        echo 'true';
+        $stmt -> execute();
+        $stmt->store_result();
+        $stmt->bind_result(
+          $STD,
+          $ETD,
+          $SC);
+        $stmt1 -> execute();
+        $stmt1->store_result();
+        $stmt1->bind_result(
+          $TN,
+          $W,
+          $L,
+          $PERSENT
+        );
 
-        $TN,
-        $W,
-        $L,
-        $PERSENT
-
-      );
+      }
     ?>
 
 
     <?php
-      echo "GAME:  ".$stmt->num_rows. "<br/>";
+      if ($stmt =  $link->prepare($sql) && $stmt1 = $link->prepare($sql1)) {
+        echo "GAME:  ".$stmt->num_rows. "<br/>";
+      }
     ?>
 
 
@@ -92,7 +93,7 @@
         <th style="vertical-align:top; border:1px solid black; background: lightgreen;">% WIN</th>
       </tr>
       <?php
-
+        if ($stmt =  $link->prepare($sql) && $stmt1 = $link->prepare($sql1)) {
         $row = 0;
 
         while($stmt->fetch()){
@@ -133,6 +134,7 @@
 
 
         $link->close();
+      }
 
       ?>
 
