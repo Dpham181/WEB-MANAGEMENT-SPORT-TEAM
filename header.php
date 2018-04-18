@@ -14,7 +14,7 @@
 	<header>
 		<div id="top">
 			<img src="./logo/1.jpg" alt="CSUF LOGO" height="100" width="100" />
-			<h1> BASKETBALL TEAM MANAGEMENT </h1>
+			<h1 class="font-effect-fire-animation"> BASKETBALL TEAM MANAGEMENT </h1>
 		</div>
 	</header>
 
