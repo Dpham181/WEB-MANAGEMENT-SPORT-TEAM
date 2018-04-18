@@ -74,16 +74,18 @@ if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
                   USERS.PASSWORD_HASH= ?
                   ";
 
+        $password = password_hash($password, PASSWORD_DEFAULT);
         $stmt=$link->prepare($sql);
         $stmt->bind_param('ss',
         $email,
-        $password = password_hash($password, PASSWORD_DEFAULT)
+        $password
       );
         // Attempt to execute the prepared statement
       if($stmt->execute()){
           require_once 'notify_password.php';
-          $password = "";
-          notify_password($email, $password);
+          $npassword = "";
+          notify_password($email, $npassword);
+          header("location: welcome.php");
           exit;
       }
       else{
