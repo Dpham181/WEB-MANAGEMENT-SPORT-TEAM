@@ -48,46 +48,95 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{
-          font: 14px sans-serif;
-         }
-        .wrapper{
-          width: 350px;
-          padding: 20px;
-          background-color:lightblue;
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/forgot_pass.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One"> </head>
+    <!-- <style type="text/css">
+      body {
+        font: 14px sans-serif;
+      }
 
-        }
-    </style>
+      .wrapper {
+        width: 350px;
+        padding: 20px;
+        background-color: lightblue;
 
-</head>
-<body>
-    <div class="wrapper" >
-        <h2>PLEASE INPUT YOUR EMAIL</h2>
+      }
+    </style> -->
+
+  </head>
 
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+  <?php require 'header.php' ?>
 
-            <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">TEAM MANAGEMENT</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="welcome.php">Welcome <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="rule.html">Rule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Dropdown link
+        </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col">
+            <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post">
+              <h2>Forgot Password</h2>
+
+              <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                 <label>EMAIL:<sup>*</sup></label>
-                <input type="text" name="email"class="form-control" value="<?php echo $email; ?>">
+                <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
                 <span class="help-block"><?php echo $email_err; ?></span>
-            </div>
-            <div>
+              </div>
 
 
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-default" value="Reset">
-            </div>
-
-        </form>
+                <div class="form-group">
+                  <input id="submit" type="submit" class="btn btn-primary" value="Submit">
+                  <input id="reset" type="reset" class="btn btn-default" value="Reset">
+                </div>
+            </form>
+          </div>
+        </div>
     </div>
-</body>
-</html>
+
+
+
+
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  </body>
+
+<?php require 'footer.php' ?>
+  </html>
