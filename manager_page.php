@@ -1,45 +1,43 @@
 <?php
-     require "header.php";
      session_start();
-     if(!isset($_SESSION['email']) || empty($_SESSION['email'])){
-       header("location: welcome.php");
-       exit;
+     if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+         header("location: welcome.php");
+         exit;
      }
-     if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
-       header("location: welcome.php");
-       exit;
+     if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+         header("location: welcome.php");
+         exit;
      }
      $choice = $choice_err= "";
      require_once 'config.php';
      $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
      // Check connection
-     if($link === false){
+     if ($link === false) {
          die("ERROR: Could not connect. " . mysqli_connect_error());
      }
-     if($_SERVER["REQUEST_METHOD"] == "POST"){
+     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
        // checking username if valid or not
 
-       if(empty(trim($_POST["choice"]))){
-           $choice_err = 'You need to select one !!!';
-       } else{
-           $choice = trim( preg_replace("/\t|\R/",' ',$_POST['choice']) );
-       }
-
-
-  }
+         if (empty(trim($_POST["choice"]))) {
+             $choice_err = 'You need to select one !!!';
+         } else {
+             $choice = trim(preg_replace("/\t|\R/", ' ', $_POST['choice']));
+         }
+     }
 
 ?>
 
   <head>
     <meta charset="utf-8">
     <title>Manager Page</title>
-    <link rel="stylesheet" href="css/manager_page.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float|fire-animation">
+    <link rel="stylesheet" href="css/manager.css">
   </head>
+  <?php require "header.php"; ?>
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -95,12 +93,10 @@
     <section>
       <!-- <?php
 
-    if($choice == 'E'){
-
-        require_once ('editPlayerbymanager.php');
-    }
-    else if ($choice == 'P'){
-      echo " adding player sql ";
+    if ($choice == 'E') {
+        require_once('editPlayerbymanager.php');
+    } elseif ($choice == 'P') {
+        echo " adding player sql ";
     }
     ?> -->
     </section>
