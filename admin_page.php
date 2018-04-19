@@ -20,7 +20,6 @@
      }
      $type = $type_err ="";
 
-
       // $sql = "SELECT PROFILE.PROFILE_ID,
       //                PROFILE.FIRST_NAME,
       //                PROFILE.LAST_NAME ,

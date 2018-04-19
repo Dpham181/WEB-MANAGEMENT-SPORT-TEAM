@@ -14,6 +14,7 @@ $teamid = "";
 
 // $sql1="SELECT MANAGER.MANAGER_ID FROM MANAGER WHERE MANAGER.MUSER_ID=?";
 $sql1= "SELECT TEAM_ID FROM TEAMS WHERE TMANAGER_ID = (SELECT MANAGER_ID FROM MANAGER WHERE MUSER_ID = ?)";
+
 $stmt1=$link->prepare($sql1);
 $stmt1->bind_param('i',$user_id);
 $stmt1->execute();
