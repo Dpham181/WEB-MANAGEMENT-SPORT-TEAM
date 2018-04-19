@@ -73,7 +73,7 @@
       <p>...</p>
       <?php require 'addingplayer.php'; ?>
 
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+      <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
         <div>
             <label>First Name:<sup>*</sup></label>
@@ -84,7 +84,7 @@
           <input type="text" name="lastname" class="form-control" value="" placeholder="Player's last name" required>
         </div>
 
-        <div>
+        <div class="form-check">
           <input id="submit" type="submit" class="btn btn-primary" value="Submit">
           <input type="reset" class="btn btn-default" value="Reset">
         </div>
