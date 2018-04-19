@@ -142,3 +142,9 @@ INSERT INTO TEAMS VALUES
 (1, 1, 'APPLE', 4, 2),
 (2, 1, 'ORANGE', 5, 8),
 (3, 1, 'FIRE', 0, 0);
+
+INSERT INTO PLAY VALUES
+(1, 1, 10),
+(1, 2, 5),
+(2, 3, 1),
+(2, 1, 2);
