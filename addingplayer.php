@@ -12,7 +12,12 @@ $firstname ="";
 $lastname = "";
 $teamid = "";
 
+<<<<<<< HEAD
 $sql1="SELECT MANAGER.MANAGER_ID FROM MANAGER WHERE MANAGER.MUSER_ID=?";
+=======
+// $sql1="SELECT MANAGER.MANAGER_ID FROM MANAGER WHERE MANAGER.MUSER_ID=?";
+$sql1= "SELECT TEAM_ID FROM TEAMS WHERE TMANAGER_ID = (SELECT MANAGER_ID FROM MANAGER WHERE MUSER_ID = ?)";
+>>>>>>> 16730e71ea9246f09bc195f21b7c86a3828eb936
 $stmt1=$link->prepare($sql1);
 $stmt1->bind_param('i',$user_id);
 $stmt1->execute();

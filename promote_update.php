@@ -33,13 +33,22 @@ if( ! empty($ID ))
   $stmt->bind_param('i', $ID);
   if($type === "A"){
     $stmt->execute();
+<<<<<<< HEAD
     echo " Already updated thanks now go back to your admin page !!";
+=======
+    echo 'promote successfully';
+>>>>>>> 16730e71ea9246f09bc195f21b7c86a3828eb936
     header('location: admin_page.php');
     exit;
   } elseif ($type === "M") {
     $stmt->execute();
+<<<<<<< HEAD
     echo " Already updated thanks now go back to your manager page !!";
     header('location: manager_page.php');
+=======
+    echo 'promote successfully';
+    header('location: admin_page.php');
+>>>>>>> 16730e71ea9246f09bc195f21b7c86a3828eb936
     exit;
   }
 
