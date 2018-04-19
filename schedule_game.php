@@ -18,55 +18,46 @@
           die("ERROR: Could not connect. " . mysqli_connect_error());
       }
 
-        $sql= "SELECT
+      $query = " SELECT
+        G.GAME_ID,G.START_DAY, G.END_DAY,
+        T1.TEAM_NAME, T1.WIN, T1.LOSS,
+        T2.TEAM_NAME, T2.WIN, T2.LOSS
+        FROM
+        GAMES as G,
+        TEAMS as T1,
+        TEAMS as T2,
+        PLAY  as P
+        WHERE
+        G.GAME_ID   = P.PGAME_ID AND
+        (P.PTEAM_ID = T1.TEAM_ID OR P.PTEAM_ID = T2.TEAM_ID) AND
+        T1.TEAM_ID != T2.TEAM_ID
+        GROUP BY
+        G.GAME_ID
+        ORDER BY
+        G.START_DAY,
+        T1.TEAM_NAME;
+        ";
 
-              GAMES.START_DAY,
-              GAMES.END_DAY,
-
-              FROM PLAY
-              RIGHT JOIN GAMES ON
-              PLAY.PGAME_ID = GAMES.GAME_ID
-              GROUP BY GAMES.GAME_ID
-
-          ";
-          $sql1= "SELECT
-
-
-              TEAMS.TEAM_NAME,
-              TEAMS.WIN,
-              TEAMS.LOSS,
-              ROUND ((TEAMS.WIN /(TEAMS.WIN +TEAMS.LOSS) * 100) ,0)  AS PERSENTAGE
-
-
-              FROM PLAY
-              RIGHT JOIN TEAMS ON
-              PLAY.PTEAM_ID= TEAMS.TEAM_ID
-
-
-            ";
-      if ($stmt =  $link->prepare($sql) && $stmt1 = $link->prepare($sql1)) {
-        echo 'true';
-        $stmt -> execute();
+      if ($stmt = $link->prepare($query)) {
+        $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result(
+          $GID,
           $STD,
           $ETD,
-          $SC);
-        $stmt1 -> execute();
-        $stmt1->store_result();
-        $stmt1->bind_result(
-          $TN,
-          $W,
-          $L,
-          $PERSENT
+          $TN1,
+          $W1,
+          $L1,
+          $TN2,
+          $W2,
+          $L2
         );
-
       }
     ?>
 
 
     <?php
-      if ($stmt =  $link->prepare($sql) && $stmt1 = $link->prepare($sql1)) {
+      if ($stmt =  $link->prepare($query)) {
         echo "GAME:  ".$stmt->num_rows. "<br/>";
       }
     ?>
@@ -82,12 +73,12 @@
           <th scope="col">TEAM NAME</th>
           <th scope="col">WIN</th>
           <th scope="col">LOSS</th>
-          <th scope="col">% WIN</th>
+          <!-- <th scope="col">% WIN</th> -->
 
           <th scope="col">TEAM NAME</th>
           <th scope="col">WIN</th>
           <th scope="col">LOSS</th>
-          <th scope="col">% WIN</th>
+          <!-- <th scope="col">% WIN</th> -->
         </tr>
       </thead>
         <!-- <tr>
@@ -108,26 +99,41 @@
 
 
       <?php
-        if ($stmt =  $link->prepare($sql) && $stmt1 = $link->prepare($sql1)) {
+        // if ($stmt =  $link->prepare($query)) {
         $row = 0;
 
+        echo "<tr>\n";
+
+
+          echo "<th scope=\"row\">".$GID."</th>\n";
+          echo "<td>".$STD."</td>\n";
+          echo "<td>".$ETD."</td>\n";
+
+          echo "<td>".$TN1."</td>\n";
+          echo "<td>".$W1."</td>\n";
+          echo "<td>".$L1."</td>\n";
+
+          echo "<td>".$TN2."</td>\n";
+          echo "<td>".$W2."</td>\n";
+          echo "<td>".$L2."</td>\n";
+        echo "</tr>\n";
         while($stmt->fetch()){
 
           echo "<tr>\n";
 
 
-          echo "<th scope=\"row\">".++$row."</th>\n";
+          echo "<th scope=\"row\">".$GID."</th>\n";
           echo "<td>".$STD."</td>\n";
           echo "<td>".$ETD."</td>\n";
-          echo "<td>".$SC."</td>\n";
 
-          for ($i=0; $i < 2 ; $i++) {
-            $stmt1->fetch();
-            echo "<td>".$TN."</td>\n";
-            echo "<td>".$W."</td>\n";
-            echo "<td>".$L."</td>\n";
-            echo "<td>".$PERSENT."</td>\n";
-          }
+          echo "<td>".$TN1."</td>\n";
+          echo "<td>".$W1."</td>\n";
+          echo "<td>".$L1."</td>\n";
+
+          echo "<td>".$TN2."</td>\n";
+          echo "<td>".$W2."</td>\n";
+          echo "<td>".$L2."</td>\n";
+            // echo "<td>".$PERSENT."</td>\n";
         //   $stmt1->fetch();
         // echo "<td  style='vertical-align:top; border:1px solid black;'>". $TN ."</td>\n";
         // echo "<td style='vertical-align:top; border:1px solid black;'> ". $W ."</td>\n";
@@ -149,7 +155,6 @@
 
         $stmt->free_result();
 
-        $stmt1->free_result();
 
 
 
@@ -157,7 +162,7 @@
 
 
         $link->close();
-      }
+      // }
 
       ?>
 
