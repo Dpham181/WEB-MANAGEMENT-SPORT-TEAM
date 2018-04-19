@@ -103,6 +103,7 @@
                             <option value="" selected disabled hidden>Their New Position</option>
                         <option value="M">MANAGER</option>
                         <option value="A">ADMIN</option>
+                        <option value="P">PLAYER</option>
                       </select>
                   <input type="submit" class="btn btn-primary" value="Promote Now">
                     <input type="reset" class="btn btn-default" value="Reset">

@@ -30,7 +30,7 @@ if( ! empty($ID ))
 
   $query = "INSERT INTO MANAGER (MUSER_ID) VALUES (?)";
   $stmt = $link->prepare($query);
-  $stmt->bind_param('d', $ID);
+  $stmt->bind_param('i', $ID);
   if($type === "A"){
     $stmt->execute();
     echo " Already updated thanks now go back to your admin page !!";
@@ -41,7 +41,9 @@ if( ! empty($ID ))
     echo " Already updated thanks now go back to your manager page !!";
     header('location: manager_page.php');
     exit;
-  } else {
+  }
+
+  else {
     echo 'There is an error. Cannot promote user with '.$ID."\n";
   }
 

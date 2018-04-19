@@ -8,23 +8,13 @@
          header("location: welcome.php");
          exit;
      }
-     $choice = $choice_err= "";
+     $user_id = $_SESSION['id'];
      require_once 'config.php';
      $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
      // Check connection
      if ($link === false) {
          die("ERROR: Could not connect. " . mysqli_connect_error());
-     }
-     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-       // checking username if valid or not
-
-         if (empty(trim($_POST["choice"]))) {
-             $choice_err = 'You need to select one !!!';
-         } else {
-             $choice = trim(preg_replace("/\t|\R/", ' ', $_POST['choice']));
-         }
      }
 
 ?>
@@ -79,20 +69,29 @@
       <h4 id="schedule-game">TESTING SCHEDULE GAME FOR NAVBAR</h4>
       <p>...</p>
       <?php require 'schedule_game.php'; ?>
-      <h4 id="#add-player">ADD PLAYER</h4>
+      <h4 id="add-player">ADD PLAYER</h4>
       <p>...</p>
-      <?php require 'schedule_game.php'; ?>
-      <h4 id="one">one</h4>
-      <p>...</p>
-      <?php require 'schedule_game.php'; ?>
+      <?php require 'addingplayer.php'; ?>
 
-      <h4 id="two">two</h4>
-      <p>...</p>
-      <?php require 'schedule_game.php'; ?>
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-      <h4 id="view-player">TESTING VIEW PLAYER FOR NAVBAR</h4>
+        <div>
+            <label>First Name:<sup>*</sup></label>
+          <input type="text" name="firstname" class="form-control" value="<?php echo $firstname; ?>" placeholder="Player's first name" autofocus required>
+        </div>
+        <div>
+          <label>Last Name:<sup>*</sup></label>
+          <input type="text" name="lastname" class="form-control" value="<?php echo $lastname; ?>" placeholder="Player's last name" required>
+        </div>
+
+        <div>
+          <input id="submit" type="submit" class="btn btn-primary" value="Submit">
+          <input type="reset" class="btn btn-default" value="Reset">
+        </div>
+      </form>
+=      <h4 id="view-player">Viewing Player</h4>
       <p>...</p>
-      <?php require 'schedule_game.php'; ?>
+      <?php require 'vrplayer_bymanager.php'; ?>
 
     </div>
 
