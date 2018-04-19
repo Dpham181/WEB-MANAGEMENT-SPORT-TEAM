@@ -77,13 +77,11 @@
 
         <div>
             <label>First Name:<sup>*</sup></label>
-
-          <input type="text" name="firstname" class="form-control" value="" placeholder="Player's first name" autofocus required>
+          <input type="text" name="firstname" class="form-control" value="<?php echo $firstname; ?>" placeholder="Player's first name" autofocus required>
         </div>
         <div>
           <label>Last Name:<sup>*</sup></label>
-          <input type="text" name="lastname" class="form-control" value="" placeholder="Player's last name" required>
-
+          <input type="text" name="lastname" class="form-control" value="<?php echo $lastname; ?>" placeholder="Player's last name" required>
         </div>
 
         <div>
@@ -91,18 +89,20 @@
           <input type="reset" class="btn btn-default" value="Reset">
         </div>
       </form>
-
-      <h4 id="view-player">Viewing Player</h4>
-
+=      <h4 id="view-player">Viewing Player</h4>
       <p>...</p>
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr class="info">
+            <th scope="col">PLAYER ID</th>
+            <th scope="col">FIRST NAME</th>
+            <th scope="col">LAST NAME</th>
+            <th scope="col">REMOVING PLAYER</th>
+            </tr>
+        </thead>
       <?php require 'vrplayer_bymanager.php'; ?>
-
+    </table>
     </div>
-
-
-
-          <!-- <?php require_once 'schedule_game.php'; ?> -->
-
 </div>
 
 

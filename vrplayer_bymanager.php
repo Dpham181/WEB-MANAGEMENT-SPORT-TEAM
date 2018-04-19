@@ -34,12 +34,18 @@ $stmt2->close();
   $stmt3->execute();
   $stmt3->store_result();
   $stmt3->bind_result(
-    $PLAYERCOUNT,
+    $PLAYERID,
     $PLAYERF,
     $PLAYERL);
   while ($stmt3 ->fetch()){
-    echo "$PLAYERCOUNT";
-    echo "$PLAYERF";
-    echo "$PLAYERL";
+    echo "<tr>\n";
+    echo "<th scope=\"row\">".$PLAYERID."</th>\n";
+    echo "<td>".$PLAYERF."</td>\n";
+    echo "<td>".$PLAYERL."</td>\n";
+    echo "<td><a href='removeplayer.php?id=" . $PLAYERID . "'>REMOVE</a></td>";
+
+
+    echo "</tr>";
+
   }
 ?>
