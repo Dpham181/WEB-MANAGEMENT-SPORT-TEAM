@@ -38,7 +38,7 @@ if( ! empty($ID ))
     exit;
   } elseif ($type === "M") {
     $stmt->execute();
-    echo 'promote successfully'
+    echo 'promote successfully';
     header('location: admin_page.php');
     exit;
   }
