@@ -19,18 +19,16 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<<<<<<< HEAD
-    <a class="navbar-brand" href="#">MENU</a>
-=======
+
     <a class="navbar-brand" href="#">TEAM MANAGEMENT</a>
->>>>>>> 16730e71ea9246f09bc195f21b7c86a3828eb936
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
-<<<<<<< HEAD
+
           <a class="nav-link" href="regular_page.php">Home </a>
         </li>
         <li class="nav-item">
@@ -47,23 +45,13 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="rules.php">Rules</a>
-=======
-          <a class="nav-link" href="welcome.php">Welcome <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="rule.html">Rule</a>
->>>>>>> 16730e71ea9246f09bc195f21b7c86a3828eb936
+
+
         </li>
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact</a>
         </li>
-<<<<<<< HEAD
 
-        <li id="info"class="nav-item active">
-        <a class="nav-link"    <b><?php
-          echo "Hi, " .$_SESSION['email'];
-           ?></b>.    Welcome
-=======
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Dropdown link
@@ -79,7 +67,6 @@
         <a class="nav-link"    <b><?php
           echo "Hi . " .$_SESSION['email'];
            ?></b>. Welcome
->>>>>>> 16730e71ea9246f09bc195f21b7c86a3828eb936
 
         </a>
         </li>
@@ -97,11 +84,9 @@
 
   <section id="body">
       <div class="container">
-<<<<<<< HEAD
+
         <h1>Welcome to your user page.  Use the navigation menu above.</h1>
-=======
-        <h1>Header</h1>
->>>>>>> 16730e71ea9246f09bc195f21b7c86a3828eb936
+
 
       </div>
   </section>
