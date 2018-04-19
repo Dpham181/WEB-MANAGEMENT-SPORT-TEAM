@@ -40,7 +40,7 @@
   <?php require "header.php"; ?>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav id="navbar-manager" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="welcome.php">TEAM MANAGEMENT</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
@@ -48,13 +48,16 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="welcome.php">Welcome <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="manager_page.php">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="rule.html">Rule</a>
+            <a class="nav-link" href="#schedule-game">Schedule Game</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="#view-player">View Player</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#add-player">Add Player</a>
           </li>
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
@@ -72,33 +75,34 @@
 
       </div>
     </nav>
+    <div data-spy="scroll" data-target="#navbar-manager" data-offset="0">
+      <h4 id="schedule-game">TESTING SCHEDULE GAME FOR NAVBAR</h4>
+      <p>...</p>
+      <?php require 'schedule_game.php'; ?>
+      <h4 id="#add-player">ADD PLAYER</h4>
+      <p>...</p>
+      <?php require 'schedule_game.php'; ?>
+      <h4 id="one">one</h4>
+      <p>...</p>
+      <?php require 'schedule_game.php'; ?>
 
-    <section>
-      <div>
-        <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post">
-          <select name="choice" value="<?php echo $choice; ?>">
-              <option value="E">edit </option>
-              <option value="P">Player</option>
-              <option value="" selected>Your choice here</option>
-            </select>
-          <input type="submit" class="btn btn-primary" value="GO">
-          <input type="reset" class="btn btn-default" value="Reset">
+      <h4 id="two">two</h4>
+      <p>...</p>
+      <?php require 'schedule_game.php'; ?>
 
-          </from>
-          <?php require_once 'schedule_game.php'; ?>
-      </div>
+      <h4 id="view-player">TESTING VIEW PLAYER FOR NAVBAR</h4>
+      <p>...</p>
+      <?php require 'schedule_game.php'; ?>
 
-    </section>
+    </div>
 
-    <section>
-      <!-- <?php
 
-    if ($choice == 'E') {
-        require_once('editPlayerbymanager.php');
-    } elseif ($choice == 'P') {
-        echo " adding player sql ";
-    }
-    ?> -->
+
+          <!-- <?php require_once 'schedule_game.php'; ?> -->
+
+</div>
+
+
     </section>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
