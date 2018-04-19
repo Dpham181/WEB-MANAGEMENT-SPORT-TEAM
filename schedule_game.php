@@ -39,7 +39,8 @@
 
 
     <?php
-        echo "GAME:  ".$stmt->num_rows. "<br/>";
+      $row = (int) $stmt->num_rows / 2;
+      echo "GAME:  ".$row. "<br/>";
     ?>
 
 
