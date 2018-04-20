@@ -21,7 +21,7 @@
       $query = "SELECT G.GAME_ID, G.START_DAY, G.END_DAY, T.TEAM_NAME, T.WIN, T.LOSS
       FROM PLAY P, GAMES G, TEAMS T
       WHERE T.TEAM_ID = P.PTEAM_ID AND G.GAME_ID = P.PGAME_ID
-      ORDER BY GAME_ID;";
+      ORDER BY GAME_ID, G.START_DAY, G.END_DAY, T.TEAM_NAME";
 
       if ($stmt = $link->prepare($query)) {
         $stmt->execute();
