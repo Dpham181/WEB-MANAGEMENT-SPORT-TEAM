@@ -70,7 +70,8 @@
     echo "<td>".$last_name."</td>\n";
     echo "<td>";
     echo "<a href='addPlayerToGame.php?player_id=".$player_id."&game_id=".$game_id."'>ADD</a>";
-    // echo "<a href='removePlayerToGame.php?id=" . $PLAYERID . "'>REMOVE</a>";
+    echo "<span>/</span>";
+    echo "<a href='removePlayerFromGame.php?player_id=".$player_id."&game_id=".$game_id."'>REMOVE</a>";
     echo "</td>";
 
     echo "</tr>";
