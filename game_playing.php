@@ -30,7 +30,7 @@
   $query = "SELECT PLAYER_ID, FIRST_NAME, LAST_NAME, GAME_ID
   FROM PLAYER, (SELECT GAME_ID FROM GAMES LEFT JOIN PLAY ON GAME_ID = PGAME_ID WHERE SCORE IS NULL AND PTEAM_ID = ?) AS T
   WHERE PLTEAM_ID = ?
-  ORDER BY GAME_ID";
+  ORDER BY GAME_ID, PLAYER_ID";
 
   $stmt = $db->prepare($query);
   $stmt->bind_param('ii', $_teamid, $_teamid);
