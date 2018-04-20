@@ -23,13 +23,17 @@
   $stmt->fetch();
   $stmt->free_result();
 
+  // $query = "SELECT PLAYER_ID, FIRST_NAME, LAST_NAME, GAME_ID
+  // FROM PLAYER, (SELECT GAME_ID FROM GAMES LEFT JOIN PLAY ON GAME_ID = PGAME_ID WHERE PGAME_ID IS NULL) AS T
+  // WHERE PLTEAM_ID = ?
+  // ORDER BY GAME_ID";
   $query = "SELECT PLAYER_ID, FIRST_NAME, LAST_NAME, GAME_ID
-  FROM PLAYER, (SELECT GAME_ID FROM GAMES LEFT JOIN PLAY ON GAME_ID = PGAME_ID WHERE PGAME_ID IS NULL) AS T
+  FROM PLAYER, (SELECT GAME_ID FROM GAMES LEFT JOIN PLAY ON GAME_ID = PGAME_ID WHERE SCORE IS NULL AND PTEAM_ID = ?) AS T
   WHERE PLTEAM_ID = ?
   ORDER BY GAME_ID";
 
   $stmt = $db->prepare($query);
-  $stmt->bind_param('i', $_teamid);
+  $stmt->bind_param('ii', $_teamid, $_teamid);
   $stmt->execute();
   $stmt->store_result();
   $stmt->bind_result(

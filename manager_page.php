@@ -44,6 +44,12 @@
             <a class="nav-link" href="#schedule-game">Schedule Game</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#game-played">Games Played</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#upcoming-game">Upcoming Games</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#view-player">View Player</a>
           </li>
           <li class="nav-item">
@@ -74,6 +80,8 @@
     <div data-spy="scroll" data-target="#navbar-manager" data-offset="0">
       <h1 id="schedule-game">SCHEDULE ALL GAMES</h1>
       <?php require 'schedule_game.php'; ?>
+      <h1 id="game-played">GAMES PLAYED</h1>
+      <h1 id="upcoming-game">UPCOMING GAMES</h1>
       <h1 id="add-player">ADD PLAYER</h1>
       <?php require 'addingplayer.php'; ?>
 

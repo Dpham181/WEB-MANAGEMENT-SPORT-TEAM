@@ -148,7 +148,11 @@ INSERT INTO PLAY VALUES
 (2, 3, 1),
 (2, 1, 2),
 (3, 2, 4),
-(3, 3, 5);
+(3, 3, 5),
+(4, 1, NULL),
+(4, 2, NULL),
+(5, 3, NULL),
+(5, 2, NULL);
 
 INSERT INTO PLAYER VALUES
 (1, 'THOMAS', 'NGO', 1),
