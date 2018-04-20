@@ -113,20 +113,32 @@ CREATE TABLE PLAY
 INSERT INTO USERS VALUES
 (1, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'admin@email.com', 'A'),
 (2, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager@email.com', 'M'),
-(3, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'user@email.com', 'U');
+(3, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'user@email.com', 'U'),
+(4, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager1@email.com', 'M'),
+(5, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager2@email.com', 'M');
+
+INSERT INTO MANAGER VALUES
+(1, 2),
+(2, 4),
+(3, 5);
 
 INSERT INTO GAMES VALUES
 (1, '04-18-2018', '04-20-2018'),
 (2, '05-18-2018', '05-20-2018'),
 (3, '06-18-2018', '06-20-2018');
 
-INSERT INTO MANAGER VALUES
-(1, 2);
+INSERT INTO PROFILE VALUES
+(1, 1, 'ADMIN', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(2, 2, 'MANAGER', 'DEMO', 'USA', '54321', 'WESMINSTER', '456 BLVD', 'TX'),
+(3, 3, 'USER', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(4, 4, 'MANAGER1', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(5, 5, 'MANAGER2', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA');
+
 
 INSERT INTO TEAMS VALUES
 (1, 1, 'APPLE', 4, 2),
-(2, 1, 'ORANGE', 5, 8),
-(3, 1, 'FIRE', 0, 0);
+(2, 2, 'ORANGE', 5, 8),
+(3, 3, 'FIRE', 0, 0);
 
 INSERT INTO PLAY VALUES
 (1, 1, 10),
@@ -135,3 +147,34 @@ INSERT INTO PLAY VALUES
 (2, 1, 2),
 (3, 2, 4),
 (3, 3, 5);
+
+INSERT INTO PLAYER VALUES
+(1, 'THOMAS', 'NGO', 1),
+(2, 'DANH', 'PHAM', 1),
+(3, 'PETER', 'VU', 1),
+(4, 'JOHN', 'SMITH', 2),
+(5, 'BOB', 'SMITH', 2),
+(6, 'JANE', 'NGUYEN', 2),
+(7, 'BRUCE', 'WAYNE', 3),
+(8, 'TONY', 'STARK', 3),
+(9, 'EVE', 'HARRY', 3);
+
+INSERT INTO STATS VALUES
+(1, 1, 30, 30, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(2, 1, 25, 39, 1, 2, 3, 4, 5, 6, 7, 8, 9),
+(3, 1, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(4, 1, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(5, 1, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(6, 1, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(7, 2, 30, 30, 9, 1, 12, 10, 4, 7, 2, 3, 1),
+(8, 2, 30, 30, 1, 1, 1, 2, 1, 0, 0, 0, 1),
+(9, 2, 30, 30, 1, 1, 4, 1, 1, 1, 9, 1, 1),
+(1, 2, 30, 30, 1, 3, 1, 1, 0, 1, 9, 1, 1),
+(2, 2, 30, 30, 7, 1, 1, 0, 2, 1, 9, 1, 1),
+(3, 2, 30, 30, 1, 1, 0, 1, 1, 4, 9, 1, 1),
+(4, 3, 15, 25, 2, 3, 5, 7, 3, 2, 9, 3, 5),
+(5, 3, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(6, 3, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(7, 3, 30, 30, 1, 0, 1, 1, 1, 1, 3, 5, 1),
+(8, 3, 30, 30, 1, 1, 0, 1, 1, 4, 1, 1, 1),
+(9, 3, 30, 30, 1, 1, 1, 0, 2, 1, 1, 1, 1);
