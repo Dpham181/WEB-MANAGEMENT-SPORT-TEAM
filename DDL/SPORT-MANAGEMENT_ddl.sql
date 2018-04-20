@@ -149,15 +149,15 @@ INSERT INTO PLAY VALUES
 (3, 3, 5);
 
 INSERT INTO PLAYER VALUES
-(1, 'THOMAS', 'NGO', 2),
-(2, 'DANH', 'PHAM', 2),
-(3, 'PETER', 'VU', 2),
-(4, 'JOHN', 'SMITH', 4),
-(5, 'BOB', 'SMITH', 4),
-(6, 'JANE', 'NGUYEN', 4),
-(7, 'BRUCE', 'WAYNE', 5),
-(8, 'TONY', 'STARK', 5),
-(9, 'EVE', 'HARRY', 5);
+(1, 'THOMAS', 'NGO', 1),
+(2, 'DANH', 'PHAM', 1),
+(3, 'PETER', 'VU', 1),
+(4, 'JOHN', 'SMITH', 2),
+(5, 'BOB', 'SMITH', 2),
+(6, 'JANE', 'NGUYEN', 2),
+(7, 'BRUCE', 'WAYNE', 3),
+(8, 'TONY', 'STARK', 3),
+(9, 'EVE', 'HARRY', 3);
 
 INSERT INTO STATS VALUES
 (1, 1, 30, 30, 1, 1, 1, 1, 1, 1, 1, 1, 1),

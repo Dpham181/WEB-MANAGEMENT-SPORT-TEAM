@@ -6,7 +6,7 @@ $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-$sql2="SELECT TEAMS.TEAM_ID FROM TEAMS WHERE TEAMS.TMANAGER_ID=?";
+$sql2="SELECT TEAMS.TEAM_ID FROM TEAMS WHERE TEAMS.TMANAGER_ID= (SELECT MANAGER_ID FROM MANAGER WHERE MUSER_ID = ?)";
 $stmt2=$link->prepare($sql2);
 $stmt2->bind_param('i',$user_id);
 $stmt2->execute();
