@@ -8,7 +8,7 @@ if($link === false){
 }
 $sql2="SELECT TEAMS.TEAM_ID FROM TEAMS WHERE TEAMS.TMANAGER_ID=?";
 $stmt2=$link->prepare($sql2);
-$stmt2->bind_param('i',$teamid);
+$stmt2->bind_param('i',$user_id);
 $stmt2->execute();
 $stmt2->store_result();
 $stmt2->bind_result($M_teamid);
@@ -42,7 +42,10 @@ $stmt2->close();
     echo "<th scope=\"row\">".$PLAYERID."</th>\n";
     echo "<td>".$PLAYERF."</td>\n";
     echo "<td>".$PLAYERL."</td>\n";
-    echo "<td><a href='removeplayer.php?id=" . $PLAYERID . "'>REMOVE</a></td>";
+    echo "<td>";
+    echo "<a href='addPlayerToGame.php?id=" . $PLAYERID . "'>ADD</a>";
+    echo "<a href='removePlayerToGame.php?id=" . $PLAYERID . "'>REMOVE</a>";
+    echo "</td>";
 
 
     echo "</tr>";

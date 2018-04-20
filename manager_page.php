@@ -49,6 +49,12 @@
           <li class="nav-item">
             <a class="nav-link" href="#add-player">Add Player</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#remove-player">Remove Player</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#view-stats">View Stats</a>
+          </li>
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
           <li class="nav-item dropdown">
@@ -89,19 +95,22 @@
           <input type="reset" class="btn btn-default" value="Reset">
         </div>
       </form>
-=      <h4 id="view-player">Viewing Player</h4>
+      <h4 id="view-player">Viewing Player</h4>
       <p>...</p>
-      <table class="table table-bordered table-hover">
-        <thead class="thead-dark">
-          <tr class="info">
-            <th scope="col">PLAYER ID</th>
-            <th scope="col">FIRST NAME</th>
-            <th scope="col">LAST NAME</th>
-            <th scope="col">REMOVING PLAYER</th>
-            </tr>
-        </thead>
-      <?php require 'vrplayer_bymanager.php'; ?>
-    </table>
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr class="info">
+              <th scope="col">PLAYER ID</th>
+              <th scope="col">FIRST NAME</th>
+              <th scope="col">LAST NAME</th>
+              <th scope="col">ACTION</th>
+              </tr>
+          </thead>
+        <?php require 'vrplayer_bymanager.php'; ?>
+        </table>
+      <h4 id="view-stats">VIEW STATS</h4>
+      <?php require 'view_stats.php'; ?>
+      <p>...</p>
     </div>
 </div>
 
