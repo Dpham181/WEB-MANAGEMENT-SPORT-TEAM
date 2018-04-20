@@ -12,7 +12,7 @@
 ?>
 <head>
   <meta charset="utf-8">
-  <title>Regular User Page</title>
+  <title>League Rules</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="css/regular_page.css">
 </head>
@@ -29,16 +29,16 @@
           <a class="nav-link" href="regular_page.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Games</a>
+          <a class="nav-link" href="view_games.php">Games</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Standings</a>
+          <a class="nav-link" href="view_standings.php">Standings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Stats</a>
+          <a class="nav-link" href="view_stats.php">Stats</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Teams</a>
+          <a class="nav-link" href="view">Teams</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="#">Rules</a>
@@ -50,7 +50,7 @@
         <li id="info"class="nav-item active">
         <a class="nav-link"    <b><?php
           echo "Hi . " .$_SESSION['email'];
-           ?></b>. Welcome
+           ?></b>.
 
         </a>
         </li>

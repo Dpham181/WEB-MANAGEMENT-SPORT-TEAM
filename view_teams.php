@@ -12,7 +12,7 @@
 ?>
 <head>
   <meta charset="utf-8">
-  <title>Regular User Page</title>
+  <title>League Teams</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="css/regular_page.css">
 </head>
@@ -27,7 +27,7 @@
 </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item active">
+        <li class="nav-item">
 
           <a class="nav-link" href="regular_page.php">Home </a>
         </li>
@@ -40,7 +40,7 @@
         <li class="nav-item">
           <a class="nav-link" href="view_stats.php">Stats</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="view_teams.php">Teams</a>
         </li>
         <li class="nav-item">
@@ -69,23 +69,37 @@
       </ul>
     </div>
   </nav>
+    <h1 >League Leaders</h1>
 
-  <section id="body">
-      <div class="container">
+    <?php
+      require_once('config.php');
+      // Connect to database
 
-        <h1>Welcome to your user page.  Use the navigation menu above.</h1>
+      /* Attempt to connect to MySQL database */
+      $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
+      // Check connection
+      if($link === false){
+          die("ERROR: Could not connect. " . mysqli_connect_error());
+      }
 
-      </div>
-  </section>
+      $query =
+    "SELECT
 
+    COUNT(Stats.Player) AS Games_Played,
+    AVG(Stats.PlayingTimeMin) AS Avg_Min,
+    AVG(Stats.PlayingTimeSec) AS Avg_Sec,
+    AVG(Stats.Points) AS Avg_Points,
+    AVG(Stats.Assists) AS Avg_Assists,
+    AVG(Stats.Rebounds) AS Avg_Rebounds
+    FROM Stats
+    GROUP BY PLAYER_ID
+    ORDER BY PLAYER_ID";
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-
-
-  <?php
-  require "footer.php";
+    $stmt = $link->prepare($query);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($Games_Played, $avg_min, $avg_sec, $avg_points, $avg_assists, $avg_rebounds);
   ?>
+
+</html>
