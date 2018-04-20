@@ -24,7 +24,7 @@
     <title>Manager Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float|fire-animation">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float|fire-animation|fire|neon">
     <link rel="stylesheet" href="css/manager.css">
   </head>
   <?php require "header.php"; ?>
@@ -72,11 +72,9 @@
       </div>
     </nav>
     <div data-spy="scroll" data-target="#navbar-manager" data-offset="0">
-      <h4 id="schedule-game">TESTING SCHEDULE GAME FOR NAVBAR</h4>
-      <p>...</p>
+      <h1 id="schedule-game">Schedule All Games</h1>
       <?php require 'schedule_game.php'; ?>
-      <h4 id="add-player">ADD PLAYER</h4>
-      <p>...</p>
+      <h1 id="add-player">ADD PLAYER</h1>
       <?php require 'addingplayer.php'; ?>
 
       <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -95,8 +93,7 @@
           <input type="reset" class="btn btn-default" value="Reset">
         </div>
       </form>
-      <h4 id="view-player">Viewing Player</h4>
-      <p>...</p>
+      <h1 id="view-player">Viewing Player</h1>
         <table class="table table-bordered table-hover">
           <thead class="thead-dark">
             <tr class="info">
@@ -108,9 +105,8 @@
           </thead>
         <?php require 'vrplayer_bymanager.php'; ?>
         </table>
-      <h4 id="view-stats">VIEW STATS</h4>
+      <h1 id="view-stats">VIEW STATS</h1>
       <?php require 'view_stats.php'; ?>
-      <p>...</p>
     </div>
 </div>
 

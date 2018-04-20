@@ -4,7 +4,7 @@
     <title>schedule</title>
   </head>
   <body>
-    <h1 >Schedule all Games</h1>
+    <!-- <h1 >Schedule all Games</h1> -->
 
     <?php
       require_once('config.php');
@@ -40,7 +40,7 @@
 
     <?php
       $row = (int) $stmt->num_rows / 2;
-      echo "GAME:  ".$row. "<br/>";
+      echo "TOTAL GAME:  ".$row. "<br/>";
     ?>
 
 
