@@ -61,29 +61,30 @@
         </tr>
       </thead>
       <?php
-        $toggle = "table-active";
-        $switch_color = false;
+        // $toggle = "table-active";
+        // $switch_color = false;
         while($stmt->fetch()){
-          if ($switch_color) {
-            $toggle = "table-success";
-            $switch_color = false;
-          } else {
-            $toggle = "table-light";
-            $switch_color = true;
-          }
-          echo "<tr class=\"$toggle\">\n";
-          echo "<th scope=\"row\">".$GID."</th>\n";
-          echo "<td>".$STD."</td>\n";
-          echo "<td>".$ETD."</td>\n";
+          // if ($switch_color) {
+          //   $toggle = "table-success";
+          //   $switch_color = false;
+          // } else {
+          //   $toggle = "table-light";
+          //   $switch_color = true;
+          // }
+          // echo "<tr class=\"$toggle\">\n";
+          echo "<tr>\n";
+          echo "<th scope=\"row\" style=\"background: #ffff004a\">".$GID."</th>\n";
+          echo "<td style=\"background: #ffff004a\">".$STD."</td>\n";
+          echo "<td style=\"background: #ffff004a\">".$ETD."</td>\n";
 
-          echo "<td>".$TN."</td>\n";
-          echo "<td>".$W."</td>\n";
-          echo "<td>".$L."</td>\n";
+          echo "<td style=\"background: #007cff78\">".$TN."</td>\n";
+          echo "<td style=\"background: #007cff78\">".$W."</td>\n";
+          echo "<td style=\"background: #007cff78\">".$L."</td>\n";
 
           $stmt->fetch();
-          echo "<td>".$TN."</td>\n";
-          echo "<td>".$W."</td>\n";
-          echo "<td>".$L."</td>\n";
+          echo "<td style=\"background: #f7041b80\">".$TN."</td>\n";
+          echo "<td style=\"background: #f7041b80\">".$W."</td>\n";
+          echo "<td style=\"background: #f7041b80\">".$L."</td>\n";
           echo "</tr>";
 
         }
