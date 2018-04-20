@@ -84,14 +84,16 @@
       <h1 id="game-played">GAMES PLAYED</h1>
       <?php require 'view_game_played.php' ?>
 
+      <!-- use for anchor tag -->
+      <a name="form-add-player"></a>
+
       <h1 id="upcoming-game">UPCOMING GAMES</h1>
       <?php require 'view_upcoming_games.php'; ?>
 
       <h1 id="add-player">ADD PLAYER</h1>
       <?php require 'addingplayer.php'; ?>
 
-      <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-
+      <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'#form-add-player'); ?>" method="post">
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text">FIRST NAME</div>
