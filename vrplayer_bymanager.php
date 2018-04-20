@@ -37,8 +37,18 @@ $stmt2->close();
     $PLAYERID,
     $PLAYERF,
     $PLAYERL);
+
+    $toggle = "table-active";
+    $switch_color = false;
   while ($stmt3 ->fetch()){
-    echo "<tr>\n";
+    if ($switch_color) {
+        $toggle = "table-success";
+        $switch_color = false;
+      } else {
+        $toggle = "table-light";
+        $switch_color = true;
+      }
+    echo "<tr class=\"$toggle\">\n";
     echo "<th scope=\"row\">".$PLAYERID."</th>\n";
     echo "<td>".$PLAYERF."</td>\n";
     echo "<td>".$PLAYERL."</td>\n";

@@ -61,10 +61,17 @@
         </tr>
       </thead>
       <?php
-
+        $toggle = "table-active";
+        $switch_color = false;
         while($stmt->fetch()){
-
-          echo "<tr>\n";
+          if ($switch_color) {
+            $toggle = "table-success";
+            $switch_color = false;
+          } else {
+            $toggle = "table-light";
+            $switch_color = true;
+          }
+          echo "<tr class=\"$toggle\">\n";
           echo "<th scope=\"row\">".$GID."</th>\n";
           echo "<td>".$STD."</td>\n";
           echo "<td>".$ETD."</td>\n";
