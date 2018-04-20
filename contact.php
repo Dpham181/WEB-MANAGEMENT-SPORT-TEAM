@@ -12,26 +12,27 @@
 ?>
 <head>
   <meta charset="utf-8">
-  <title>League Teams</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FOR WEBSITE CSUF BASKETBALL TEAM">
+  <meta name="keywords" content="web design">
+  <meta name="author" content="TEAM CPSC431">
+  <title>Contact Info</title>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
     <a class="navbar-brand" href="#">MENU</a>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-
           <a class="nav-link" href="regular_page.php">Home </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="view_games.php">Schedule</a>
+          <a class="nav-link" href="view_games.php">Games</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="view_standings.php">Standings</a>
@@ -39,20 +40,19 @@
         <li class="nav-item">
           <a class="nav-link" href="user_view_stats.php">Stats</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="view_teams.php">Teams</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="rules.php">Rules</a>
-
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Contact</a>
         </li>
 
         <li id="info"class="nav-item active">
         <a class="nav-link"    <b><?php
-          echo "Hi, " .$_SESSION['email'];
+          echo "Hi . " .$_SESSION['email'];
            ?></b>.
 
         </a>
@@ -68,41 +68,47 @@
       </ul>
     </div>
   </nav>
-    <h1 >League Teams</h1>
-
-    <?php
-      require_once('config.php');
-      // Connect to database
-
-      /* Attempt to connect to MySQL database */
-      $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-      // Check connection
-      if($link === false){
-          die("ERROR: Could not connect. " . mysqli_connect_error());
-      }
-
-      $query =
-    "SELECT TEAM_NAME from TEAMS
-              ORDER BY TEAM_NAME";
-
-    $stmt = $link->prepare($query);
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($TN);
 
 
-  while($stmt->fetch()){
+  		<section>
 
-    echo "<tr>\n";
-    echo "<td>".$TN."</td>\n";
+        <div class="container">
 
-  }
+          <div class="row align-items-center">
+            <div class="col">
+
+    					<h1>
+  						Contact league admin for more information <br>
+              Phone: (714)123-4567 <br>
+              Email: contact@email.com
+
+  						</h1>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
 
 
-  $stmt->free_result();
 
-  $link->close();
 
-?>
-</html>
+
+
+  		  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZ"></script>
+
+
+
+      </body>
+
+  <footer>
+      <link rel="stylesheet" href="css/footer.css">
+        <p>&copy; CPSC431 SPORTS TEAM WEBSITE DESINGING.<br />
+    </footer>
+
+
+
+
+  </html>
