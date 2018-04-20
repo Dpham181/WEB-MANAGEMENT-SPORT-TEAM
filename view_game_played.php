@@ -23,24 +23,17 @@
   $stmt->fetch();
   $stmt->free_result();
 
-  // $query = "SELECT PLAYER_ID, FIRST_NAME, LAST_NAME, GAME_ID
-  // FROM PLAYER, (SELECT GAME_ID FROM GAMES LEFT JOIN PLAY ON GAME_ID = PGAME_ID WHERE PGAME_ID IS NULL) AS T
-  // WHERE PLTEAM_ID = ?
-  // ORDER BY GAME_ID";
-  $query = "SELECT PLAYER_ID, FIRST_NAME, LAST_NAME, GAME_ID
-  FROM PLAYER, (SELECT GAME_ID FROM GAMES LEFT JOIN PLAY ON GAME_ID = PGAME_ID WHERE SCORE IS NULL AND PTEAM_ID = ?) AS T
-  WHERE PLTEAM_ID = ?
-  ORDER BY GAME_ID";
+  $query = "SELECT GAME_ID, START_DAY, END_DAY, SCORE FROM GAMES LEFT JOIN PLAY ON GAME_ID = PGAME_ID WHERE PTEAM_ID = ? AND SCORE IS NOT NULL";
 
   $stmt = $db->prepare($query);
-  $stmt->bind_param('ii', $_teamid, $_teamid);
+  $stmt->bind_param('i', $_teamid);
   $stmt->execute();
   $stmt->store_result();
   $stmt->bind_result(
-    $player_id,
-    $first_name,
-    $last_name,
-    $game_id
+    $game_id,
+    $start_day,
+    $end_day,
+    $score
   );
   ?>
 
@@ -48,10 +41,9 @@
     <thead class="thead-dark">
       <tr class="info">
         <th scope="col">GAME ID</th>
-        <th scope="col">PLAYER ID</th>
-        <th scope="col">FIRST NAME</th>
-        <th scope="col">LAST NAME</th>
-        <th scope="col">ACTION</th>
+        <th scope="col">START DAY</th>
+        <th scope="col">END DAY</th>
+        <th scope="col">SCORE</th>
       </tr>
   </thead>
 
@@ -69,14 +61,9 @@
       }
     echo "<tr class=\"$toggle\">\n";
     echo "<th scope=\"row\">".$game_id."</th>\n";
-    echo "<td>".$player_id."</td>\n";
-    echo "<td>".$first_name."</td>\n";
-    echo "<td>".$last_name."</td>\n";
-    echo "<td>";
-    echo "<a href='addPlayerToGame.php?player_id=".$player_id."&game_id=".$game_id."'>ADD</a>";
-    echo "<span> / </span>";
-    echo "<a href='removePlayerFromGame.php?player_id=".$player_id."&game_id=".$game_id."'>REMOVE</a>";
-    echo "</td>";
+    echo "<td>".$start_day."</td>\n";
+    echo "<td>".$end_day."</td>\n";
+    echo "<td>".$score."</td>\n";
 
     echo "</tr>";
   }
