@@ -80,9 +80,13 @@
     <div data-spy="scroll" data-target="#navbar-manager" data-offset="0">
       <h1 id="schedule-game">SCHEDULE ALL GAMES</h1>
       <?php require 'schedule_game.php'; ?>
+
       <h1 id="game-played">GAMES PLAYED</h1>
       <?php require 'view_game_played.php' ?>
+
       <h1 id="upcoming-game">UPCOMING GAMES</h1>
+      <?php require 'view_upcoming_games.php'; ?>
+      
       <h1 id="add-player">ADD PLAYER</h1>
       <?php require 'addingplayer.php'; ?>
 
