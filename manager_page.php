@@ -50,7 +50,7 @@
             <a class="nav-link" href="#add-player">Add Player</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#remove-player">Remove Player</a>
+            <a class="nav-link" href="#game-playing">Add/Remove</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#view-stats">View Stats</a>
@@ -72,7 +72,7 @@
       </div>
     </nav>
     <div data-spy="scroll" data-target="#navbar-manager" data-offset="0">
-      <h1 id="schedule-game">Schedule All Games</h1>
+      <h1 id="schedule-game">SCHEDULE ALL GAMES</h1>
       <?php require 'schedule_game.php'; ?>
       <h1 id="add-player">ADD PLAYER</h1>
       <?php require 'addingplayer.php'; ?>
@@ -93,18 +93,20 @@
           <input type="reset" class="btn btn-default" value="Reset">
         </div>
       </form>
-      <h1 id="view-player">Viewing Player</h1>
+      <h1 id="view-player">TEAM PLAYERS</h1>
         <table class="table table-bordered table-hover">
           <thead class="thead-dark">
             <tr class="info">
               <th scope="col">PLAYER ID</th>
               <th scope="col">FIRST NAME</th>
               <th scope="col">LAST NAME</th>
-              <th scope="col">ACTION</th>
+              <!-- <th scope="col">ACTION</th> -->
               </tr>
           </thead>
         <?php require 'vrplayer_bymanager.php'; ?>
         </table>
+      <h1 id="game-playing">ADD AND REMOVE PLAYER FROM GAME</h1>
+        <?php require 'game_playing.php'; ?>
       <h1 id="view-stats">VIEW STATS</h1>
       <?php require 'view_stats.php'; ?>
     </div>

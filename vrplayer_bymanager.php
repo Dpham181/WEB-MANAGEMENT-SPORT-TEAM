@@ -52,10 +52,10 @@ $stmt2->close();
     echo "<th scope=\"row\">".$PLAYERID."</th>\n";
     echo "<td>".$PLAYERF."</td>\n";
     echo "<td>".$PLAYERL."</td>\n";
-    echo "<td>";
-    echo "<a href='addPlayerToGame.php?id=" . $PLAYERID . "'>ADD</a>";
-    echo "<a href='removePlayerToGame.php?id=" . $PLAYERID . "'>REMOVE</a>";
-    echo "</td>";
+    // echo "<td>";
+    // echo "<a href='addPlayerToGame.php?id=" . $PLAYERID . "'>ADD</a>";
+    // echo "<a href='removePlayerToGame.php?id=" . $PLAYERID . "'>REMOVE</a>";
+    // echo "</td>";
 
 
     echo "</tr>";
