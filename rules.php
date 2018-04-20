@@ -14,42 +14,45 @@
   <meta charset="utf-8">
   <title>League Rules</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/regular_page.css">
+  <!-- <link rel="stylesheet" href="css/regular_page.css"> -->
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
     <a class="navbar-brand" href="#">MENU</a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="regular_page.php">Home <span class="sr-only">(current)</span></a>
+
+          <a class="nav-link" href="regular_page.php">Home </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="view_games.php">Games</a>
+          <a class="nav-link" href="view_games.php">Schedule</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="view_standings.php">Standings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="view_stats.php">Stats</a>
+          <a class="nav-link" href="user_view_stats.php">Stats</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="view">Teams</a>
+          <a class="nav-link" href="view_teams.php">Teams</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">Rules</a>
+          <a class="nav-link" href="rules.php">Rules</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="contact.php">Contact</a>
         </li>
 
         <li id="info"class="nav-item active">
         <a class="nav-link"    <b><?php
-          echo "Hi . " .$_SESSION['email'];
+          echo "Hi, " .$_SESSION['email'];
            ?></b>.
 
         </a>
@@ -78,14 +81,13 @@
         	<meta name="keywords" content="web design">
         	<meta name="author" content="TEAM CPSC431">
         	<title>RULES</title>
-        	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-          	<link rel="stylesheet" href="css/welcome.css">
         </head>
-
+  <div style="text-align:center">
+<h1> THE RULES </h1>
         	<header>
         		<div id="top">
         			<img src="./logo/1.jpg" alt="CSUF LOGO" height=100% width=100%/>
-        			<h1> THE RULES </h1>
+
         		</div>
         	</header>
 

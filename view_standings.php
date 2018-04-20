@@ -14,7 +14,7 @@
   <meta charset="utf-8">
   <title>League Standings</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/regular_page.css">
+  <!-- <link rel="stylesheet" href="css/regular_page.css"> -->
 </head>
 
 <body>
@@ -35,7 +35,7 @@
           <a class="nav-link" href="view_standings.php">Standings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="view_stats.php">Stats</a>
+          <a class="nav-link" href="user_view_stats.php">Stats</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="view_teams.php">Teams</a>
@@ -114,7 +114,6 @@
             echo "<tr>\n";
             echo "<td>".$TN."</td>\n";
             echo "<td>".$WIN."</td>\n";
-
             echo "<td>".$LOSS."</td>\n";
 
           }
