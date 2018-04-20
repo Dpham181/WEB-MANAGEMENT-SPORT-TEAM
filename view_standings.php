@@ -81,52 +81,43 @@
               die("ERROR: Could not connect. " . mysqli_connect_error());
           }
 
-          $query = "SELECT G.GAME_ID, G.START_DAY, G.END_DAY, T.TEAM_NAME
-          FROM PLAY P, GAMES G, TEAMS T
-          WHERE T.TEAM_ID = P.PTEAM_ID AND G.GAME_ID = P.PGAME_ID
-          ORDER BY GAME_ID;";
+          $query = "SELECT  TEAM_NAME, WIN, LOSS
+                    FROM TEAMS
+                    ORDER BY WIN DESC";
 
           if ($stmt = $link->prepare($query)) {
             $stmt->execute();
             $stmt->store_result();
             $stmt->bind_result(
-              $GID,
-              $STD,
-              $ETD,
-              $TN
+              $TN,
+              $WIN,
+              $LOSS
+
             );
           }
+
         ?>
 
         <table class="table table-bordered table-hover">
           <thead class="thead-dark">
             <tr class="info">
-              <th scope="col">GAME</th>
-              <th scope="col">START TIME</th>
-              <th scope="col">END TIME</th>
-
-              <th scope="col">HOME TEAM</th>
-
-              <th scope="col">AWAY TEAM</th>
+              <th scope="col">TEAM</th>
+              <th scope="col">WINS</th>
+              <th scope="col">LOSSES</th>
 
             </tr>
           </thead>
           <?php
 
-            while($stmt->fetch()){
+          while($stmt->fetch()){
 
-              echo "<tr>\n";
-              echo "<th scope=\"row\">".$GID."</th>\n";
-              echo "<td>".$STD."</td>\n";
-              echo "<td>".$ETD."</td>\n";
+            echo "<tr>\n";
+            echo "<td>".$TN."</td>\n";
+            echo "<td>".$WIN."</td>\n";
 
-              echo "<td>".$TN."</td>\n";
+            echo "<td>".$LOSS."</td>\n";
 
-              $stmt->fetch();
-              echo "<td>".$TN."</td>\n";
-              echo "</tr>";
-
-            }
+          }
 
             $stmt->free_result();
 
