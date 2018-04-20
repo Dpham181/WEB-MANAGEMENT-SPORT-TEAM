@@ -7,12 +7,13 @@
   }
 
   if (isset($_GET['player_id']) && isset($_GET['game_id'])) {
-    $player_id = $_GET['player_id'];
-    $game_id = $_GET['game_id'];
-    echo "$player_id\n";
-    echo "$game_id";
-    $query = "DELETE FROM STATS WHERE SPLAYER_ID = ? AND GAME_ID = ?";
+    $player_id = (int) $_GET['player_id'];
+    $game_id = (int) $_GET['game_id'];
+    // echo "$player_id\n";
+    // echo "$game_id";
+    $query = "DELETE FROM STATS WHERE SPLAYER_ID = ? AND SGAME_ID = ?";
     $stmt = $db->prepare($query);
+    // $stmt->bind_param('ii', $player_id, $game_id);
     $stmt->bind_param('ii', $player_id, $game_id);
     $stmt->execute();
 
