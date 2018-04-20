@@ -15,3 +15,7 @@ h1 {
 .table {
   text-align: center;
 }
+
+.form-inline {
+  justify-content: center;
+}

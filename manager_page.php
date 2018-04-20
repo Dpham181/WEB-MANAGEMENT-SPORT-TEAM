@@ -86,23 +86,29 @@
 
       <h1 id="upcoming-game">UPCOMING GAMES</h1>
       <?php require 'view_upcoming_games.php'; ?>
-      
+
       <h1 id="add-player">ADD PLAYER</h1>
       <?php require 'addingplayer.php'; ?>
 
       <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-        <div>
-            <label>First Name:<sup>*</sup></label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">FIRST NAME</div>
+          </div>
+            <!-- <label>First Name:<sup>*</sup></label> -->
           <input type="text" name="firstname" class="form-control" value="" placeholder="Player's first name" autofocus required>
         </div>
-        <div>
-          <label>Last Name:<sup>*</sup></label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">LAST NAME</div>
+          </div>
+          <!-- <label>Last Name:<sup>*</sup></label> -->
           <input type="text" name="lastname" class="form-control" value="" placeholder="Player's last name" required>
         </div>
 
         <div class="form-check">
-          <input id="submit" type="submit" class="btn btn-primary" value="Submit">
+          <input id="submit" type="submit" class="btn btn-primary" value="Add">
           <input type="reset" class="btn btn-default" value="Reset">
         </div>
       </form>
