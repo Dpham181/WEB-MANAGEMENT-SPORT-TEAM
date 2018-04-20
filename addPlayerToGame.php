@@ -23,7 +23,7 @@
     // }
     $db->close();
 
-    header("location: manager_page.php");
+    header("location: manager_page.php#$player_id-$game_id");
     exit;
 
   }
