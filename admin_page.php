@@ -1,4 +1,5 @@
 <?php
+     require "header.php";
 
      session_start();
      if(!isset($_SESSION['email']) || empty($_SESSION['email'])){
@@ -18,6 +19,7 @@
          die("ERROR: Could not connect. " . mysqli_connect_error());
      }
      $type = $type_err ="";
+
 
       $sql = "
       SELECT USER_ID, EMAIL
@@ -39,36 +41,55 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Admin Page</title>
+    <title>Manager Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float|fire-animation|fire|neon">
+    <!-- <link rel="stylesheet" href="css/manager.css"> -->
   </head>
 
   <body>
-    <?php require 'header.php'; ?>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link" id="nav-contact-tab" href="welcome.php">BACK TO HOME</a>
 
 
-    <b><?php
-    echo $_SESSION['email'];
-     ?></b>. Welcome
-    <a href="logout.php" >Sign Out</a>
+        <a class="nav-item nav-link" id="nav-promote-tab" data-toggle="tab" href="#nav-promote" role="tab" aria-controls="nav-profile" aria-selected="false">Promote</a>
 
-    <div class="flex-containers">
-      <div style="flex-grow: 1">
-        <h1> Promote form </h1>
-    <form action="promote_update.php" method="post">
 
-      <!-- <div><select name="name_ID" required> -->
-      <div><select name="user_id" required>
+
+
+        <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="#nav-create" role="tab" aria-controls="nav-profile" aria-selected="false">Makes Game</a>
+
+
+
+
+        <ul class="nav nav-pills">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <?php echo $_SESSION['email']; ?>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
+              <a class="dropdown-item" href="logout.php">Sign out</a>
+              <a class="dropdown-item" href="contact.html">Contact</a>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade" id="nav-promote" role="tabpanel" aria-labelledby="nav-promote-tab">
+        <h1>Promote Users</h1>
+        <form action="promote_update.php" method="post">
+
+          <div><select name="user_id" required>
                   <option value="" selected disabled hidden>Choose user's acount order by email</option>
                   <?php
-                    // $stmt->data_seek(0);
-                    // while( $stmt->fetch() )
-                    // {
-                    //   $player = new Address([$Name_First, $Name_Last]);
-                    //   echo "<option value=\"$Name_ID\">".$player->name()."</option>\n";
-                    // }
+
                     $stmt->data_seek(0);
                     while( $stmt->fetch() )
                     {
@@ -77,33 +98,96 @@
                   ?>
 
                 </select>
-        <select name="type">
+            <select name="type">
                             <option value="" selected disabled hidden>Their New Position</option>
                         <option value="M">MANAGER</option>
                         <option value="A">ADMIN</option>
                         <option value="P">PLAYER</option>
                       </select>
-        <input type="submit" class="btn btn-primary" value="Promote Now">
-        <input type="reset" class="btn btn-default" value="Reset">
+            <input type="submit" class="btn btn-primary" value="Promote Now">
+            <input type="reset" class="btn btn-default" value="Reset">
+
+          </div>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="nav-create" role="tabpanel" aria-labelledby="nav-create-tab">
+
+        <h1>MAKING GAMES</h1>
+
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr class="info">
+              <th scope="col">TEAM ID</th>
+              <th scope="col">TEAM NAME</th>
+              <th scope="col">MANAGER ID</th>
+              <th scope="col">WIN</th>
+              <th scope="col">LOSE</th>
+            </tr>
+          </thead>
+          <?php
+              // require_once('view_teams.php');
+              ?>
+        </table>
+
+
+
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr class="info">
+              <th scope="col">GAME ID</th>
+              <th scope="col">TEAM ID</th>
+              <th scope="col">SCORE</th>
+
+            </tr>
+          </thead>
+          <?php
+                          // require_once('viewGAMES.php');
+                          ?>
+        </table>
+        <h1>ASSINING GAMES HERE </h1>
+
+        <?php  require_once('assign_game.php'); ?>
+        <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "].'#form-assigning-game'); ?>" method="post">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">GAME ID</div>
+            </div>
+            <!-- <label>First Name:<sup>*</sup></label> -->
+            <input type="text" name="GAMEID" class="form-control" value="" placeholder="PLACE GAME ID HERE" required>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">TEAM 1</div>
+            </div>
+            <!-- <label>Last Name:<sup>*</sup></label> -->
+            <input type="text" name="TEAM1" class="form-control" value="" placeholder="First Team ID" required>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">TEAM 2</div>
+            </div>
+            <!-- <label>Last Name:<sup>*</sup></label> -->
+            <input type="text" name="TEAM2" class="form-control" value="" placeholder="Second Team ID" required>
+          </div>
+          <div class="form-check">
+            <input id="submit" type="submit" class="btn btn-primary" value="Add">
+            <input type="reset" class="btn btn-default" value="Reset">
+          </div>
+        </form>
 
       </div>
-    </form>
-
-    </div>
-    </div>
-    <div style="flex-grow: 1">
 
 
 
 
     </div>
-    </div>
+    <?php
+      require_once('schedule_game.php');
+      ?>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 
   <?php
