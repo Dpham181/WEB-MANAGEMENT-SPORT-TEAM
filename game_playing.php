@@ -43,10 +43,10 @@
   <table class="table table-bordered table-hover">
     <thead class="thead-dark">
       <tr class="info">
+        <th scope="col">GAME ID</th>
         <th scope="col">PLAYER ID</th>
         <th scope="col">FIRST NAME</th>
         <th scope="col">LAST NAME</th>
-        <th scope="col">GAME ID</th>
         <th scope="col">ACTION</th>
       </tr>
   </thead>
@@ -69,7 +69,7 @@
     echo "<td>".$first_name."</td>\n";
     echo "<td>".$last_name."</td>\n";
     echo "<td>";
-    echo "<a href='addPlayerToGame.php?id=" . $PLAYERID . "'>ADD</a>";
+    echo "<a href='addPlayerToGame.php?player_id=".$player_id."&game_id=".$game_id."'>ADD</a>";
     // echo "<a href='removePlayerToGame.php?id=" . $PLAYERID . "'>REMOVE</a>";
     echo "</td>";
 
