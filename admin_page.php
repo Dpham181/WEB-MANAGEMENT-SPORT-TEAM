@@ -45,10 +45,44 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float|fire-animation|fire|neon">
-    <!-- <link rel="stylesheet" href="css/manager.css"> -->
+    <link rel="stylesheet" href="css/manager.css">
   </head>
 
   <body>
+    <!--
+  <nav id="navbar-manager" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="manager_page.php">TEAM MANAGEMENT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="#TOP">TOP<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#promte">Promote Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#create">Creating A Game</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav my-2 my-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <?php echo $_SESSION['email']; ?>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
+            <a class="dropdown-item" href="logout.php">Sign out</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+  -->
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <a class="nav-item nav-link" id="nav-contact-tab" href="welcome.php">BACK TO HOME</a>
@@ -102,7 +136,6 @@
                             <option value="" selected disabled hidden>Their New Position</option>
                         <option value="M">MANAGER</option>
                         <option value="A">ADMIN</option>
-                        <option value="P">PLAYER</option>
                       </select>
             <input type="submit" class="btn btn-primary" value="Promote Now">
             <input type="reset" class="btn btn-default" value="Reset">
@@ -125,9 +158,41 @@
             </tr>
           </thead>
           <?php
-              // require_once('view_teams.php');
+              require_once('view_teams.php');
               ?>
+
         </table>
+        <a name="form-create-game"></a>
+
+
+        <?php require_once('create_game.php');
+            echo $_SERVER["PHP_SELF"]; ?>
+
+        <h1> CREATING GAME </h1>
+
+        <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "].'#form-create-game'); ?>" method="post">
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Start Day</div>
+            </div>
+            <input type="date" name="startday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
+          </div>
+
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">End Day</div>
+            </div>
+            <input type="date" name="endday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
+          </div>
+
+
+          <div class="form-check">
+            <input id="submit" type="submit" class="btn btn-primary" value="Create">
+            <input type="reset" class="btn btn-default" value="Reset">
+          </div>
+        </form>
 
 
 
@@ -141,9 +206,10 @@
             </tr>
           </thead>
           <?php
-                          // require_once('viewGAMES.php');
+                          require('viewGAMES.php');
                           ?>
         </table>
+        <a name="form-assigning-game"></a>
         <h1>ASSINING GAMES HERE </h1>
 
         <?php  require_once('assign_game.php'); ?>
@@ -152,33 +218,30 @@
             <div class="input-group-prepend">
               <div class="input-group-text">GAME ID</div>
             </div>
-            <!-- <label>First Name:<sup>*</sup></label> -->
             <input type="text" name="GAMEID" class="form-control" value="" placeholder="PLACE GAME ID HERE" required>
           </div>
+
           <div class="input-group">
             <div class="input-group-prepend">
               <div class="input-group-text">TEAM 1</div>
             </div>
-            <!-- <label>Last Name:<sup>*</sup></label> -->
             <input type="text" name="TEAM1" class="form-control" value="" placeholder="First Team ID" required>
           </div>
+
+
+
           <div class="input-group">
             <div class="input-group-prepend">
               <div class="input-group-text">TEAM 2</div>
             </div>
-            <!-- <label>Last Name:<sup>*</sup></label> -->
             <input type="text" name="TEAM2" class="form-control" value="" placeholder="Second Team ID" required>
           </div>
+
           <div class="form-check">
-            <input id="submit" type="submit" class="btn btn-primary" value="Add">
+            <input id="submit" type="submit" class="btn btn-primary" value="Create">
             <input type="reset" class="btn btn-default" value="Reset">
           </div>
         </form>
-
-      </div>
-
-
-
 
     </div>
     <?php
