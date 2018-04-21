@@ -1,10 +1,15 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['Ln']) || empty($_SESSION['Ln'])){
-header("location: welcome.php");
-exit;
-}
+// if(!isset($_SESSION['Ln']) || empty($_SESSION['Ln'])){
+// header("location: welcome.php");
+// exit;
+// }
+
+if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+         header("location: welcome.php");
+         exit;
+     }
 
 
 
