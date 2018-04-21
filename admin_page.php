@@ -70,7 +70,7 @@
       <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <?php echo $_SESSION['email']; ?>
+            <?php //echo $_SESSION['email']; ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
@@ -95,6 +95,8 @@
 
         <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="#nav-create" role="tab" aria-controls="nav-profile" aria-selected="false">Makes Game</a>
 
+        <a class="nav-item nav-link" id="nav-assgin-tab" data-toggle="tab" href="#nav-assign" role="tab" aria-controls="nav-profile" aria-selected="false">Assign Team Game</a>
+
 
 
 
@@ -115,9 +117,37 @@
       </div>
 
     </nav>
+
+
+
+
+
+
+
+
+
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade" id="nav-promote" role="tabpanel" aria-labelledby="nav-promote-tab">
+        <h1>HERE IS YOUR MAIL BOX  </h1>
+        <table class="table table-bordered table-hover">
+       <thead class="thead-dark">
+         <tr class="info">
+           <th scope="col">title</th>
+           <th scope="col">SENDER NAME</th>
+           <th scope="col">DATE SENT</th>
+           <th scope="col">FORM</th>
+
+         </tr>
+       </thead>
+       <?php require_once ('admin_mailboxs.php') ?>
+
+      </table>
+
+
+
         <h1>Promote Users</h1>
+
+
         <form action="promote_update.php" method="post">
 
           <div><select name="user_id" required>
@@ -133,7 +163,7 @@
 
                 </select>
             <select name="type">
-                            <option value="" selected disabled hidden>Their New Position</option>
+                        <option value="" selected disabled hidden>Their New Position</option>
                         <option value="M">MANAGER</option>
                         <option value="A">ADMIN</option>
                       </select>
@@ -144,109 +174,27 @@
         </form>
       </div>
       <div class="tab-pane fade" id="nav-create" role="tabpanel" aria-labelledby="nav-create-tab">
+        <?php
+          require_once ('schedule_game.php');
+          ?>
 
-        <h1>MAKING GAMES</h1>
-
-        <table class="table table-bordered table-hover">
-          <thead class="thead-dark">
-            <tr class="info">
-              <th scope="col">TEAM ID</th>
-              <th scope="col">TEAM NAME</th>
-              <th scope="col">MANAGER ID</th>
-              <th scope="col">WIN</th>
-              <th scope="col">LOSE</th>
-            </tr>
-          </thead>
-          <?php
-              require_once('view_teams.php');
-              ?>
-
-        </table>
-        <a name="form-create-game"></a>
-
-
-        <?php require_once('create_game.php');
-            echo $_SERVER["PHP_SELF"]; ?>
 
         <h1> CREATING GAME </h1>
+        <?php require_once ('create_game.php');?>
 
-        <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "].'#form-create-game'); ?>" method="post">
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Start Day</div>
-            </div>
-            <input type="date" name="startday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
-          </div>
+      </div>
 
 
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">End Day</div>
-            </div>
-            <input type="date" name="endday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
-          </div>
+        <div class="tab-pane fade" id="nav-assign" role="tabpanel" aria-labelledby="nav-assgin-tab">
 
+        <h1>GAMES AVALIBALE FOR ASSIGNING </h1>
 
-          <div class="form-check">
-            <input id="submit" type="submit" class="btn btn-primary" value="Create">
-            <input type="reset" class="btn btn-default" value="Reset">
-          </div>
-        </form>
+        <?php require_once ('assign_game.php'); ?>
 
+        </div>
 
+</div>
 
-        <table class="table table-bordered table-hover">
-          <thead class="thead-dark">
-            <tr class="info">
-              <th scope="col">GAME ID</th>
-              <th scope="col">TEAM ID</th>
-              <th scope="col">SCORE</th>
-
-            </tr>
-          </thead>
-          <?php
-                          require('viewGAMES.php');
-                          ?>
-        </table>
-        <a name="form-assigning-game"></a>
-        <h1>ASSINING GAMES HERE </h1>
-
-        <?php  require_once('assign_game.php'); ?>
-        <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "].'#form-assigning-game'); ?>" method="post">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">GAME ID</div>
-            </div>
-            <input type="text" name="GAMEID" class="form-control" value="" placeholder="PLACE GAME ID HERE" required>
-          </div>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">TEAM 1</div>
-            </div>
-            <input type="text" name="TEAM1" class="form-control" value="" placeholder="First Team ID" required>
-          </div>
-
-
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">TEAM 2</div>
-            </div>
-            <input type="text" name="TEAM2" class="form-control" value="" placeholder="Second Team ID" required>
-          </div>
-
-          <div class="form-check">
-            <input id="submit" type="submit" class="btn btn-primary" value="Create">
-            <input type="reset" class="btn btn-default" value="Reset">
-          </div>
-        </form>
-
-    </div>
-    <?php
-      require_once('schedule_game.php');
-      ?>
 
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

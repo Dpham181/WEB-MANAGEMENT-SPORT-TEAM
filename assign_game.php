@@ -11,50 +11,22 @@ if($link === false){
 $team1 ="";
 $team2 = "";
 $gameid= "";
-/*
-$sd = "";
-$ed = "";
-*/
+
 $SCORE = NULL;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-  if (empty($team1)){
-  $team1 = trim(preg_replace("/\t|\R/",' ',$_POST['TEAM1']));
-}
-  if (empty($team2)){
-  $team2 = trim(preg_replace("/\t|\R/",' ',$_POST['TEAM2']) );
-}
-if (empty($gameid)){
-$gameid = trim(preg_replace("/\t|\R/",' ',$_POST['GAMEID']) );
-}
-/*
-if (empty($sd)){
-$sd= $_POST['startday'];
-}
-if (empty($ed)){
-$ed= $_POST['endday'];
-}
 
-*
- $sql1= "INSERT INTO GAMES
-          SET
-          GAMES.GAME_ID,
-          GAMES.START_DAY,
-          GAMES.END_DAY
+if(!empty($_POST['TEAMID']))
+  {
+  $twoteams= $_POST['TEAMID'];
+  $team1= $twoteams[0];
+  $team2=  $twoteams[1];
+  }
 
-  ";
-
-  $stmt1=$link->prepare($sql1);
-  $stmt1->bind_param('iss',
-  $gameid,
-  $sd,
-  $ed
-
-);
- $stmt1->execute();
- $stmt1->close();
-*/
+if (!empty($_POST['GAMEID'])){
+$gameid = $_POST['GAMEID'];
+}
 
 
   $sql = "INSERT INTO PLAY
@@ -74,7 +46,55 @@ $ed= $_POST['endday'];
 
    $stmt->close();
 }
-
-
-
+  $link->close();
 ?>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'#form-assigning-game'); ?>" method="post">
+
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr class="info">
+            <th scope="col">GAME ID</th>
+            <th scope="col">START DAY</th>
+            <th scope="col">END DAY</th>
+            <th scope="col">CHECK BOX</th>
+
+          </tr>
+        </thead>
+        <?php require('viewGAMES.php');?>
+      </table>
+
+
+      <h1>TEAMS AVALIBALE FOR ASSIGNING </h1>
+
+      <table class="table table-bordered table-hover">
+     <thead class="thead-dark">
+       <tr class="info">
+         <th scope="col">TEAM ID</th>
+         <th scope="col">TEAM NAME</th>
+         <th scope="col">MANAGER ID</th>
+         <th scope="col">CHECK BOX</th>
+
+       </tr>
+     </thead>
+     <?php
+         require_once('view_teams.php');
+         ?>
+
+   </table>
+
+   <div class="form-check">
+     <input id="submit" type="submit" class="btn btn-primary" value="Assign">
+     <input type="reset" class="btn btn-default" value="Reset">
+   </div>
+
+  </form>
+
+  </body>
+</html>

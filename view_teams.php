@@ -15,9 +15,8 @@
       $query ="SELECT
              TEAMS.TEAM_ID,
              TEAMS.TEAM_NAME,
-             TEAMS.TMANAGER_ID,
-             TEAMS.WIN,
-             TEAMS.LOSS
+             TEAMS.TMANAGER_ID
+
 
              FROM TEAMS
              ORDER BY TEAMS.TEAM_ID";
@@ -25,11 +24,11 @@
     $stmt = $link->prepare($query);
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($TID,
+    $stmt->bind_result(
+    $TID,
     $TN,
-    $TNM,
-    $TW,
-    $TL
+    $TNM
+
 
 
   );
@@ -41,8 +40,8 @@
     echo "<td>".$TID."</td>\n";
     echo "<td>".$TN."</td>\n";
     echo "<td>".$TNM."</td>\n";
-    echo "<td>".$TW."</td>\n";
-    echo "<td>".$TL."</td>\n";
+    echo "<td><input type='checkbox' name='TEAMID[]' value='$TID' /></td>\n";
+
 
   }
 
