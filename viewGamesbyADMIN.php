@@ -30,5 +30,7 @@
 
   }
   $stmt->free_result();
+
   $link->close();
+
 ?>

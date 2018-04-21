@@ -142,22 +142,51 @@
       <div class="tab-pane fade" id="nav-create" role="tabpanel" aria-labelledby="nav-create-tab">
         <?php
           require_once ('schedule_game.php');
+
           ?>
 
 
           <h1> CREATING GAME </h1>
-          <?php require_once ('create_game.php');?>
+
+
+          <form class="form-inline" action="create_game.php"  method="post">
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Start Day</div>
+              </div>
+              <input type="date" name="startday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
+            </div>
+
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">End Day</div>
+              </div>
+              <input type="date" name="endday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
+            </div>
+
+
+            <div class="form-check">
+              <input type="submit" class="btn btn-primary" value="Create">
+              <input type="reset" class="btn btn-default" value="Reset">
+            </div>
+          </form>
+
+
+
+
+
+
+
+          <h1>GAMES AVALIBALE FOR ASSIGNING </h1>
+
+          <?php require_once ('assign_game.php'); ?>
 
       </div>
 
 
-      <div class="tab-pane fade" id="nav-assign" role="tabpanel" aria-labelledby="nav-assgin-tab">
 
-        <h1>GAMES AVALIBALE FOR ASSIGNING </h1>
-
-        <?php require_once ('assign_game.php'); ?>
-
-      </div>
 
     </div>
 

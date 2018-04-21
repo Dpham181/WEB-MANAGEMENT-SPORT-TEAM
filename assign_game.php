@@ -45,6 +45,7 @@ $gameid = $_POST['GAMEID'];
   $stmt->execute();
 
    $stmt->close();
+
 }
   $link->close();
 ?>
