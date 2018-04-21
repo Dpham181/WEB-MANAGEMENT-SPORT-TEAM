@@ -30,50 +30,51 @@
         $_SESSION['Z']  = $zip;
 
 ?>
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
+
   <head>
     <title>EDIT PROFILE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho|Orbitron&effect=shadow-multiple|3d-float|fire-animation|neon">
-  <link rel="stylesheet" href="css/editProfile.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho|Orbitron&effect=shadow-multiple|3d-float|fire-animation|neon">
+    <link rel="stylesheet" href="css/editProfile.css">
   </head>
 
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#top">TEAM MANAGEMENT</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#top">TEAM MANAGEMENT</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <!-- <li class="nav-item active">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <!-- <li class="nav-item active">
               <a class="nav-link" href="welcome.php">Welcome <span class="sr-only">(current)</span></a>
             </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="rule.html">Rule</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav my-2 my-lg-0">
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <?php echo $_SESSION['email']; ?>
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
-      <a class="dropdown-item" href="edit_infor_byuser.php">Edit Profile</a>
-      <a class="dropdown-item" href="logout.php">Sign out</a>
-    </div>
-  </li>
-</ul>
+          <li class="nav-item">
+            <a class="nav-link" href="rule.html">Rule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <?php echo $_SESSION['email']; ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
+              <a class="dropdown-item" href="edit_infor_byuser.php">Edit Profile</a>
+              <a class="dropdown-item" href="logout.php">Sign out</a>
+            </div>
+          </li>
+        </ul>
 
-        </div>
-      </nav>
+      </div>
+    </nav>
 
     <section>
       <h1 class="font-effect-neon">PROFILE PAGE</h1>
@@ -111,7 +112,7 @@
 
   ?>
 </h2>
-  </section>
+    </section>
     <!-- <section>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
           <select name="choice" value="<?php echo $choice; ?>">
