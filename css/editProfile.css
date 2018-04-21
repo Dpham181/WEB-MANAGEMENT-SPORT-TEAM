@@ -1,10 +1,16 @@
+body {
+  position: relative;
+  font-family: 'Ubuntu', sans-serif;
+  ;
+}
+
 .container {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 400px;
-  bottom:0;
+  bottom: 0;
   padding-top: 100px;
   padding-bottom: 180px;
 }
@@ -13,17 +19,11 @@ label {
   font-weight: 700
 }
 
-#submit-button {
-  justify-content: flex-end;
-}
-
-#submit-button {
-  float: right;
-}
-
 section {
-  background-image: radial-gradient(circle at 47% 0%,#ef544b -15%,#282b43 60%);
+  /* background-image: radial-gradient(circle at 47% 0%,#ef544b -15%,#282b43 60%); */
+  background-image: radial-gradient(circle, #1280e1 0%, #002069 100%);
   padding-bottom: 5px;
+  color: white;
 }
 
 .col {

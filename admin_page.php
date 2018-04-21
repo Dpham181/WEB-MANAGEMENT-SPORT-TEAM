@@ -120,7 +120,6 @@
         <h1>Promote Users</h1>
         <form action="promote_update.php" method="post">
 
-          <!-- <div><select name="name_ID" required> -->
           <div><select name="user_id" required>
                   <option value="" selected disabled hidden>Choose user's acount order by email</option>
                   <?php
@@ -243,11 +242,6 @@
             <input type="reset" class="btn btn-default" value="Reset">
           </div>
         </form>
-
-      </div>
-
-
-
 
     </div>
     <?php
