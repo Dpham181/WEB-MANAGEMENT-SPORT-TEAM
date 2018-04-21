@@ -73,7 +73,7 @@ $link->close();
 
 
       <div class="form-check">
-        <input id="submit" type="submit" class="btn btn-primary" value="Create">
+        <input type="submit" class="btn btn-primary" value="Create">
         <input type="reset" class="btn btn-default" value="Reset">
       </div>
     </form>

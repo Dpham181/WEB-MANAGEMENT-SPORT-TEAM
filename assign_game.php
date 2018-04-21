@@ -67,8 +67,8 @@ $gameid = $_POST['GAMEID'];
 
           </tr>
         </thead>
-        <?php require('viewGAMES.php');?>
-      </table>
+        <?php require('viewGamesbyADMIN.php');?>
+        </table>
 
 
       <h1>TEAMS AVALIBALE FOR ASSIGNING </h1>
@@ -83,14 +83,14 @@ $gameid = $_POST['GAMEID'];
 
        </tr>
      </thead>
-     <?php
+      <?php
          require_once('view_teams.php');
          ?>
 
    </table>
 
    <div class="form-check">
-     <input id="submit" type="submit" class="btn btn-primary" value="Assign">
+     <input type="submit" class="btn btn-primary" value="Assign">
      <input type="reset" class="btn btn-default" value="Reset">
    </div>
 
