@@ -36,6 +36,7 @@ $state=$_SESSION['SA'];
 $country=$_SESSION['CU'];
 $zip=$_SESSION['Z'];
 $city=$_SESSION['CI'];
+echo "$lastname";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
@@ -116,15 +117,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            else{
                echo "Something went wrong. Please try again later.";
                }
-
-
-
-
-
-
-
-
-
         }
          $link->close();
 
@@ -133,61 +125,102 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <body>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
-        <meta charset="UTF-8">
-        <title>Edit by User</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-        <style type="text/css">
-            body{ font: 14px sans-serif; }
-            .wrapper{ width: 350px; padding: 20px; background-color:lightblue}
-        </style>
+      <meta charset="UTF-8">
+      <title>Edit by User</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float|fire-animation|fire|neon">
+      </style>
     </head>
+
+    <?php require "header.php"; ?>
+
     <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#top">TEAM MANAGEMENT</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <!-- <li class="nav-item active">
+              <a class="nav-link" href="welcome.php">Welcome <span class="sr-only">(current)</span></a>
+            </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="rule.html">Rule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <?php echo $_SESSION['email']; ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
+              <a class="dropdown-item" href="edit_infor_byuser.php">Edit Profile</a>
+              <a class="dropdown-item" href="logout.php">Sign out</a>
+            </div>
+          </li>
+        </ul>
 
-            <h2>Edit your infor here</h2>
+      </div>
+    </nav>
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+      <h2>Edit your infor here</h2>
 
-              <div>
-                    <label>Your frist Name:<sup>*</sup></label>
-                    <input type="text" name="nfirstname"class="form-control" value="<?php echo $nfirstname; ?>">
+      <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post">
 
-                </div>
-                <div>
-                   <label>Your last Name:<sup>*</sup></label>
-                   <input type="text" name="nlastname"class="form-control" value="<?php echo $nlastname; ?>">
+        <div>
+          <label>Your frist Name:<sup>*</sup></label>
+          <input type="text" name="nfirstname" class="form-control" value="<?php echo $nfirstname; ?>">
 
-               </div>
-              <div>
-                    <label>Street:<sup>*</sup></label>
-                    <input type="text" name="nstreet"class="form-control" value="<?php echo $nstreet; ?>">
+        </div>
+        <div>
+          <label>Your last Name:<sup>*</sup></label>
+          <input type="text" name="nlastname" class="form-control" value="<?php echo $nlastname; ?>">
 
-              </div>
-              <div>
-                    <label>City:<sup>*</sup></label>
-                    <input type="text" name="ncity"class="form-control" value="<?php echo $ncity; ?>">
+        </div>
+        <div>
+          <label>Street:<sup>*</sup></label>
+          <input type="text" name="nstreet" class="form-control" value="<?php echo $nstreet; ?>">
 
-              </div>
-              <div>
-                      <label>State:<sup>*</sup></label>
-                      <input type="text" name="nstate"class="form-control" value="<?php echo $nstate; ?>">
+        </div>
+        <div>
+          <label>City:<sup>*</sup></label>
+          <input type="text" name="ncity" class="form-control" value="<?php echo $ncity; ?>">
 
-             </div>
+        </div>
+        <div>
+          <label>State:<sup>*</sup></label>
+          <input type="text" name="nstate" class="form-control" value="<?php echo $nstate; ?>">
 
-           <div>
-                   <label>Country:<sup>*</sup></label>
-                   <input type="text" name="ncountry"class="form-control" value="<?php echo $ncountry; ?>">
+        </div>
 
-          </div>
-              <div>
-                    <label>ZipCode:<sup>*</sup></label>
-                    <input type="text" name="nzip"class="form-control" value="<?php echo $nzip; ?>">
+        <div>
+          <label>Country:<sup>*</sup></label>
+          <input type="text" name="ncountry" class="form-control" value="<?php echo $ncountry; ?>">
 
-              </div>
-                <div>
-                    <input type="submit" class="btn btn-primary" value="Update">
-                    <input type="reset" class="btn btn-default" value="Reset">
-                </div>
-            </form>
+        </div>
+        <div>
+          <label>ZipCode:<sup>*</sup></label>
+          <input type="text" name="nzip" class="form-control" value="<?php echo $nzip; ?>">
+
+        </div>
+        <div>
+          <input type="submit" class="btn btn-primary" value="Update">
+          <input type="reset" class="btn btn-default" value="Reset">
+        </div>
+      </form>
     </body>
+
+
+    <?php
+  require "footer.php";
+  ?>
+
     </html>
