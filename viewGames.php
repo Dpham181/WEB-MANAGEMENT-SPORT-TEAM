@@ -10,12 +10,8 @@
           die("ERROR: Could not connect. " . mysqli_connect_error());
       }
 
-      $query ="SELECT
-             PLAY.PGAME_ID,
-             PLAY.PTEAM_ID,
-             PLAY.SCORE
-             FROM PLAY
-             ORDER BY PLAY.PGAME_ID";
+      $query ="SELECT GAME_ID, START_DAY, END_DAY FROM GAMES WHERE NOT EXISTS(SELECT PGAME_ID FROM PLAY WHERE GAME_ID = PGAME_ID)
+";
 
     $stmt = $link->prepare($query);
     $stmt->execute();
