@@ -49,40 +49,6 @@
   </head>
 
   <body>
-    <!--
-  <nav id="navbar-manager" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="manager_page.php">TEAM MANAGEMENT</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="#TOP">TOP<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#promte">Promote Users</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#create">Creating A Game</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav my-2 my-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <?php //echo $_SESSION['email']; ?>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
-            <a class="dropdown-item" href="logout.php">Sign out</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-
-    </div>
-  </nav>
-  -->
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <a class="nav-item nav-link" id="nav-contact-tab" href="welcome.php">BACK TO HOME</a>
@@ -130,18 +96,18 @@
       <div class="tab-pane fade" id="nav-promote" role="tabpanel" aria-labelledby="nav-promote-tab">
         <h1>HERE IS YOUR MAIL BOX  </h1>
         <table class="table table-bordered table-hover">
-       <thead class="thead-dark">
-         <tr class="info">
-           <th scope="col">title</th>
-           <th scope="col">SENDER NAME</th>
-           <th scope="col">DATE SENT</th>
-           <th scope="col">FORM</th>
+          <thead class="thead-dark">
+            <tr class="info">
+              <th scope="col">title</th>
+              <th scope="col">SENDER NAME</th>
+              <th scope="col">DATE SENT</th>
+              <th scope="col">FORM</th>
 
-         </tr>
-       </thead>
-       <?php require_once ('admin_mailboxs.php') ?>
+            </tr>
+          </thead>
+          <?php require_once ('admin_mailboxs.php') ?>
 
-      </table>
+        </table>
 
 
 
@@ -179,26 +145,26 @@
           ?>
 
 
-        <h1> CREATING GAME </h1>
-        <?php require_once ('create_game.php');?>
+          <h1> CREATING GAME </h1>
+          <?php require_once ('create_game.php');?>
 
       </div>
 
 
-        <div class="tab-pane fade" id="nav-assign" role="tabpanel" aria-labelledby="nav-assgin-tab">
+      <div class="tab-pane fade" id="nav-assign" role="tabpanel" aria-labelledby="nav-assgin-tab">
 
         <h1>GAMES AVALIBALE FOR ASSIGNING </h1>
 
         <?php require_once ('assign_game.php'); ?>
 
-        </div>
+      </div>
 
-</div>
+    </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 
   <?php
