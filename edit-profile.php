@@ -36,7 +36,7 @@
     <title>EDIT PROFILE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float|fire-animation">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho|Orbitron&effect=shadow-multiple|3d-float|fire-animation|neon">
   <link rel="stylesheet" href="css/editProfile.css">
   </head>
 
@@ -76,6 +76,7 @@
       </nav>
 
     <section>
+      <h1 class="font-effect-neon">PROFILE PAGE</h1>
       <h2>
     <?php
 
@@ -85,18 +86,17 @@
       $user = new Address([$firstname, $lastname], $street, $city, $state, $country, $zip);
 
 
-              echo "<br>\n";
-              echo " <br>".'Your Name:  '. $user->name()."</br>\n";
-
-                echo "<br>\n";
-              echo " <br>".'Street: '.$user->street()."</br>\n";
-                echo "<br>\n";
-              echo " <br>".'State:  '.$user->state()."</br>\n";
-                echo "<br>\n";
-              echo " <br>".'Country: '.$user->country()."</br>\n";
-                echo "<br>\n";
-              echo " <br>".'Zipcode: '.$user->zip()."</br>\n";
-                echo "<br>\n";
+      echo "<br>\n";
+      echo " <br>".'Your Name:  '. $user->name()."</br>\n";
+      echo "<br>\n";
+      echo " <br>".'Street: '.$user->street()."</br>\n";
+      echo "<br>\n";
+      echo " <br>".'State:  '.$user->state()."</br>\n";
+      echo "<br>\n";
+      echo " <br>".'Country: '.$user->country()."</br>\n";
+      echo "<br>\n";
+      echo " <br>".'Zipcode: '.$user->zip()."</br>\n";
+      echo "<br>\n";
 
 
 
