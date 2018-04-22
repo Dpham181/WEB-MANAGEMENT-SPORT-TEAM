@@ -172,20 +172,23 @@
         <h1>CREATE TEAM</h1>
         <div class="container">
           <?php require 'team_manager_table.php'; ?>
+
         </div>
       </div>
       <div class="container">
-        <form action="" method="post">
+        <?php require 'create_team.php'; ?>
+
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
           <div class="form-group row">
           <label for="TMANAGER_ID" class="col-sm-2 col-form-label">Team Manager ID</label>
             <div class="col-sm-10">
-              <input type="number" min="1" class="form-control" id="TMANAGER_ID" placeholder="Manager ID">
+              <input type="number" min="1" class="form-control" name="TMANAGER_ID" placeholder="Manager ID">
             </div>
           </div>
           <div class="form-group row">
             <label for="TEAM_NAME" class="col-sm-2 col-form-label">Team Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="TEAM_NAME" placeholder="Team Name">
+              <input type="text" class="form-control" name="TEAM_NAME" placeholder="Team Name">
             </div>
           </div>
           <div class="form-group row">
