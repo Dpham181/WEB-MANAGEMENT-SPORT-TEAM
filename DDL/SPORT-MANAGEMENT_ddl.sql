@@ -115,12 +115,17 @@ INSERT INTO USERS VALUES
 (2, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager@email.com', 'M'),
 (3, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'user@email.com', 'U'),
 (4, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager1@email.com', 'M'),
-(5, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager2@email.com', 'M');
+(5, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager2@email.com', 'M'),
+(6, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager3@email.com', 'M'),
+(7, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager4@email.com', 'M');
+
 
 INSERT INTO MANAGER VALUES
 (1, 2),
 (2, 4),
-(3, 5);
+(3, 5),
+(4, 6),
+(5, 7);
 
 INSERT INTO GAMES VALUES
 (1, '04-18-2018', '04-20-2018'),

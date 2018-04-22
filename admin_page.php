@@ -54,22 +54,26 @@
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+        <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule" aria-selected="false">Schedule Game</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+        <a class="nav-link" id="team-tab" data-toggle="tab" href="#team" role="tab" aria-controls="team" aria-selected="false">Team</a>
       </li>
       <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['email']; ?></a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
-      <a class="dropdown-item" href="update_profile.php">Edit Profile</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="logout.php">Log out</a>
-    </div>
-  </li>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+          <?php echo $_SESSION['email']; ?>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
+          <a class="dropdown-item" href="update_profile.php">Edit Profile</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="logout.php">Log out</a>
+        </div>
+      </li>
     </ul>
+
+    <!-- home tab -->
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <h1 id="promote-user">PROMOTE</h1>
@@ -89,31 +93,30 @@
           </table>
 
           <form action="promote_update.php" method="post">
+            <div>
+              <select name="user_id" required>
+                <option value="" selected disabled hidden>Choose user's acount order by email</option>
+              <?php
 
-            <div><select name="user_id" required>
-  <option value="" selected disabled hidden>Choose user's acount order by email</option>
-  <?php
+                $stmt->data_seek(0);
+                while( $stmt->fetch() )
+                {
+                  echo "<option value=\"$user_id\">".$email."</option>\n";
+                }
 
-    $stmt->data_seek(0);
-    while( $stmt->fetch() )
-    {
-      echo "<option value=\"$user_id\">".$email."</option>\n";
-    }
+                $stmt->free_result();
+                $link->close();
+                // header("location: admin_page.php");
+              ?>
 
-    $stmt->free_result();
-    $link->close();
-    // header("location: admin_page.php");
-  ?>
-
-</select>
+              </select>
               <select name="type">
-        <option value="" selected disabled hidden>Their New Position</option>
-        <option value="M">MANAGER</option>
-        <option value="A">ADMIN</option>
-      </select>
+                <option value="" selected disabled hidden>Their New Position</option>
+                <option value="M">MANAGER</option>
+                <option value="A">ADMIN</option>
+              </select>
               <input type="submit" class="btn btn-primary" value="Promote Now">
               <input type="reset" class="btn btn-default" value="Reset">
-
             </div>
           </form>
 
@@ -154,7 +157,10 @@
         </div>
 
       </div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+
+      <!-- schedule tab -->
+      <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
         <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
         <div class="container">
           <?php require_once ('schedule_game.php'); ?>
@@ -162,9 +168,32 @@
 
 
       </div>
-
-    </div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+      <div class="tab-pane fade" id="team" role="tabpanel" aria-labelledby="team-tab">
+        <h1>CREATE TEAM</h1>
+        <div class="container">
+          <?php require 'team_manager_table.php'; ?>
+        </div>
+      </div>
+      <div class="container">
+        <form action="" method="post">
+          <div class="form-group row">
+          <label for="TMANAGER_ID" class="col-sm-2 col-form-label">Team Manager ID</label>
+            <div class="col-sm-10">
+              <input type="number" min="1" class="form-control" id="TMANAGER_ID" placeholder="Manager ID">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="TEAM_NAME" class="col-sm-2 col-form-label">Team Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="TEAM_NAME" placeholder="Team Name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <input type="submit" class="btn btn-primary" value="Create">
+            <input type="reset" class="btn btn-default" value="Reset">
+          </div>
+        </form>
+      </div>
     </div>
 
 
