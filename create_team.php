@@ -9,13 +9,9 @@ $id ="";
 $na ="";
 
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-  if (empty($_POST['TMANAGER_ID']) ){
-    $id =$_POST['TMANAGER_ID'];
-  }
-  if(empty($_POST['TEAM_NAME']) ){
-    $na = $_POST['TEAM_NAME'];
-  }
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['TMANAGER_ID']) && isset($_POST['TEAM_NAME'])) {
+    $id = (int) $_POST['TMANAGER_ID'];
+    $na = (string) $_POST['TEAM_NAME'];
 
 
   $query = "INSERT INTO TEAMS (TMANAGER_ID, TEAM_NAME) VALUES (?, ?)";
@@ -23,14 +19,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
   $stmt= $db->prepare($query);
-  $stmt->bind_param('ss',
+  $stmt->bind_param('is',
   $id,
   $na
 );
   if ($stmt->execute()){
   $db->close();
-  //header('location : admin_page.php');
-  //exit;
 }
-//}
+}
  ?>

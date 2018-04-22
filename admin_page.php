@@ -66,15 +66,19 @@
         <div class="dropdown-menu">
           <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
           <a class="dropdown-item" href="update_profile.php">Edit Profile</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="admin_page.php">refresh</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="logout.php">Log out</a>
         </div>
       </li>
     </ul>
 
-    <!-- home tab -->
+    <!-- need to require this file before showing teams available for assign -->
+    <?php require 'create_team.php'; ?>
+
     <div class="tab-content" id="myTabContent">
+
+    <!-- home tab -->
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <h1 id="promote-user">PROMOTE</h1>
         <div class="container">
@@ -174,9 +178,7 @@
           <?php require 'team_manager_table.php'; ?>
 
         </div>
-      </div>
-      <div class="container">
-        <?php require 'create_team.php'; ?>
+        <div class="container">
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
           <div class="form-group row">
@@ -197,6 +199,8 @@
           </div>
         </form>
       </div>
+      </div>
+
     </div>
 
 
