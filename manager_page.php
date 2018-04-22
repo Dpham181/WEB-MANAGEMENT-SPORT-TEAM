@@ -79,19 +79,27 @@
     </nav>
     <div data-spy="scroll" data-target="#navbar-manager" data-offset="0">
       <h1 id="schedule-game">SCHEDULE ALL GAMES</h1>
-      <?php require 'schedule_game.php'; ?>
+      <div class="container">
+        <?php require 'schedule_game.php'; ?>
+      </div>
 
       <h1 id="game-played">GAMES PLAYED</h1>
-      <?php require 'view_game_played.php' ?>
+      <div class="container">
+        <?php require 'view_game_played.php' ?>
+      </div>
 
       <!-- use for anchor tag -->
       <a name="form-add-player"></a>
 
       <h1 id="upcoming-game">UPCOMING GAMES</h1>
-      <?php require 'view_upcoming_games.php'; ?>
+      <div class="container">
+        <?php require 'view_upcoming_games.php'; ?>
+      </div>
 
       <h1 id="add-player">ADD PLAYER</h1>
-      <?php require 'addingplayer.php'; ?>
+      <div class="container">
+        <?php require 'addingplayer.php'; ?>
+      </div>
 
       <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'#form-add-player'); ?>" method="post">
         <div class="input-group">
@@ -115,21 +123,28 @@
         </div>
       </form>
       <h1 id="view-player">TEAM PLAYERS</h1>
+      <div class="container">
         <table class="table table-bordered table-hover">
-          <thead class="thead-dark">
-            <tr class="info">
-              <th scope="col">PLAYER ID</th>
-              <th scope="col">FIRST NAME</th>
-              <th scope="col">LAST NAME</th>
-              <!-- <th scope="col">ACTION</th> -->
-              </tr>
-          </thead>
-        <?php require 'vrplayer_bymanager.php'; ?>
-        </table>
+<thead class="thead-dark">
+  <tr class="info">
+    <th scope="col">PLAYER ID</th>
+    <th scope="col">FIRST NAME</th>
+    <th scope="col">LAST NAME</th>
+    <!-- <th scope="col">ACTION</th> -->
+    </tr>
+</thead>
+<?php require 'vrplayer_bymanager.php'; ?>
+</table>
+
+      </div>
       <h1 id="game-playing">ADD AND REMOVE PLAYER FROM GAME</h1>
+      <div class="container">
         <?php require 'game_playing.php'; ?>
+      </div>
       <h1 id="view-stats">VIEW STATS</h1>
-      <?php require 'view_stats.php'; ?>
+      <div class="container">
+        <?php require 'view_stats.php'; ?>
+      </div>
     </div>
 </div>
 
