@@ -27,10 +27,12 @@ if (isset($_POST['startday']) && isset($_POST['endday'])) {
 
   );
   $stmt1->execute();
+
 }
 
 $link->close();
 
+// header('location: admin_page.php');
 
 
 ?>

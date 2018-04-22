@@ -55,7 +55,7 @@
   <span class="navbar-toggler-icon"></span>
   </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto ">
+        <ul class="navbar-nav mr-auto my-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="#schedule-games">Schedule</a>
           </li>
@@ -113,6 +113,10 @@
           {
             echo "<option value=\"$user_id\">".$email."</option>\n";
           }
+
+          $stmt->free_result();
+          $link->close();
+          // header("location: admin_page.php");
         ?>
 
       </select>
@@ -128,17 +132,10 @@
           </form>
 
         </div>
-
-      <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
-      <div class="container">
-        <?php
-  require_once ('schedule_game.php');
-  ?>
-
-      </div>
-
-
         <a name="form-create-game"></a>
+
+
+
         <?php require 'create_game.php'; ?>
         <h1 id="create-assign"> CREATING GAME </h1>
           <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'#form-create-game'); ?>" method="post">
@@ -166,6 +163,11 @@
         <div class="container">
           <?php require_once ('assign_game.php'); ?>
         </div>
+        </div>
+
+        <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
+        <div class="container">
+          <?php require_once ('schedule_game.php'); ?>
         </div>
 
 

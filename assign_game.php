@@ -14,39 +14,44 @@ $gameid= "";
 
 $SCORE = NULL;
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-
-if(!empty($_POST['TEAMID']))
+// echo count($_POST['TEAMID']);
+// echo count($_POST['GAMEID']);
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['TEAMID']) && isset($_POST['GAMEID'])){
+  if (is_array($_POST['TEAMID']) && is_string($_POST['GAMEID'])) {
+    if(!empty($_POST['TEAMID']) && count($_POST['TEAMID']) == 2)
   {
   $twoteams= $_POST['TEAMID'];
   $team1= $twoteams[0];
   $team2=  $twoteams[1];
   }
 
-if (!empty($_POST['GAMEID'])){
-$gameid = $_POST['GAMEID'];
+  if (!empty($_POST['GAMEID']) && !is_array($_POST['GAMEID'])) {
+  $gameid = $_POST['GAMEID'];
+  }
+
+
+    $sql = "INSERT INTO PLAY
+              SET
+              PLAY.PGAME_ID=?,
+              PLAY.PTEAM_ID=?,
+              PLAY.SCORE=?
+                ";
+
+    $stmt=$link->prepare($sql);
+    $stmt->bind_param('iii',$gameid,$team1,$SCORE);
+    $stmt->execute();
+    $gameid = $gameid;
+    $team1= $team2;
+    $SCORE = $SCORE;
+    $stmt->execute();
+
+    $stmt->close();
+
 }
 
 
-  $sql = "INSERT INTO PLAY
-            SET
-            PLAY.PGAME_ID=?,
-            PLAY.PTEAM_ID=?,
-            PLAY.SCORE=?
-              ";
+  }
 
-  $stmt=$link->prepare($sql);
-  $stmt->bind_param('iii',$gameid,$team1,$SCORE);
-  $stmt->execute();
-  $gameid = $gameid;
-  $team1= $team2;
-  $SCORE = $SCORE;
-  $stmt->execute();
-
-   $stmt->close();
-
-}
   $link->close();
 ?>
 <!DOCTYPE html>
