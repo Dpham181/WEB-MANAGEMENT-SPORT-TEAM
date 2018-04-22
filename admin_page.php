@@ -50,7 +50,7 @@
 
   <body>
     <nav id="navbar-manager" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="manager_page.php">TEAM MANAGEMENT</a>
+      <a class="navbar-brand" href="admin_page.php">TEAM MANAGEMENT</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
