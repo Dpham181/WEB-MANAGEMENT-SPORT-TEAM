@@ -49,140 +49,126 @@
   </head>
 
   <body>
-    <nav id="navbar-manager" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="admin_page.php">TEAM MANAGEMENT</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto my-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#schedule-games">Schedule</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#promote-user">Promote</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#create-assign">Create Game</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#assign-team">Assign Team</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav my-2 my-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <?php echo $_SESSION['email']; ?>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
-              <a class="dropdown-item" href="logout.php">Sign out</a>
-              <a class="dropdown-item" href="contact.html">Contact Us</a>
-            </div>
-          </li>
-        </ul>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+      </li>
+      <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['email']; ?></a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
+      <a class="dropdown-item" href="update_profile.php">Edit Profile</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="logout.php">Log out</a>
+    </div>
+  </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h1 id="promote-user">PROMOTE</h1>
+        <div class="container">
+          <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr class="info">
+                <th scope="col">TITLE</th>
+                <th scope="col">SENDER NAME</th>
+                <th scope="col">DATE SENT</th>
+                <th scope="col">MESSAGE</th>
 
-      </div>
-    </nav>
+              </tr>
+            </thead>
+            <?php //require_once ('admin_mailboxs.php') ?>
 
-    <div data-spy="scroll" data-target="#navbar-manager" data-offset="0">
-      <h1 id="promote-user">PROMOTE</h1>
-      <div class="container">
-        <table class="table table-bordered table-hover">
-          <thead class="thead-dark">
-            <tr class="info">
-              <th scope="col">TITLE</th>
-              <th scope="col">SENDER NAME</th>
-              <th scope="col">DATE SENT</th>
-              <th scope="col">MESSAGE</th>
+          </table>
 
-            </tr>
-          </thead>
-          <?php //require_once ('admin_mailboxs.php') ?>
+          <form action="promote_update.php" method="post">
 
-        </table>
+            <div><select name="user_id" required>
+  <option value="" selected disabled hidden>Choose user's acount order by email</option>
+  <?php
 
-        <form action="promote_update.php" method="post">
+    $stmt->data_seek(0);
+    while( $stmt->fetch() )
+    {
+      echo "<option value=\"$user_id\">".$email."</option>\n";
+    }
 
-          <div><select name="user_id" required>
-        <option value="" selected disabled hidden>Choose user's acount order by email</option>
-        <?php
+    $stmt->free_result();
+    $link->close();
+    // header("location: admin_page.php");
+  ?>
 
-          $stmt->data_seek(0);
-          while( $stmt->fetch() )
-          {
-            echo "<option value=\"$user_id\">".$email."</option>\n";
-          }
-
-          $stmt->free_result();
-          $link->close();
-          // header("location: admin_page.php");
-        ?>
-
+</select>
+              <select name="type">
+        <option value="" selected disabled hidden>Their New Position</option>
+        <option value="M">MANAGER</option>
+        <option value="A">ADMIN</option>
       </select>
-            <select name="type">
-              <option value="" selected disabled hidden>Their New Position</option>
-              <option value="M">MANAGER</option>
-              <option value="A">ADMIN</option>
-            </select>
-            <input type="submit" class="btn btn-primary" value="Promote Now">
-            <input type="reset" class="btn btn-default" value="Reset">
+              <input type="submit" class="btn btn-primary" value="Promote Now">
+              <input type="reset" class="btn btn-default" value="Reset">
 
-          </div>
-        </form>
-
-      </div>
-
-
-
-
-
-
-
-      <a name="form-create-game"></a>
-
-
-
-      <h1 id="create-assign"> CREATING GAME </h1>
-      <div class="container">
-        <?php require 'create_game.php'; ?>
-        <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "].'#form-create-game'); ?>" method="post">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Start Day</div>
             </div>
-            <input type="date" name="startday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
-          </div>
+          </form>
 
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">End Day</div>
+        </div>
+
+        <a name="form-create-game"></a>
+
+        <h1 id="create-assign"> CREATING GAME </h1>
+        <div class="container">
+          <?php require 'create_game.php'; ?>
+          <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'#form-create-game'); ?>" method="post">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Start Day</div>
+              </div>
+              <input type="date" name="startday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
             </div>
-            <input type="date" name="endday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
-          </div>
 
-          <div class="form-check">
-            <input type="submit" class="btn btn-primary" value="Create">
-            <input type="reset" class="btn btn-default" value="Reset">
-          </div>
-        </form>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">End Day</div>
+              </div>
+              <input type="date" name="endday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
+            </div>
+
+            <div class="form-check">
+              <input type="submit" class="btn btn-primary" value="Create">
+              <input type="reset" class="btn btn-default" value="Reset">
+            </div>
+          </form>
+
+        </div>
+
+        <a name="form-assigning-game"></a>
+        <h1 id="assign-team">GAMES AVALIBALE FOR ASSIGNING </h1>
+        <div class="container">
+          <?php require_once ('assign_game.php'); ?>
+        </div>
 
       </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
+        <div class="container">
+          <?php require_once ('schedule_game.php'); ?>
+        </div>
 
-      <a name="form-assigning-game"></a>
-      <h1 id="assign-team">GAMES AVALIBALE FOR ASSIGNING </h1>
-      <div class="container">
-        <?php require_once ('assign_game.php'); ?>
+
       </div>
-
-
-      <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
-      <div class="container">
-        <?php require_once ('schedule_game.php'); ?>
-      </div>
-
 
     </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+    </div>
+
+
+
 
 
 
