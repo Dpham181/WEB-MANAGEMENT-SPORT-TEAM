@@ -86,15 +86,7 @@
     </nav>
 
     <div data-spy="scroll" data-target="#navbar-manager" data-offset="0">
-      <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
-      <div class="container">
-        <?php
-  require_once ('schedule_game.php');
-  ?>
-
-      </div>
-
-        <h1 id="promote-user">PROMOTE</h1>
+      <h1 id="promote-user">PROMOTE</h1>
         <div class="container">
           <table class="table table-bordered table-hover">
             <thead class="thead-dark">
@@ -136,6 +128,15 @@
           </form>
 
         </div>
+
+      <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
+      <div class="container">
+        <?php
+  require_once ('schedule_game.php');
+  ?>
+
+      </div>
+
 
         <a name="form-create-game"></a>
         <?php require 'create_game.php'; ?>
