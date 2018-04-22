@@ -21,6 +21,7 @@ h1 {
 
 .container {
   display: table;
+  /* text-align: center; */
 }
 
 .create-game {

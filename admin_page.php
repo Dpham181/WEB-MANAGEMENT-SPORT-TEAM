@@ -66,7 +66,7 @@
             <a class="nav-link" href="#create-assign">Create Game</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="#assign-team">Assign Team</a>
+            <a class="nav-link" href="#assign-team">Assign Team</a>
           </li>
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
@@ -87,24 +87,24 @@
 
     <div data-spy="scroll" data-target="#navbar-manager" data-offset="0">
       <h1 id="promote-user">PROMOTE</h1>
-        <div class="container">
-          <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-              <tr class="info">
-                <th scope="col">TITLE</th>
-                <th scope="col">SENDER NAME</th>
-                <th scope="col">DATE SENT</th>
-                <th scope="col">MESSAGE</th>
+      <div class="container">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr class="info">
+              <th scope="col">TITLE</th>
+              <th scope="col">SENDER NAME</th>
+              <th scope="col">DATE SENT</th>
+              <th scope="col">MESSAGE</th>
 
-              </tr>
-            </thead>
-            <?php //require_once ('admin_mailboxs.php') ?>
+            </tr>
+          </thead>
+          <?php //require_once ('admin_mailboxs.php') ?>
 
-          </table>
+        </table>
 
-          <form action="promote_update.php" method="post">
+        <form action="promote_update.php" method="post">
 
-            <div><select name="user_id" required>
+          <div><select name="user_id" required>
         <option value="" selected disabled hidden>Choose user's acount order by email</option>
         <?php
 
@@ -120,57 +120,66 @@
         ?>
 
       </select>
-              <select name="type">
+            <select name="type">
               <option value="" selected disabled hidden>Their New Position</option>
               <option value="M">MANAGER</option>
               <option value="A">ADMIN</option>
             </select>
-              <input type="submit" class="btn btn-primary" value="Promote Now">
-              <input type="reset" class="btn btn-default" value="Reset">
+            <input type="submit" class="btn btn-primary" value="Promote Now">
+            <input type="reset" class="btn btn-default" value="Reset">
 
-            </div>
-          </form>
+          </div>
+        </form>
 
-        </div>
-        <a name="form-create-game"></a>
-
+      </div>
 
 
+
+
+
+
+
+      <a name="form-create-game"></a>
+
+
+
+      <h1 id="create-assign"> CREATING GAME </h1>
+      <div class="container">
         <?php require 'create_game.php'; ?>
-        <h1 id="create-assign"> CREATING GAME </h1>
-          <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'#form-create-game'); ?>" method="post">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">Start Day</div>
-                </div>
-                <input type="date" name="startday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
-              </div>
+        <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "].'#form-create-game'); ?>" method="post">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Start Day</div>
+            </div>
+            <input type="date" name="startday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
+          </div>
 
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">End Day</div>
-                </div>
-                <input type="date" name="endday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
-              </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">End Day</div>
+            </div>
+            <input type="date" name="endday" class="form-control" value="" placeholder="mm/dd/yyyy" required>
+          </div>
 
-              <div class="form-check">
-                <input type="submit" class="btn btn-primary" value="Create">
-                <input type="reset" class="btn btn-default" value="Reset">
-              </div>
-            </form>
+          <div class="form-check">
+            <input type="submit" class="btn btn-primary" value="Create">
+            <input type="reset" class="btn btn-default" value="Reset">
+          </div>
+        </form>
 
-          <a name="form-assigning-game"></a>
-          <h1 id="assign-team">GAMES AVALIBALE FOR ASSIGNING </h1>
-        <div class="container">
-          <?php require_once ('assign_game.php'); ?>
-        </div>
-        </div>
+      </div>
 
-        <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
-        <div class="container">
-          <?php require_once ('schedule_game.php'); ?>
-        </div>
+      <a name="form-assigning-game"></a>
+      <h1 id="assign-team">GAMES AVALIBALE FOR ASSIGNING </h1>
+      <div class="container">
+        <?php require_once ('assign_game.php'); ?>
+      </div>
 
+
+      <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
+      <div class="container">
+        <?php require_once ('schedule_game.php'); ?>
+      </div>
 
 
     </div>
