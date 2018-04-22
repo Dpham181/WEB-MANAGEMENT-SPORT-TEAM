@@ -159,6 +159,7 @@
               </div>
             </form>
 
+          <a name="form-assigning-game"></a>
           <h1 id="assign-team">GAMES AVALIBALE FOR ASSIGNING </h1>
         <div class="container">
           <?php require_once ('assign_game.php'); ?>

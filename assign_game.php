@@ -17,7 +17,10 @@ $SCORE = NULL;
 // echo count($_POST['TEAMID']);
 // echo count($_POST['GAMEID']);
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['TEAMID']) && isset($_POST['GAMEID'])){
-  if (is_array($_POST['TEAMID']) && is_string($_POST['GAMEID'])) {
+  echo is_array($_POST['TEAMID']) ? 'TEAMID ARRAY' : 'TEAMID NOT ARRAY';
+  echo "\n";
+  echo is_array($_POST['GAMEID']) ? 'GAMEID ARRAY' : 'GAMEID NOT ARRAY';
+  if (is_array($_POST['TEAMID']) && !is_array($_POST['GAMEID'])) {
     if(!empty($_POST['TEAMID']) && count($_POST['TEAMID']) == 2)
   {
   $twoteams= $_POST['TEAMID'];
