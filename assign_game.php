@@ -17,20 +17,28 @@ $SCORE = NULL;
 // echo count($_POST['TEAMID']);
 // echo count($_POST['GAMEID']);
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['TEAMID']) && isset($_POST['GAMEID'])){
-  echo is_array($_POST['TEAMID']) ? 'TEAMID ARRAY' : 'TEAMID NOT ARRAY';
-  echo "\n";
-  echo is_array($_POST['GAMEID']) ? 'GAMEID ARRAY' : 'GAMEID NOT ARRAY';
-  if (is_array($_POST['TEAMID']) && !is_array($_POST['GAMEID'])) {
+  // echo is_array($_POST['TEAMID']) ? 'TEAMID ARRAY' : 'TEAMID NOT ARRAY';
+  // echo "\n";
+  // echo is_array($_POST['GAMEID']) ? 'GAMEID ARRAY' : 'GAMEID NOT ARRAY';
+  // echo count($_POST['GAMEID']);
+  // echo "\n";
+  // echo count($_POST['TEAMID']);
+
+  if (is_array($_POST['TEAMID']) && is_array($_POST['GAMEID'])) {
     if(!empty($_POST['TEAMID']) && count($_POST['TEAMID']) == 2)
   {
   $twoteams= $_POST['TEAMID'];
   $team1= $twoteams[0];
   $team2=  $twoteams[1];
   }
+  // echo "$team1";
+  // echo "$team2";
 
-  if (!empty($_POST['GAMEID']) && !is_array($_POST['GAMEID'])) {
-  $gameid = $_POST['GAMEID'];
+
+  if (!empty($_POST['GAMEID']) && count($_POST['GAMEID']) == 1) {
+  $gameid = $_POST['GAMEID'][0];
   }
+  // echo "$gameid";
 
 
     $sql = "INSERT INTO PLAY
@@ -47,8 +55,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['TEAMID']) && isset($_PO
     $team1= $team2;
     $SCORE = $SCORE;
     $stmt->execute();
-
-    $stmt->close();
 
 }
 

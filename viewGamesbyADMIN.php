@@ -22,11 +22,14 @@
     echo "<td>".$ID."</td>\n";
     echo "<td>".$TID."</td>\n";
     echo "<td>".$S."</td>\n";
-    echo "<td><input type='checkbox' name='GAMEID' value='$ID' /></td>\n";
+    echo "<td><input type='checkbox' name='GAMEID[]' value='$ID' /></td>\n";
 
   }
   if ($stmt->num_rows == 0){
-    echo "<td>".'NO GAME AVALIABLE FOR ASSIGNING'."</td>\n";
+    echo "<td><i>NONE</i></td>\n";
+    echo "<td><i>NONE</i></td>\n";
+    echo "<td><i>NONE</i></td>\n";
+    echo "<td><i>NONE</i></td>\n";
 
   }
   $stmt->free_result();
