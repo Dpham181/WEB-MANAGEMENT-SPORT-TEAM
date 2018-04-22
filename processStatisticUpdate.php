@@ -3,16 +3,30 @@
 // create short variable names
 $name       = (int) $_POST['name_ID'];  // Database unique ID for player's name
 $time       = trim( preg_replace("/\t|\R/",' ',$_POST['time']) );
+
 $points     = (int) $_POST['points'];
 $assists    = (int) $_POST['assists'];
 $rebounds   = (int) $_POST['rebounds'];
-
+$three_points  = (int) $_POST['three_points'];
+$block  = (int) $_POST['block'];
+$foul  = (int) $_POST['foul'];
+$ftm  = (int) $_POST['ftm'];
+$FTA  = (int) $_POST['FTA'];
+$STEAL  = (int) $_POST['steal'];
+$gameid = (int)$_POST['GAMEID'];
+// echo "
 if( empty($name)     ) $name      = null;
 // see below for $time processing
 if( empty($points)   ) $points    = null;
 if( empty($assists)  ) $assists   = null;
 if( empty($rebounds) ) $rebounds  = null;
-
+if( empty($three_points)     ) $three_points      = null;
+// see below for $time processing
+if( empty($block)   ) $block    = null;
+if( empty($foul)  ) $foul   = null;
+if( empty($ftm) ) $ftm  = null;
+if( empty($FTA) ) $FTA  = null;
+if (empty ($gameid)) $gameid =null;
 $time = explode(':', $time); // convert string to array of minutes and seconds
 if( count($time) >= 2 )
 {
@@ -39,18 +53,51 @@ if( ! empty($name) )  // Verify required fields are present
   if ($db === false) {
     die("ERROR: COULD NOT CONNECT".mysqli_connect_error());
   }
-    $query = "INSERT INTO Stats SET
-                SPLAYER_ID=?,
-              PLAYINGTIMEMIN =?,
-              PLAYINGTIMESEC=?,
-               POINTS=?,
-                ASSISTS=?,
-                REBOUNDS=? ";
+    $query = "UPDATE STATS AS S
+                SET
+              S.PLAYINGTIMEMIN =?,
+              S.PLAYINGTIMESEC=?,
+              S.POINTS=?,
+              S.ASSISTS=?,
+              S.REBOUNDS=?,
+              S.THREE_POINTS=?,
+              S.FTA=?,
+              S.STEAL=?,
+              S.BLOCK=?,
+              S.FTM=?,
+              S.FOUL=?
+              WHERE S.SGAME_ID ='$gameid'  AND S.SPLAYER_ID = '$name'
+                ";
     $stmt = $db->prepare($query);
-    $stmt->bind_param('dddddd', $name, $minutes, $seconds, $points, $assists, $rebounds);
-    $stmt->execute();
+    $stmt->bind_param('ddddddddddd',
+      $minutes,
+      $seconds,
+      $points,
+      $assists,
+      $rebounds ,
+      $three_points,
+      $FTA,
+      $STEAL,
+      $block,
+      $ftm,
+      $foul
+      );
+    if ($stmt->execute()){
+
+      echo "  $minutes
+        $seconds
+        $points
+        $assists
+        $rebounds
+        $three_points
+        $FTA
+        $STEAL
+        $block
+        $ftm
+        $foul";
+    }
   }
 
 
-require('admin_page.php');
+//require('admin_page.php');
 ?>

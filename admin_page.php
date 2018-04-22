@@ -59,6 +59,9 @@
       <li class="nav-item">
         <a class="nav-link" id="team-tab" data-toggle="tab" href="#team" role="tab" aria-controls="team" aria-selected="false">Team</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" id="view-tab" data-toggle="tab" href="#view" role="tab" aria-controls="view" aria-selected="false">Stats</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
           <?php echo $_SESSION['email']; ?>
@@ -66,19 +69,15 @@
         <div class="dropdown-menu">
           <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
           <a class="dropdown-item" href="update_profile.php">Edit Profile</a>
-          <a class="dropdown-item" href="admin_page.php">refresh</a>
+          <a class="dropdown-item" href="#">Something else here</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="logout.php">Log out</a>
         </div>
       </li>
     </ul>
 
-    <!-- need to require this file before showing teams available for assign -->
-    <?php require 'create_team.php'; ?>
-
-    <div class="tab-content" id="myTabContent">
-
     <!-- home tab -->
+    <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <h1 id="promote-user">PROMOTE</h1>
         <div class="container">
@@ -176,9 +175,16 @@
         <h1>CREATE TEAM</h1>
         <div class="container">
           <?php require 'team_manager_table.php'; ?>
-
         </div>
+      </div>
+      <div class="tab-pane fade" id="view" role="tabpanel" aria-labelledby="view-tab">
+        <h1>Viewing Players Stats</h1>
         <div class="container">
+          <?php require 'admin_ViewStats.php'; ?>
+        </div>
+      </div>
+      <div class="container">
+        <?php require_once ('create_team.php'); ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
           <div class="form-group row">
@@ -199,7 +205,8 @@
           </div>
         </form>
       </div>
-      </div>
+
+
 
     </div>
 

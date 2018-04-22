@@ -7,6 +7,8 @@
   <body>
     <?php
   require_once('./config.php');
+  require_once('Address.php');
+  require_once('PlayerStatistic.php');
 
   $db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -15,11 +17,11 @@
   }
 
   $query = "SELECT
-  P.PLAYER_ID, P.FIRST_NAME, P.LAST_NAME, SUM(PLAYINGTIMEMIN), SUM(PLAYINGTIMESEC), SUM(POINTS), SUM(ASSISTS), SUM(REBOUNDS), SUM(THREE_POINTS), SUM(FTA), SUM(STEAL), SUM(FOUL), (BLOCK), SUM(FTM)
+P.PLAYER_ID, P.FIRST_NAME, P.LAST_NAME, SGAME_ID, PLAYINGTIMEMIN, PLAYINGTIMESEC, POINTS, ASSISTS, REBOUNDS, THREE_POINTS, FTA, STEAL, FOUL, BLOCK, FTM
   FROM PLAYER P  LEFT JOIN STATS S ON
   P.PLAYER_ID = S.SPLAYER_ID
-  GROUP BY P.PLAYER_ID
-  ORDER BY  P.LAST_NAME";
+
+  ORDER BY  P.LAST_NAME,P.FIRST_NAME, S.SGAME_ID";
 
   $stmt = $db->prepare($query);
   $stmt->execute();
@@ -28,6 +30,7 @@
     $player_id,
     $first_name,
     $last_name,
+    $sgame_id,
     $playing_time_min,
     $playing_time_sec,
     $points,
@@ -40,16 +43,17 @@
     $block,
     $ftm
   );
+
+
   ?>
+
 
   <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr class="info">
-          <th scope="col">PLAYER ID</th>
-          <th scope="col">FIRST NAME</th>
-          <th scope="col">LAST NAME</th>
-          <th scope="col">MINUTE</th>
-          <th scope="col">SECOND</th>
+          <th scope="col">PLAYER'S NAME</th>
+          <th scope="col">GAMEID</th>
+          <th scope="col">MINUTE||SECOND</th>
           <th scope="col">POINTS</th>
           <th scope="col">ASSISTS</th>
           <th scope="col">REBOUNDS</th>
@@ -79,44 +83,106 @@
             $switch_color = true;
           }
           echo "<tr class=\"$toggle\">\n";
-          echo "<td>".$player_id."</td>\n";
-          echo "<td>".$first_name."</td>\n";
-          echo "<td>".$last_name."</td>\n";
-          echo "<td>".$playing_time_min."</td>\n";
-          echo "<td>".$playing_time_sec."</td>\n";
-          echo "<td>".$points."</td>\n";
-          echo "<td>".$assits."</td>\n";
-          echo "<td>".$rebounds."</td>\n";
-          echo "<td>".$three_points."</td>\n";
-          echo "<td>".$fta."</td>\n";
-          echo "<td>".$steal."</td>\n";
-          echo "<td>".$foul."</td>\n";
-          echo "<td>".$block."</td>\n";
-          echo "<td>".$ftm."</td>\n";
+          $player = new PlayerStatistic(
+            [$first_name, $last_name],
+            [$playing_time_min,$playing_time_sec],$sgame_id,
+            $points,$assits,$rebounds,$three_points,$fta,$steal,$foul,$block,$ftm
+              );
+          echo "<td>".$player->name()."</td>\n";
+          echo "<td>".$player->gameid()."</td>\n";
+          echo "<td>".$player->playingTime()."</td>\n";
+          echo "<td>".$player->pointsScored()."</td>\n";
+          echo "<td>".$player->assists()."</td>\n";
+          echo "<td>".$player->rebounds()."</td>\n";
+          echo "<td>".$player->three_points()."</td>\n";
+
+          echo "<td>".$player->fta()."</td>\n";
+          echo "<td>".$player->steal()."</td>\n";
+          echo "<td>".$player->foul()."</td>\n";
+          echo "<td>".$player->block()."</td>\n";
+          echo "<td>".$player->ftm()."</td>\n";
+
         }
        ?>
 
   </table>
+
+
+
+  <form action="processStatisticUpdate.php" method="post">
+
   <td style="vertical-align:top; border:1px solid black;">
           <!-- FORM to enter game statistics for a particular player -->
-          <form action="processStatisticUpdate.php" method="post">
             <table style="margin: 0px auto; border: 0px; border-collapse:separate;">
               <tr>
                 <td style="text-align: right; background: lightblue;">Name (Last, First)</td>
-<!--            <td><input type="text" name="name" value="" size="50" maxlength="500"/></td>  -->
-                <td><select name="name_ID" required>
+                <td>
+                <select name="name_ID" required>
                   <option value="" selected disabled hidden>Choose player's name here</option>
                   <?php
-      $stmt->data_seek(0);
-      require_once('Address.php');
-                     while( $stmt->fetch() )
+                  $query1 = "SELECT
+                              P.PLAYER_ID,
+                              P.FIRST_NAME,
+                              P.LAST_NAME
+                              FROM PLAYER P
+                              GROUP BY P.PLAYER_ID
+                            ORDER BY  P.LAST_NAME,P.FIRST_NAME";
+
+                  $stmt1 = $db->prepare($query1);
+                  $stmt1->execute();
+                  $stmt1->store_result();
+                  $stmt1->bind_result(
+                    $player_id,
+                    $first_name,
+                    $last_name
+                  );
+                    $stmt->data_seek(0);
+                     while( $stmt1->fetch())
                      {
-                       $player = new Address([$first_name, $last_name]);
+                       $player = new PlayerStatistic([$first_name, $last_name]);
                        echo "<option value=\"$player_id\">".$player->name()."</option>\n";
+
                      }
-                   ?>
-                 </select></td>
-               </tr>
+                     ?>
+                  </select>
+
+               </td>
+
+
+               <td style="text-align: right; background: lightblue;">GAMEID</td>
+               <td>
+               <select name="GAMEID" required>
+
+                 <option value="" selected disabled hidden>Choose GAME ID  here</option>
+                 <?php
+                 $query2 = "SELECT
+                             G.GAME_ID
+
+                             FROM GAMES G
+
+                           ORDER BY  G.GAME_ID";
+
+                 $stmt2 = $db->prepare($query2);
+                 $stmt2->execute();
+                 $stmt2->store_result();
+                 $stmt2->bind_result(
+                  $game_id
+                 );
+                   $stmt2->data_seek(0);
+                    while( $stmt2->fetch())
+                    {
+                      echo "<option value=\"$game_id\">".$game_id."</option>\n";
+
+                    }
+                    ?>
+                 </select>
+
+              </td>
+
+
+
+
+
 
                <tr>
                  <td style="text-align: right; background: lightblue;">Playing Time (min:sec)</td>
@@ -129,15 +195,37 @@
                </tr>
 
                <tr>
-                 <td style="text-align: right; background: lightblue;">Assists</td>
+                 <td style="text-align: right; background: lightblue;">Assist</td>
                  <td><input type="text" name="assists" value="" size="2" maxlength="2"/></td>
                </tr>
-
                <tr>
-                 <td style="text-align: right; background: lightblue;">Rebounds</td>
-                 <td><input type="text" name="rebounds" value="" size="2" maxlength="2"/></td>
+                 <td style="text-align: right; background: lightblue;">FTA</td>
+                 <td><input type="text" name="FTA" value="" size="2" maxlength="2"/></td>
                </tr>
-
+                 <tr>
+                   <td style="text-align: right; background: lightblue;">Rebounds</td>
+                   <td><input type="text" name="rebounds" value="" size="2" maxlength="2"/></td>
+                 </tr>
+                 <tr>
+                   <td style="text-align: right; background: lightblue;">Steal</td>
+                   <td><input type="text" name="steal" value="" size="2" maxlength="2"/></td>
+                 </tr>
+               <tr>
+                 <td style="text-align: right; background: lightblue;">Three_points</td>
+                 <td><input type="text" name="three_points" value="" size="2" maxlength="2"/></td>
+               </tr>
+               <tr>
+                 <td style="text-align: right; background: lightblue;">Block</td>
+                 <td><input type="text" name="block" value="" size="2" maxlength="2"/></td>
+               </tr>
+               <tr>
+                 <td style="text-align: right; background: lightblue;">Foul</td>
+                 <td><input type="text" name="foul" value="" size="2" maxlength="2"/></td>
+               </tr>
+               <tr>
+                 <td style="text-align: right; background: lightblue;">FTM</td>
+                 <td><input type="text" name="ftm" value="" size="2" maxlength="2"/></td>
+               </tr>
                <tr>
                 <td colspan="2" style="text-align: center;"><input type="submit" value="Add Statistic" /></td>
                </tr>
