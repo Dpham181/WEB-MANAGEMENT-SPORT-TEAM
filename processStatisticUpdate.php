@@ -17,16 +17,16 @@ $gameid = (int)$_POST['GAMEID'];
 // echo "
 if( empty($name)     ) $name      = null;
 // see below for $time processing
-if( empty($points)   ) $points    = null;
-if( empty($assists)  ) $assists   = null;
-if( empty($rebounds) ) $rebounds  = null;
-if( empty($three_points)     ) $three_points      = null;
+if( empty($points)   ) $points    = 0;
+if( empty($assists)  ) $assists   = 0;
+if( empty($rebounds) ) $rebounds  = 0;
+if( empty($three_points)     ) $three_points      = 0;
 // see below for $time processing
-if( empty($block)   ) $block    = null;
-if( empty($foul)  ) $foul   = null;
-if( empty($ftm) ) $ftm  = null;
-if( empty($FTA) ) $FTA  = null;
-if (empty ($gameid)) $gameid =null;
+if( empty($block)   ) $block    = 0;
+if( empty($foul)  ) $foul   = 0;
+if( empty($ftm) ) $ftm  = 0;
+if( empty($FTA) ) $FTA  = 0;
+// if (empty ($gameid)) $gameid =null;
 $time = explode(':', $time); // convert string to array of minutes and seconds
 if( count($time) >= 2 )
 {
@@ -36,12 +36,12 @@ if( count($time) >= 2 )
 else if( count($time) == 1 )
 {
   $minutes = (int)$time[0];
-  $seconds = null;
+  $seconds = 0;
 }
 else
 {
-  $minutes = null;
-  $seconds = null;
+  $minutes = 0;
+  $seconds = 0;
 }
 
 
@@ -82,22 +82,24 @@ if( ! empty($name) )  // Verify required fields are present
       $ftm,
       $foul
       );
-    if ($stmt->execute()){
-
-      echo "  $minutes
-        $seconds
-        $points
-        $assists
-        $rebounds
-        $three_points
-        $FTA
-        $STEAL
-        $block
-        $ftm
-        $foul";
-    }
+    // if ($stmt->execute()){
+    //
+    //   echo "  $minutes
+    //     $seconds
+    //     $points
+    //     $assists
+    //     $rebounds
+    //     $three_points
+    //     $FTA
+    //     $STEAL
+    //     $block
+    //     $ftm
+    //     $foul";
+    // }
+    $stmt->execute();
   }
+  $db->close();
 
 
-//require('admin_page.php');
+require('admin_page.php');
 ?>
