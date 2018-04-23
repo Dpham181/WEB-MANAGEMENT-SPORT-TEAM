@@ -18,7 +18,7 @@
           die("ERROR: Could not connect. " . mysqli_connect_error());
       }
 
-      $query = "SELECT G.GAME_ID, G.START_DAY, G.END_DAY, T.TEAM_NAME, T.WIN, T.LOSS, P.SCORE
+      $query = "SELECT G.GAME_ID, G.START_DAY, G.END_DAY, T.TEAM_NAME, T.WIN, T.LOSS, P.SCORE, P.PTEAM_ID
       FROM PLAY P, GAMES G, TEAMS T
       WHERE T.TEAM_ID = P.PTEAM_ID AND G.GAME_ID = P.PGAME_ID
       ORDER BY GAME_ID, G.START_DAY, G.END_DAY, T.TEAM_NAME";
@@ -33,7 +33,8 @@
           $TN,
           $W,
           $L,
-          $SCORE
+          $SCORE,
+          $TEAM_ID
         );
       }
     ?>
@@ -52,11 +53,13 @@
           <th scope="col">START TIME</th>
           <th scope="col">END TIME</th>
 
+          <th scope="col">TEAM ID</th>
           <th scope="col">TEAM NAME</th>
           <th scope="col">WIN</th>
           <th scope="col">LOSS</th>
           <th scope="col">SCORE</th>
 
+          <th scope="col">TEAM ID</th>
           <th scope="col">TEAM NAME</th>
           <th scope="col">WIN</th>
           <th scope="col">LOSS</th>
@@ -80,16 +83,18 @@
           echo "<td style=\"background: #ffff004a\">".$STD."</td>\n";
           echo "<td style=\"background: #ffff004a\">".$ETD."</td>\n";
 
+          echo "<td style=\"background: #007cff78\">".$TEAM_ID."</td>\n";
           echo "<td style=\"background: #007cff78\">".$TN."</td>\n";
           echo "<td style=\"background: #007cff78\">".$W."</td>\n";
           echo "<td style=\"background: #007cff78\">".$L."</td>\n";
-          echo "<td style=\"background: #540c9c87\">".$SCORE."</td>\n";
+          echo "<td style=\"background: #007cff78\">".$SCORE."</td>\n";
 
           $stmt->fetch();
+          echo "<td style=\"background: #f7041b80\">".$TEAM_ID."</td>\n";
           echo "<td style=\"background: #f7041b80\">".$TN."</td>\n";
           echo "<td style=\"background: #f7041b80\">".$W."</td>\n";
           echo "<td style=\"background: #f7041b80\">".$L."</td>\n";
-          echo "<td style=\"background: #540c9c87\">".$SCORE."</td>\n";
+          echo "<td style=\"background: #f7041b80\">".$SCORE."</td>\n";
           echo "</tr>";
 
         }
