@@ -9,6 +9,9 @@ use PHPMailer\PHPMailer\Exception;
 function notify_password($email, $password) {
 // $email and $message are the data that is being
 
+if( is_array($password)){
+  $message = "email: ".$password['email'] ;
+}
 
 if (!empty($password)){
 $message = "Your password has been changed to ".$password."\r\n".
