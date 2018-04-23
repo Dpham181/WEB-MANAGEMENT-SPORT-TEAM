@@ -112,17 +112,17 @@ $mail->SMTPSecure = 'tls';
 //Whether to use SMTP authentication
 $mail->SMTPAuth = true;
 //Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = "servicebasketballmanagement@gmail.com";
+$mail->Username = "basketballmanagementfeedback@gmail.com";
 //Password to use for SMTP authentication
-$mail->Password = "Danh2610";
+$mail->Password = "Thomas123456";
 //Set who the message is to be sent from
-$mail->setFrom('servicebasketballmanagement@gmail.com', 'ADMIN');
+$mail->setFrom('basketballmanagementfeedback@gmail.com', 'ADMIN');
 //Set an alternative reply-to address
-$mail->addReplyTo('servicebasketballmanagement@gmail.com', 'ADMIN MAILL BOX');
+$mail->addReplyTo('basketballmanagementfeedback@gmail.com', 'ADMIN feedback');
 //Set who the message is to be sent to
 $mail->addAddress($email,'To Users');
 //Set the subject line
-$mail->Subject = 'BASKET MANAGEMENT';
+$mail->Subject = 'FEEDBACK';
 $mail->SMTPOptions = array(
 'ssl' => array(
 'verify_peer' => false,
