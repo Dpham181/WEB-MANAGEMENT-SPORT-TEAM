@@ -17,6 +17,16 @@
          die("ERROR: Could not connect. " . mysqli_connect_error());
      }
 
+     $query = "SELECT TEAM_NAME FROM MANAGER, TEAMS WHERE MUSER_ID = ? AND MANAGER_ID = TMANAGER_ID";
+     $query = $link->prepare($query);
+     $query->bind_param('i', $user_id);
+     $query->execute();
+     $query->store_result();
+     $query->bind_result($team_name);
+     $query->fetch();
+     $_SESSION['team'] = $team_name;
+     $query->free_result();
+     $link->close();
 ?>
 
   <head>
@@ -28,6 +38,8 @@
     <link rel="stylesheet" href="css/manager.css">
   </head>
   <?php require "header.php"; ?>
+
+
 
   <body>
     <nav id="navbar-manager" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
@@ -63,6 +75,9 @@
           </li>
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Team <?php echo $_SESSION['team']; ?> </a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <?php echo $_SESSION['email']; ?>
