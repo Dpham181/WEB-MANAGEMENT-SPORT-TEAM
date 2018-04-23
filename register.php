@@ -126,10 +126,10 @@ if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="welcome.php">Welcome <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="welcome.php">Login<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="rule.html">Rule</a>
+              <a class="nav-link" href="rules.php">Rule</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
