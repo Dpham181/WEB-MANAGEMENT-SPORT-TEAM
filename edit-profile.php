@@ -2,16 +2,12 @@
   require "header.php";
   require 'Address.php';
 
-  // session_start();
-     if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+  session_start();
+     if (!isset($_SESSION['PROFILE_ID']) || empty($_SESSION['PROFILE_ID'])) {
          header("location: welcome.php");
          exit;
      }
-     if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
-         header("location: welcome.php");
-         exit;
-     }
-     $user_id = $_SESSION['id'];
+     $user_id = $_SESSION['PROFILE_ID'];
      require_once 'config.php';
      $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -19,15 +15,38 @@
      if ($link === false) {
          die("ERROR: Could not connect. " . mysqli_connect_error());
      }
+     $sql = "SELECT
+               PROFILE.FIRST_NAME,
+               PROFILE.LAST_NAME,
+               PROFILE.STREET,
+               PROFILE.CITY,
+               PROFILE.STATE,
+               PROFILE.COUNTRY,
+               PROFILE.ZIPCODE
+              FROM PROFILE
+              WHERE PROFILE.PROFILE_ID=?
+               ";
+
+               $stmt=$link->prepare($sql);
+               $stmt->bind_param("s",$user_id);
 
 
-     $_SESSION['Ln'] = $lastname;
-        $_SESSION['Fn'] = $firstname;
-        $_SESSION['SE'] = $street;
-        $_SESSION['CU'] = $country;
-        $_SESSION['CI'] = $city;
-        $_SESSION['SA'] = $state;
-        $_SESSION['Z']  = $zip;
+              if ($stmt->execute()){
+
+                $stmt->store_result();
+                $stmt->bind_result(
+          $firstname,
+          $lastname,
+          $street ,
+          $city,
+          $state,
+          $country,
+          $zip);
+$stmt->fetch();
+
+
+
+}
 
 ?>
   <!DOCTYPE html>
@@ -38,8 +57,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho|Orbitron&effect=shadow-multiple|3d-float|fire-animation|neon">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-
     <link rel="stylesheet" href="css/editProfile.css">
   </head>
 
@@ -81,95 +98,65 @@
       </div>
     </nav>
 
-    <section>
-      <h1 class="font-effect-neon">PROFILE PAGE</h1>
-      <h2>
-    <?php
+<section>
+  <div class="container">
 
-    while($stmt->fetch()){
-
-
-      $user = new Address([$firstname, $lastname], $street, $city, $state, $country, $zip);
-
-
-      echo "<br>\n";
-      echo " <br>".'Your Name:  '. $user->name()."</br>\n";
-      echo "<br>\n";
-      echo " <br>".'Street: '.$user->street()."</br>\n";
-      echo "<br>\n";
-      echo " <br>".'State:  '.$user->state()."</br>\n";
-      echo "<br>\n";
-      echo " <br>".'Country: '.$user->country()."</br>\n";
-      echo "<br>\n";
-      echo " <br>".'Zipcode: '.$user->zip()."</br>\n";
-      echo "<br>\n";
+    <form action="edit_infor_byuser.php" method="post">
+<div class="form-row">
+  </div>
 
 
 
 
+<div class="form-group">
+  <label for="inputAddress">Address</label>
+  <input type="text"  value="<?php $street ?>" name="street"class="form-control" id="inputAddress" placeholder="<?php echo "$street"; ?>">
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="inputCity">First Name</label>
+    <input type="text" class="form-control" value="<?php echo "$firstname" ?>" name="firstname" id="inputCity">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Last Name</label>
+      <input type="text" class="form-control" value="<?php echo "$lastname" ?>" name="lastname" id="inputCity">
+    </div>
 
 
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="inputCity">City</label>
+    <input type="text" class="form-control" value="<?php echo "$city" ?>" name="city" id="inputCity">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="inputState">Country</label>
+    <input value="<?php echo "$country" ?>" name="country" id="inputState" class="form-control">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="inputState">State</label>
+    <input value="<?php echo "$state" ?>" name="state" id="inputState" class="form-control">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputZip">Zip</label>
+    <input value="<?php echo "$zip" ?>" name="zip" id="inputState" class="form-control">  </div>
+</div>
 
 
-  }
+<button type="submit" class="btn btn-primary">Update Profile</button>
+</form>
+</div>
 
-    $stmt->close();
-
-  ?>
-</h2>
-    </section>
-    <!-- <section>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-          <select name="choice" value="<?php echo $choice; ?>">
-            <option value="E">EDIT YOUR INFORMATION </option>
-            <option value="V">VIEWING PLAYER STATS</option>
-            <option value="" selected>Your choice here</option>
-          </select>
-        <input type="submit" class="btn btn-primary" value="GO">
-        <input type="reset" class="btn btn-default" value="Reset">
-
-  </from>
-      <?php
-
-//       if($_SERVER["REQUEST_METHOD"] == "POST"){
-//
-//         if(empty(trim($_POST["choice"]))){
-//             $choice_err = 'You need to select one !!!';
-//         } else{
-//             $choice = trim( preg_replace("/\t|\R/",' ',$_POST['choice']) );
-//         }
-//
-//
-//
-//
-//       if($choice == 'E'){
-//         session_start();
-//         $_SESSION['Ln'] = $lastname;
-//         $_SESSION['Fn'] = $firstname;
-//         $_SESSION['SE'] = $street;
-//         $_SESSION['CU'] = $country;
-//         $_SESSION['CI'] = $city;
-//         $_SESSION['SA'] = $state;
-//         $_SESSION['Z']  = $zip;
-//
-//         header("location: edit_infor_byuser.php");
-//         exit;
-//
-//       }
-//       else if ($choice == 'V'){
-//         echo " viewing something from table player and stats ";
-//       }
-// }
-       ?>
-    </section> -->
-
-
+</section>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
+
   <?php
   require "footer.php";
   ?>
