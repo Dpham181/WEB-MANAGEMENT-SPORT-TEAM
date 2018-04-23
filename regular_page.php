@@ -13,8 +13,10 @@
 <head>
   <meta charset="utf-8">
   <title>Regular User Page</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="css/regular_page.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Russo+One|Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float|fire-animation|fire|neon">
+  <link rel="stylesheet" href="css/regularpage.css">
 </head>
 
 <body>
@@ -37,8 +39,6 @@
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
-        <a class="dropdown-item" href="update_profile.php">Edit Profile</a>
-        <a class="dropdown-item" href="regular_page.php">home page</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="logout.php">Log out</a>
       </div>
