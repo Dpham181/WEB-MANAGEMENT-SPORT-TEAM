@@ -49,12 +49,12 @@
   ?>
 
 
-  <table class="table table-bordered table-hover">
+  <table class="table table-bordered table-hover view-stats">
       <thead class="thead-dark">
         <tr class="info">
           <th scope="col">GAMEID</th>
           <th scope="col">PLAYER'S NAME</th>
-          <th scope="col">MINUTE||SECOND</th>
+          <th scope="col">MINUTE:SECOND</th>
           <th scope="col">POINTS</th>
           <th scope="col">ASSISTS</th>
           <th scope="col">REBOUNDS</th>

@@ -27,3 +27,7 @@ h1 {
 .create-game {
   display: flex;
 }
+
+.view-stats {
+  width: 1113px;
+}
