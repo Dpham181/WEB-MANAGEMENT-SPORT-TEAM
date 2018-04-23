@@ -54,10 +54,10 @@
               <a class="nav-link" href="welcome.php">Welcome <span class="sr-only">(current)</span></a>
             </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="rule.html">Rule</a>
+            <a class="nav-link" href="rules.php">Rule</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="contact.php">Contact</a>
           </li>
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">

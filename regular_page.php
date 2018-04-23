@@ -1,6 +1,13 @@
 <?php
      require "header.php";
      session_start();
+     if ($_SESSION['type'] !== 'U') {
+       $_SESSION = array();
+       session_destroy();
+       header("location: welcome.php");
+       exit;
+     }
+
      if(!isset($_SESSION['email']) || empty($_SESSION['email'])){
        header("location: welcome.php");
        exit;

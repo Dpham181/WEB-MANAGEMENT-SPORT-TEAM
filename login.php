@@ -73,6 +73,7 @@ if(empty($email_err) &&empty($password_err) ){
                   session_start();
                   $_SESSION['email'] = $email;
                  $_SESSION['id'] = $id;
+                 $_SESSION['type'] = $type;
                 if($type == 'M'){
                   header("location: manager_page.php");
                   exit;
