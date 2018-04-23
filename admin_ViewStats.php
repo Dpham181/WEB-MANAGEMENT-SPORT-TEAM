@@ -17,11 +17,12 @@
   }
 
   $query = "SELECT
-P.PLAYER_ID, P.FIRST_NAME, P.LAST_NAME, SGAME_ID, PLAYINGTIMEMIN, PLAYINGTIMESEC, POINTS, ASSISTS, REBOUNDS, THREE_POINTS, FTA, STEAL, FOUL, BLOCK, FTM
-  FROM PLAYER P  LEFT JOIN STATS S ON
+  P.PLAYER_ID, P.FIRST_NAME, P.LAST_NAME, SGAME_ID, PLAYINGTIMEMIN, PLAYINGTIMESEC, POINTS, ASSISTS, REBOUNDS, THREE_POINTS, FTA, STEAL, FOUL, BLOCK, FTM
+  FROM PLAYER P  RIGHT JOIN STATS S ON
   P.PLAYER_ID = S.SPLAYER_ID
 
-  ORDER BY  P.LAST_NAME,P.FIRST_NAME, S.SGAME_ID";
+  ORDER BY  S.SGAME_ID, P.LAST_NAME,P.FIRST_NAME";
+  // ORDER BY  P.LAST_NAME,P.FIRST_NAME, S.SGAME_ID";
 
   $stmt = $db->prepare($query);
   $stmt->execute();
@@ -51,8 +52,8 @@ P.PLAYER_ID, P.FIRST_NAME, P.LAST_NAME, SGAME_ID, PLAYINGTIMEMIN, PLAYINGTIMESEC
   <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr class="info">
-          <th scope="col">PLAYER'S NAME</th>
           <th scope="col">GAMEID</th>
+          <th scope="col">PLAYER'S NAME</th>
           <th scope="col">MINUTE||SECOND</th>
           <th scope="col">POINTS</th>
           <th scope="col">ASSISTS</th>
@@ -88,8 +89,8 @@ P.PLAYER_ID, P.FIRST_NAME, P.LAST_NAME, SGAME_ID, PLAYINGTIMEMIN, PLAYINGTIMESEC
             [$playing_time_min,$playing_time_sec],$sgame_id,
             $points,$assits,$rebounds,$three_points,$fta,$steal,$foul,$block,$ftm
               );
-          echo "<td>".$player->name()."</td>\n";
           echo "<td>".$player->gameid()."</td>\n";
+          echo "<td>".$player->name()."</td>\n";
           echo "<td>".$player->playingTime()."</td>\n";
           echo "<td>".$player->pointsScored()."</td>\n";
           echo "<td>".$player->assists()."</td>\n";
@@ -236,4 +237,5 @@ P.PLAYER_ID, P.FIRST_NAME, P.LAST_NAME, SGAME_ID, PLAYINGTIMEMIN, PLAYINGTIMESEC
      </table>
 
   </body>
+
 </html>
