@@ -91,7 +91,6 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
               <a class="dropdown-item" href="logout.php">Sign out</a>
-              <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
         </ul>

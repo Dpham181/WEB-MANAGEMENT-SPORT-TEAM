@@ -75,8 +75,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
-          <a class="dropdown-item" href="update_profile.php">Edit Profile</a>
-          <a class="dropdown-item" href="admin_page.php">admin</a>
+          <a class="dropdown-item" href="admin_page.php">Refresh</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="logout.php">Log out</a>
         </div>
