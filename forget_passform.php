@@ -81,7 +81,7 @@
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
-          
+
         </ul>
       </div>
     </nav>
@@ -90,7 +90,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col">
-            <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post">
+            <form action="forgot_pass.php" method="post">
               <h2>Forgot Password</h2>
 
               <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
