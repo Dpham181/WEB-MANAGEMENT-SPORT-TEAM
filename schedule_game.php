@@ -55,6 +55,7 @@
           <th scope="col">TEAM NAME</th>
           <th scope="col">WIN</th>
           <th scope="col">LOSS</th>
+          <th scope="col">SCORE</th>
 
           <th scope="col">TEAM NAME</th>
           <th scope="col">WIN</th>
@@ -82,6 +83,7 @@
           echo "<td style=\"background: #007cff78\">".$TN."</td>\n";
           echo "<td style=\"background: #007cff78\">".$W."</td>\n";
           echo "<td style=\"background: #007cff78\">".$L."</td>\n";
+          echo "<td style=\"background: #540c9c87\">".$SCORE."</td>\n";
 
           $stmt->fetch();
           echo "<td style=\"background: #f7041b80\">".$TN."</td>\n";
