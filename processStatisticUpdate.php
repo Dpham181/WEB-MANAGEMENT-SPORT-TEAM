@@ -47,6 +47,7 @@ else
 
 if( ! empty($name) )  // Verify required fields are present
 {
+
   require_once( 'config.php' );
   $db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -82,20 +83,7 @@ if( ! empty($name) )  // Verify required fields are present
       $ftm,
       $foul
       );
-    // if ($stmt->execute()){
-    //
-    //   echo "  $minutes
-    //     $seconds
-    //     $points
-    //     $assists
-    //     $rebounds
-    //     $three_points
-    //     $FTA
-    //     $STEAL
-    //     $block
-    //     $ftm
-    //     $foul";
-    // }
+    
     $stmt->execute();
   }
   $db->close();

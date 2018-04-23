@@ -229,7 +229,7 @@
                  <td><input type="text" name="ftm" value="" size="2" maxlength="2"/></td>
                </tr>
                <tr>
-                <td colspan="2" style="text-align: center;"><input type="submit" value="Add Statistic" /></td>
+                <td colspan="2" style="text-align: center;"><input type="submit" value="Update Stats" /></td>
                </tr>
              </table>
            </form>
