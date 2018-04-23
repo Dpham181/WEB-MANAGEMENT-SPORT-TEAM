@@ -18,7 +18,7 @@
           die("ERROR: Could not connect. " . mysqli_connect_error());
       }
 
-      $query = "SELECT G.GAME_ID, G.START_DAY, G.END_DAY, T.TEAM_NAME, T.WIN, T.LOSS
+      $query = "SELECT G.GAME_ID, G.START_DAY, G.END_DAY, T.TEAM_NAME, T.WIN, T.LOSS, P.SCORE
       FROM PLAY P, GAMES G, TEAMS T
       WHERE T.TEAM_ID = P.PTEAM_ID AND G.GAME_ID = P.PGAME_ID
       ORDER BY GAME_ID, G.START_DAY, G.END_DAY, T.TEAM_NAME";
@@ -32,7 +32,8 @@
           $ETD,
           $TN,
           $W,
-          $L
+          $L,
+          $SCORE
         );
       }
     ?>
@@ -58,6 +59,7 @@
           <th scope="col">TEAM NAME</th>
           <th scope="col">WIN</th>
           <th scope="col">LOSS</th>
+          <th scope="col">SCORE</th>
         </tr>
       </thead>
       <?php
@@ -85,6 +87,7 @@
           echo "<td style=\"background: #f7041b80\">".$TN."</td>\n";
           echo "<td style=\"background: #f7041b80\">".$W."</td>\n";
           echo "<td style=\"background: #f7041b80\">".$L."</td>\n";
+          echo "<td style=\"background: #540c9c87\">".$SCORE."</td>\n";
           echo "</tr>";
 
         }
