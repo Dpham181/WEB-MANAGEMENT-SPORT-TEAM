@@ -90,7 +90,6 @@ $stmt->fetch();
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
-              <a class="dropdown-item" href="edit_infor_byuser.php">Edit Profile</a>
               <a class="dropdown-item" href="logout.php">Sign out</a>
             </div>
           </li>
