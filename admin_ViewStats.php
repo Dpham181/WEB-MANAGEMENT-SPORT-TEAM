@@ -156,12 +156,13 @@
 
                  <option value="" selected disabled hidden>Choose GAME ID  here</option>
                  <?php
-                 $query2 = "SELECT
-                             G.GAME_ID
-
-                             FROM GAMES G
-
-                           ORDER BY  G.GAME_ID";
+                 // $query2 = "SELECT
+                 //             G.GAME_ID
+                 //
+                 //             FROM GAMES G
+                 //
+                 //           ORDER BY  G.GAME_ID";
+                 $query2 = "SELECT DISTINCT GAME_ID FROM STATS LEFT JOIN GAMES ON GAME_ID = SGAME_ID WHERE GAME_ID IS NOT NULL";
 
                  $stmt2 = $db->prepare($query2);
                  $stmt2->execute();
