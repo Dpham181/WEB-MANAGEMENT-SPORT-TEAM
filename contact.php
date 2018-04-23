@@ -21,74 +21,6 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">MENU</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="regular_page.php">Home </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="view_games.php">Games</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="view_standings.php">Standings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="user_view_stats.php">Stats</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="view_teams.php">Teams</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="rules.php">Rules</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-
-        <li id="info"class="nav-item active">
-        <a class="nav-link"    <b><?php
-          echo "Hi . " .$_SESSION['email'];
-           ?></b>.
-
-        </a>
-        </li>
-
-        <li id="Profile"class="nav-item active">
-          <a class="nav-link" href="update_profile.php">PROFILE</a>
-
-        </li>
-        <li id="logout"class="nav-item active">
-          <a class="nav-link" href="logout.php">SIGN OUT</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-
-  		<section>
-
-        <div class="container">
-
-          <div class="row align-items-center">
-            <div class="col">
-
-    					<h1>
-  						Contact league admin for more information <br>
-              Phone: (714)123-4567 <br>
-              Email: contact@email.com
-
-  						</h1>
-
-            </div>
-          </div>
-
-        </div>
-      </section>
 
       <div class="jumbotron jumbotron-sm">
     <div class="container">
@@ -104,13 +36,14 @@
     <div class="row">
         <div class="col-md-8">
             <div class="well well-sm">
-                <form>
+                <form action="feedback.php" method="post">
                 <div class="row">
                     <div class="col-md-6">
+
                         <div class="form-group">
                             <label for="name">
                                 Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                            <input type="text" name="cname" class="form-control" id="name" placeholder="Enter name" required="required" />
                         </div>
                         <div class="form-group">
                             <label for="email">
@@ -118,7 +51,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                                 </span>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
                         </div>
                         <div class="form-group">
                             <label for="subject">
@@ -140,8 +73,8 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
-                            Send Message</button>
+                        <input value="Send Message" type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                            Send Message
                     </div>
                 </div>
                 </form>
@@ -149,7 +82,7 @@
         </div>
         <div class="col-md-4">
             <form>
-            <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+            <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
             <address>
                 <strong>Twitter, Inc.</strong><br>
                 795 Folsom Ave, Suite 600<br>
