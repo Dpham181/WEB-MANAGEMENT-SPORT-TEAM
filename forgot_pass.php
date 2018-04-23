@@ -12,7 +12,7 @@ if(!isset($_SESSION['email']) || empty($_SESSION['email'])){
   try {
     require_once 'random_password.php';
     $password = reset_password($email);
-    require_once 'notify_password.php';
+    require_once 'notification.php';
     notify_password($email, $password);
     // echo 'Your new password has been emailed to you.<br>';
   }

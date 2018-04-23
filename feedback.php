@@ -5,21 +5,17 @@ $cname= $_POST['cname'];
 $subject= $_POST['subject'];
 $message= $_POST['message'];
 
-$feedback = array(
-    "email" => "$email",
-    "cname" => "$cname",
-    "subject" => "$subject",
-    "message" => "$message",
 
-);
-require_once 'notify_password.php';
+$feedback = "{ email: ".$email.",\r\n"."name: ".$cname.",\r\n"."subject: ".$subject.",\r\n"."message: ".$message."}";
+require_once 'notification.php';
 $email = "servicebasketballmanagement@gmail.com";
-notify_password($email, $feedback);
+notify_feedback($email, $feedback);
 
 
 
 
-
+header('location: contact.php');
+exit;
 
 
 ?>

@@ -82,7 +82,7 @@ if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
       );
         // Attempt to execute the prepared statement
       if($stmt->execute()){
-          require_once 'notify_password.php';
+          require_once 'notification.php';
           $npassword = "";
           notify_password($email, $npassword);
           header("location: welcome.php");
