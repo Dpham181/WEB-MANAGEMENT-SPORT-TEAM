@@ -166,7 +166,9 @@
       <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
         <h1 id="schedule-games">SCHEDULE ALL GAMES</h1>
         <div class="container">
-          <?php require_once ('schedule_game.php'); ?>
+          <?php require ('schedule_game.php'); ?>
+          <?php require ('editing_scores.php'); ?>
+
         </div>
 
 
