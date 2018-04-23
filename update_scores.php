@@ -37,7 +37,7 @@ $stmt->bind_param('i',
  if($stmt->execute()){
 
 
-  header('location: admin_page');
+  header('location: admin_page.php');
  exit;
 
  }
