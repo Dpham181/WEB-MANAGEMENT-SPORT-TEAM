@@ -175,15 +175,7 @@
         <h1>CREATE TEAM</h1>
         <div class="container">
           <?php require 'team_manager_table.php'; ?>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="view" role="tabpanel" aria-labelledby="view-tab">
-        <h1>Viewing Players Stats</h1>
-        <div class="container">
-          <?php require 'admin_ViewStats.php'; ?>
-        </div>
-      </div>
-      <div class="container">
+          <div class="container">
         <?php require_once ('create_team.php'); ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -205,6 +197,17 @@
           </div>
         </form>
       </div>
+
+
+        </div>
+      </div>
+      <div class="tab-pane fade" id="view" role="tabpanel" aria-labelledby="view-tab">
+        <h1>Viewing Players Stats</h1>
+        <div class="container">
+          <?php require 'admin_ViewStats.php'; ?>
+        </div>
+      </div>
+
 
 
 
