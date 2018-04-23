@@ -3,11 +3,11 @@
   require 'Address.php';
 
   session_start();
-     if (!isset($_SESSION['PROFILE_ID']) || empty($_SESSION['PROFILE_ID'])) {
-         header("location: welcome.php");
-         exit;
-     }
-     $user_id = $_SESSION['PROFILE_ID'];
+     // if (!isset($_SESSION['PROFILE_ID']) || empty($_SESSION['PROFILE_ID'])) {
+     //     header("location: welcome.php");
+     //     exit;
+     // }
+     $user_id = $_SESSION['id'];
      require_once 'config.php';
      $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -58,6 +58,7 @@ $stmt->fetch();
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans|Oxygen|Passion+One|Alfa+Slab+One|Monoton|Ubuntu">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho|Orbitron&effect=shadow-multiple|3d-float|fire-animation|neon">
     <link rel="stylesheet" href="css/editProfile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   </head>
 
 

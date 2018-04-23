@@ -42,8 +42,8 @@ $nzip=trim( preg_replace("/\t|\R/",' ',$_POST['zip']) );
          $nzip);
 
            if($stmt->execute()){
-             //header('location:update_Profile_true.php');
-             //exit;
+             header('location: edit-profile.php');
+             exit;
            }
            else{
                echo "Something went wrong. Please try again later.";
