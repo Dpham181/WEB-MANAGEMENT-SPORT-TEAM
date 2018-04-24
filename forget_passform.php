@@ -92,7 +92,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col">
-            <form action="forgot_pass.php" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" >
               <h2>Forgot Password</h2>
 
               <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
