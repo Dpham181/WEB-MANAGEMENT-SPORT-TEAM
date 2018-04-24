@@ -2,6 +2,7 @@
 session_start();
 
 $id=$_SESSION['id'];
+echo $id;
 
 require_once 'config.php';
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -18,9 +19,8 @@ $nstate= trim( preg_replace("/\t|\R/",' ',$_POST['state']) );
 $ncountry=trim( preg_replace("/\t|\R/",' ',$_POST['country']) );
 $nzip=trim( preg_replace("/\t|\R/",' ',$_POST['zip']) );
 
-        $sql= "INSERT INTO PROFILE
+        $sql= " UPDATE PROFILE
              SET
-             PROFILE.PUSER_ID=?,
              PROFILE.FIRST_NAME=?,
              PROFILE.LAST_NAME =?,
              PROFILE.STREET =?,
@@ -28,11 +28,11 @@ $nzip=trim( preg_replace("/\t|\R/",' ',$_POST['zip']) );
              PROFILE.STATE =?,
              PROFILE.COUNTRY =?,
              PROFILE.ZIPCODE =?
+             WHERE PROFILE.PROFILE_ID='$id'
               ";
 
          $stmt=$link->prepare($sql);
-         $stmt->bind_param('dssssssd',
-         $id,
+         $stmt->bind_param('ssssssd',
          $nfirstname,
          $nlastname,
          $nstreet ,
