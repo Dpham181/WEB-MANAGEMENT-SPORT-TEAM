@@ -65,15 +65,16 @@
          else
          $zip=trim( preg_replace("/\t|\R/",' ',$_POST['zip']) );
        }
-       $ID = $_SESSION['ID_M'];
+       $ID = $_SESSION['id'];
+       $profile_id = $_SESSION['profile-id'];
 
          // Check input errors before inserting in database
      if(empty($zipcode_err) && empty($city_err) && empty($street_err)&& empty($state_err)&&empty($fname_err) &&empty($lname_err)){
 
              // Prepare an insert statement
-             $sql = "INSERT INTO PROFILE SET
-                       PROFILE.PROFILE_ID  = ?,
-                       PROFILE.PUSER_ID  = ?,
+             $sql = "UPDATE INTO PROFILE SET
+
+
                        PROFILE.FIRST_NAME=?,
                        PROFILE.LAST_NAME =?,
                        PROFILE.STREET =?,
@@ -81,18 +82,18 @@
                        PROFILE.STATE =?,
                        PROFILE.COUNTRY =?,
                        PROFILE.ZIPCODE =?
+                       WHERE PROFILE.PROFILE_ID  = ?
                        ";
              $stmt=$link->prepare($sql);
-             $stmt->bind_param('ssssssssd',
-             $ID,
-             $ID,
+             $stmt->bind_param('sssssssi',
              $firstname,
              $lastname,
              $street ,
              $city,
              $state,
              $country,
-             $zip);
+             $zip,
+            $profile_id);
 
            if($stmt->execute()){
 

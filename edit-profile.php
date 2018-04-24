@@ -16,6 +16,7 @@
          die("ERROR: Could not connect. " . mysqli_connect_error());
      }
      $sql = "SELECT
+              PROFILE.PROFILE_ID,
                PROFILE.FIRST_NAME,
                PROFILE.LAST_NAME,
                PROFILE.STREET,
@@ -24,7 +25,7 @@
                PROFILE.COUNTRY,
                PROFILE.ZIPCODE
               FROM PROFILE
-              WHERE PROFILE.PROFILE_ID=?
+              WHERE PROFILE.PUSER_ID=?
                ";
 
                $stmt=$link->prepare($sql);
@@ -35,6 +36,7 @@
 
                 $stmt->store_result();
                 $stmt->bind_result(
+          $profile_id,
           $firstname,
           $lastname,
           $street ,
@@ -44,7 +46,7 @@
           $zip);
 $stmt->fetch();
 
-
+$_SESSION['profile-id'] = $profile_id;
 
 }
 
