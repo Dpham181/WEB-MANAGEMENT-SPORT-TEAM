@@ -29,7 +29,7 @@
                  $password = reset_password($email);
                  require_once 'notification.php';
                  notify_password($email, $password);
-                 header('location: mail_alreadysent.php');
+                 header('location: welcome.php');
                }
                catch (Exception $e) {
                  echo 'Your password could not be reset - please try again later.';
