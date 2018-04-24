@@ -2,6 +2,7 @@
 session_start();
 
 $id=$_SESSION['id'];
+$profile_id = $_SESSION['profile-id'];
 echo $id;
 
 require_once 'config.php';
@@ -28,18 +29,20 @@ $nzip=trim( preg_replace("/\t|\R/",' ',$_POST['zip']) );
              PROFILE.STATE =?,
              PROFILE.COUNTRY =?,
              PROFILE.ZIPCODE =?
-             WHERE PROFILE.PROFILE_ID='$id'
+             WHERE PROFILE.PROFILE_ID=?
               ";
 
          $stmt=$link->prepare($sql);
-         $stmt->bind_param('ssssssd',
+         $stmt->bind_param('sssssssi',
          $nfirstname,
          $nlastname,
          $nstreet ,
          $ncity,
          $nstate,
          $ncountry,
-         $nzip);
+         $nzip,
+          $profile_id);
+
 
            if($stmt->execute()){
              header('location: edit-profile.php');

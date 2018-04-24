@@ -82,6 +82,20 @@ if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
       );
         // Attempt to execute the prepared statement
       if($stmt->execute()){
+        $stmt->free_result();
+        $query = "SELECT USER_ID FROM USERS WHERE EMAIL = ?";
+        $stmt = $link->prepare($query);
+        $stmt->bind_param('s', $email_check);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($puser_id);
+        $stmt->fetch();
+        $stmt->free_result();
+        $query = "INSERT INTO PROFILE (PUSER_ID) VALUES (?)";
+        $stmt=$link->prepare($query);
+        $stmt->bind_param('i', $puser_id);
+        $stmt->execute();
+
           require_once 'notification.php';
           $npassword = "";
           notify_password($email, $npassword);
