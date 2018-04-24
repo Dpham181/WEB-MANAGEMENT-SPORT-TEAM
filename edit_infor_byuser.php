@@ -18,8 +18,9 @@ $nstate= trim( preg_replace("/\t|\R/",' ',$_POST['state']) );
 $ncountry=trim( preg_replace("/\t|\R/",' ',$_POST['country']) );
 $nzip=trim( preg_replace("/\t|\R/",' ',$_POST['zip']) );
 
-        $sql= "UPDATE PROFILE
+        $sql= "INSERT INTO PROFILE
              SET
+             PROFILE.PUSER_ID=?,
              PROFILE.FIRST_NAME=?,
              PROFILE.LAST_NAME =?,
              PROFILE.STREET =?,
@@ -27,12 +28,11 @@ $nzip=trim( preg_replace("/\t|\R/",' ',$_POST['zip']) );
              PROFILE.STATE =?,
              PROFILE.COUNTRY =?,
              PROFILE.ZIPCODE =?
-
-             WHERE PROFILE.PUSER_ID = '$id'
               ";
 
          $stmt=$link->prepare($sql);
-         $stmt->bind_param('ssssssd',
+         $stmt->bind_param('dssssssd',
+         $id,
          $nfirstname,
          $nlastname,
          $nstreet ,
@@ -42,8 +42,7 @@ $nzip=trim( preg_replace("/\t|\R/",' ',$_POST['zip']) );
          $nzip);
 
            if($stmt->execute()){
-             
-             header('location: update_Profile_true.php');
+             header('location: edit-profile.php');
              exit;
            }
            else{

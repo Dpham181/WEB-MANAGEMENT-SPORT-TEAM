@@ -40,7 +40,7 @@
         <?php echo $_SESSION['email']; ?>
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
+        <a class="dropdown-item" href="edit-profile.php">Profile</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="logout.php">Log out</a>
       </div>
