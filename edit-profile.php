@@ -1,20 +1,10 @@
 <?php
   require "header.php";
-  require 'Address.php';
+  require_once 'config.php';
 
-  session_start();
-     // if (!isset($_SESSION['PROFILE_ID']) || empty($_SESSION['PROFILE_ID'])) {
-     //     header("location: welcome.php");
-     //     exit;
-     // }
-     $user_id = $_SESSION['id'];
-     require_once 'config.php';
-     $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-     // Check connection
-     if ($link === false) {
-         die("ERROR: Could not connect. " . mysqli_connect_error());
-     }
+  $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
      $sql = "SELECT
                PROFILE.FIRST_NAME,
                PROFILE.LAST_NAME,
@@ -24,11 +14,11 @@
                PROFILE.COUNTRY,
                PROFILE.ZIPCODE
               FROM PROFILE
-              WHERE PROFILE.PROFILE_ID=?
+              WHERE PROFILE.PUSER_ID=?
                ";
 
                $stmt=$link->prepare($sql);
-               $stmt->bind_param("s",$user_id);
+               $stmt->bind_param("s",$ID);
 
 
               if ($stmt->execute()){
@@ -42,7 +32,7 @@
           $state,
           $country,
           $zip);
-$stmt->fetch();
+            $stmt->fetch();
 
 
 

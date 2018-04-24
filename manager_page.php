@@ -91,7 +91,7 @@
               <?php echo $_SESSION['email']; ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="edit-profile.php">Profile</a>
+              <a class="dropdown-item" href="check_profileEmpty.php">Profile</a>
               <a class="dropdown-item" href="logout.php">Sign out</a>
             </div>
           </li>

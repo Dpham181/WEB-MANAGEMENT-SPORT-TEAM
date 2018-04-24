@@ -23,7 +23,6 @@
 
       $ID=$_SESSION['id'];
              $sql = "SELECT
-                      PROFILE.PUSER_ID,
                        PROFILE.FIRST_NAME,
                        PROFILE.LAST_NAME,
                        PROFILE.STREET,
@@ -32,18 +31,17 @@
                        PROFILE.COUNTRY,
                        PROFILE.ZIPCODE
                       FROM PROFILE
-                      WHERE PROFILE.PROFILE_ID=?
+                      WHERE PROFILE.PUSER_ID=?
                        ";
 
                   $stmt=$link->prepare($sql);
-                       $stmt->bind_param("s", $ID_MANAGER);
-                       $ID_MANAGER = $ID;
+                       $stmt->bind_param("s", $ID_USER);
+                       $ID_USER = $ID;
 
                       if ($stmt->execute()){
 
                         $stmt->store_result();
                         $stmt->bind_result(
-                  $USER_ID,        
                   $firstname,
                   $lastname,
                   $street ,
@@ -58,11 +56,10 @@
 
                   }
                   else{
-                    session_start();
-                    $_SESSION['ID_M'] = $ID;
 
-                    header("location: update_profile.php");
-                    exit;
+                    require_once "update-profile.php";
+
+
                       }
 
                 }
