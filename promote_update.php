@@ -46,7 +46,14 @@ if( ! empty($ID ))
 
     exit;
   }
+  elseif ($type === "P") {
+    $stmt->execute();
 
+    echo 'promote successfully';
+    header('location: player_page.php');
+
+    exit;
+  }
   else {
     echo 'There is an error. Cannot promote user with '.$ID."\n";
   }
