@@ -63,15 +63,13 @@ CREATE TABLE GAMES
 CREATE TABLE PLAYER
 (
   PLAYER_ID INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  FIRST_NAME VARCHAR(100),
-  LAST_NAME VARCHAR(150) NOT NULL,
+  PLUSER_ID INT(10) UNSIGNED NOT NULL,
   PLTEAM_ID INT(10) UNSIGNED NOT NULL,
 
   CONSTRAINT FOREIGN KEY (PLTEAM_ID) REFERENCES TEAMS(TEAM_ID),
+  CONSTRAINT FOREIGN KEY (PLUSER_ID) REFERENCES USERS(USER_ID)
 
-  CHECK (ZipCode REGEXP '(?!0{5})(?!9{5})\\d{5}(-(?!0{4})(?!9{4})\\d{4})?'),
-  INDEX (LAST_NAME ),
-  INDEX (FIRST_NAME, LAST_NAME)
+
 );
 
 CREATE TABLE STATS
@@ -118,7 +116,16 @@ INSERT INTO USERS VALUES
 (4, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager1@email.com', 'M'),
 (5, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager2@email.com', 'M'),
 (6, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager3@email.com', 'M'),
-(7, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager4@email.com', 'M');
+(7, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'manager4@email.com', 'M'),
+(8, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player1@email.com', 'P'),
+(9, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player2@email.com', 'P'),
+(10, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player3@email.com', 'P'),
+(11, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player4@email.com', 'P'),
+(12, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player5@email.com', 'P'),
+(13, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player6@email.com', 'P'),
+(14, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player7@email.com', 'P'),
+(15, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player8@email.com', 'P'),
+(16, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player9@email.com', 'P');
 
 
 INSERT INTO MANAGER VALUES
@@ -140,7 +147,16 @@ INSERT INTO PROFILE VALUES
 (2, 2, 'MANAGER', 'DEMO', 'USA', '54321', 'WESMINSTER', '456 BLVD', 'TX'),
 (3, 3, 'USER', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
 (4, 4, 'MANAGER1', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
-(5, 5, 'MANAGER2', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA');
+(5, 5, 'MANAGER2', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(6, 8, 'p1', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(7, 9, 'p2', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(8, 10, 'p3', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(9, 11, 'p4', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(10, 12, 'p5', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(11, 13, 'p6', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(12, 14, 'p7', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(13, 15, 'p8', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(14, 16, 'p9', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA');
 
 
 INSERT INTO TEAMS VALUES
@@ -161,36 +177,23 @@ INSERT INTO PLAY VALUES
 (5, 2, NULL);
 
 INSERT INTO PLAYER VALUES
-(1, 'THOMAS', 'NGO', 1),
-(2, 'DANH', 'PHAM', 1),
-(3, 'PETER', 'VU', 1),
-(4, 'JOHN', 'SMITH', 2),
-(5, 'BOB', 'SMITH', 2),
-(6, 'JANE', 'NGUYEN', 2),
-(7, 'BRUCE', 'WAYNE', 3),
-(8, 'TONY', 'STARK', 3),
-(9, 'EVE', 'HARRY', 3),
-(10, 'BARRY', 'ALAN', 3),
-(11, 'CLARK', 'KEN', 3),
-(12, 'hello', 'world', 3);
+(1, 8, 1),
+(2, 9, 1),
+(3, 10, 1),
+(4, 11, 2),
+(5, 12, 2),
+(6, 13, 2),
+(7, 14, 3),
+(8, 15, 3),
+(9, 16, 3);
 
 INSERT INTO STATS VALUES
-(1, 1, 30, 30, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-(2, 1, 25, 39, 1, 2, 3, 4, 5, 6, 7, 8, 9),
-(3, 1, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
-(4, 1, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
-(5, 1, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
-(6, 1, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
-(7, 2, 30, 30, 9, 1, 12, 10, 4, 7, 2, 3, 1),
-(8, 2, 30, 30, 1, 1, 1, 2, 1, 0, 0, 0, 1),
-(9, 2, 30, 30, 1, 1, 4, 1, 1, 1, 9, 1, 1),
-(1, 2, 30, 30, 1, 3, 1, 1, 0, 1, 9, 1, 1),
-(2, 2, 30, 30, 7, 1, 1, 0, 2, 1, 9, 1, 1),
-(3, 2, 30, 30, 1, 1, 0, 1, 1, 4, 9, 1, 1),
-(4, 3, 15, 25, 2, 3, 5, 7, 3, 2, 9, 3, 5),
-(5, 3, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
-(6, 3, 15, 25, 2, 3, 5, 7, 3, 2, 1, 3, 5),
-(7, 3, 30, 30, 1, 0, 1, 1, 1, 1, 3, 5, 1),
-(8, 3, 30, 30, 1, 1, 0, 1, 1, 4, 1, 1, 1),
-(9, 3, 30, 30, 1, 1, 1, 0, 2, 1, 1, 1, 1),
-(12, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(1, 1, 25, 26, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(2, 1, 25, 27, 1, 2, 3, 4, 5, 6, 7, 8, 9),
+(3, 1, 25, 28, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(4, 2, 15, 29, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(5, 2, 15, 30, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(6, 2, 15, 31, 2, 3, 5, 7, 3, 2, 1, 3, 5),
+(7, 3, 30, 32, 9, 1, 12, 10, 4, 7, 2, 3, 1),
+(8, 3, 30, 33, 1, 1, 1, 2, 1, 0, 0, 0, 1),
+(9, 3, 30, 34, 1, 1, 4, 1, 1, 1, 9, 1, 1);
