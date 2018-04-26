@@ -23,15 +23,34 @@
          die("ERROR: Could not connect. " . mysqli_connect_error());
      }
 
-     $query = "SELECT TEAM_NAME FROM MANAGER, TEAMS WHERE MUSER_ID = ? AND MANAGER_ID = TMANAGER_ID";
+     $query = "SELECT TEAM_NAME, TEAM_ID FROM MANAGER, TEAMS WHERE MUSER_ID = ? AND MANAGER_ID = TMANAGER_ID";
      $query = $link->prepare($query);
      $query->bind_param('i', $user_id);
      $query->execute();
      $query->store_result();
-     $query->bind_result($team_name);
+     $query->bind_result($team_name , $team_id);
      $query->fetch();
      $_SESSION['team'] = $team_name;
+      $_SESSION['teamid'] = $team_id;
      $query->free_result();
+
+
+
+     $sql2 = "SELECT PUSER_ID, FIRST_NAME, LAST_NAME FROM PROFILE, (SELECT USER_ID FROM USERS LEFT JOIN PLAYER ON USER_ID = PLUSER_ID
+       WHERE TYPE = 'P' AND PLAYER_ID IS NULL)
+
+       AS T WHERE PUSER_ID = T.USER_ID";
+
+     $stmt2=$link->prepare($sql2);
+     $stmt2->execute();
+     $stmt2->store_result();
+     $stmt2->bind_result(
+       $PUSERID,
+       $firstname,
+       $lastname
+     );
+
+
      $link->close();
 ?>
 
@@ -120,30 +139,32 @@
 
       <h1 id="add-player">ADD PLAYER</h1>
       <div class="container">
-        <?php require 'addingplayer.php'; ?>
+
+        <form action="addingplayer.php" method="post">
+          <div>
+            <select name="playerid" required>
+              <option value="" selected disabled hidden>Choose user to be player</option>
+            <?php
+
+              $stmt->data_seek(0);
+              while( $stmt2->fetch() )
+              {
+                require_once ('Address.php');
+                $player = new address ([$firstname, $lastname]);
+                echo "<option value=\"$PUSERID\">".$player->name()."</option>\n";
+              }
+
+              $stmt->free_result();
+              $link->close();
+            ?>
+
+            </select>
+            <input type="submit" class="btn btn-primary" value="Add PLayer">
+            <input type="reset" class="btn btn-default" value="Reset">
+          </div>
+        </form>
       </div>
 
-      <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'#form-add-player'); ?>" method="post">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">FIRST NAME</div>
-          </div>
-            <!-- <label>First Name:<sup>*</sup></label> -->
-          <input type="text" name="firstname" class="form-control" value="" placeholder="Player's first name" required>
-        </div>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">LAST NAME</div>
-          </div>
-          <!-- <label>Last Name:<sup>*</sup></label> -->
-          <input type="text" name="lastname" class="form-control" value="" placeholder="Player's last name" required>
-        </div>
-
-        <div class="form-check">
-          <input id="submit" type="submit" class="btn btn-primary" value="Add">
-          <input type="reset" class="btn btn-default" value="Reset">
-        </div>
-      </form>
       <h1 id="view-player">TEAM PLAYERS</h1>
       <div class="container">
         <table class="table table-bordered table-hover">
