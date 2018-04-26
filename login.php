@@ -72,8 +72,8 @@ if(empty($email_err) &&empty($password_err) ){
 
                   session_start();
                   $_SESSION['email'] = $email;
-                  $_SESSION['id'] = $id;
-                  $_SESSION['type'] = $type;
+                 $_SESSION['id'] = $id;
+                 $_SESSION['type'] = $type;
                 if($type == 'M'){
                   header("location: manager_page.php");
                   exit;
@@ -83,17 +83,10 @@ if(empty($email_err) &&empty($password_err) ){
                   exit;
 
                 }
-                else if($type =='P')
-                  {
-                    header("location:player_page.php");
-                    exit;
-
-                  }
-
                 else  {
                     header("location:regular_page.php");
                     exit;
-                      }
+                }
 
                 }
                 else{

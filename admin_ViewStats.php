@@ -16,8 +16,12 @@
     die("ERROR: COULD NOT CONNECT. ".mysqli_connect_error());
   }
 
-  $query = "SELECT PLAYER_ID, FIRST_NAME, LAST_NAME, SGAME_ID, PLAYINGTIMEMIN, PLAYINGTIMESEC, POINTS, ASSISTS, REBOUNDS, THREE_POINTS, FTA, STEAL, FOUL, BLOCK, FTM FROM (SELECT * FROM PLAYER P RIGHT JOIN STATS S ON PLAYER_ID = SPLAYER_ID )
-  AS T , PROFILE PS , USERS WHERE PLUSER_ID = USER_ID AND USER_ID = PUSER_ID ORDER BY SGAME_ID, LAST_NAME,FIRST_NAME";
+  $query = "SELECT
+  P.PLAYER_ID, P.FIRST_NAME, P.LAST_NAME, SGAME_ID, PLAYINGTIMEMIN, PLAYINGTIMESEC, POINTS, ASSISTS, REBOUNDS, THREE_POINTS, FTA, STEAL, FOUL, BLOCK, FTM
+  FROM PLAYER P  RIGHT JOIN STATS S ON
+  P.PLAYER_ID = S.SPLAYER_ID
+
+  ORDER BY  S.SGAME_ID, P.LAST_NAME,P.FIRST_NAME";
   // ORDER BY  P.LAST_NAME,P.FIRST_NAME, S.SGAME_ID";
 
   $stmt = $db->prepare($query);
@@ -118,13 +122,12 @@
                   <option value="" selected disabled hidden>Choose player's name here</option>
                   <?php
                   $query1 = "SELECT
-                              PLAYER_ID,
-                              FIRST_NAME,
-                              LAST_NAME
-                              FROM PLAYER , USERS, PROFILE
-                              WHERE PLUSER_ID = USER_ID AND USER_ID = PUSER_ID 
-                              GROUP BY PLAYER_ID
-                            ORDER BY  LAST_NAME,FIRST_NAME";
+                              P.PLAYER_ID,
+                              P.FIRST_NAME,
+                              P.LAST_NAME
+                              FROM PLAYER P
+                              GROUP BY P.PLAYER_ID
+                            ORDER BY  P.LAST_NAME,P.FIRST_NAME";
 
                   $stmt1 = $db->prepare($query1);
                   $stmt1->execute();
