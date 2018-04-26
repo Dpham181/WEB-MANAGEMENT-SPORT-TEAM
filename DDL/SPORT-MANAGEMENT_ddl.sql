@@ -12,7 +12,7 @@ CREATE TABLE USERS
   PASSWORD_HASH varchar(225) COLLATE utf8_unicode_ci NOT NULL,
   EMAIL varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   -- TYPE varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'U'
-  TYPE ENUM('U', 'A', 'M')
+  TYPE ENUM('U', 'A', 'M', 'P')
 );
 
 CREATE TABLE MANAGER
@@ -125,7 +125,10 @@ INSERT INTO USERS VALUES
 (13, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player6@email.com', 'P'),
 (14, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player7@email.com', 'P'),
 (15, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player8@email.com', 'P'),
-(16, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player9@email.com', 'P');
+(16, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player9@email.com', 'P'),
+(17, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player10@email.com', 'P'),
+(18, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player11@email.com', 'P'),
+(19, '$2y$10$2vgZ0.zYbzZGPLO6vjlAquz6BOVOR3d34eCo8hF4pLjFBFyvwcRzS', 'player12@email.com', 'P');
 
 
 INSERT INTO MANAGER VALUES
@@ -156,7 +159,10 @@ INSERT INTO PROFILE VALUES
 (11, 13, 'p6', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
 (12, 14, 'p7', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
 (13, 15, 'p8', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
-(14, 16, 'p9', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA');
+(14, 16, 'p9', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(15, 17, 'p10', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(16, 18, 'p11', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA'),
+(17, 19, 'p12', 'DEMO', 'USA', '12345', 'FULLERTON', '123 MAIN ST', 'CA');
 
 
 INSERT INTO TEAMS VALUES
