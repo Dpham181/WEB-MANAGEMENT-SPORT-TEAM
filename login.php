@@ -20,7 +20,9 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
     } else{
         $password = trim($_POST['password']);
     }
-  $link = mysqli_connect('localhost', 'admin', '123456', 'SPORTS_MANAGEMENT');
+  require_once 'config_for_register.php';
+$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
 
   // Check connection
   if($link === false){

@@ -2,7 +2,7 @@
   $email ="";
   $email_err="";
  if($_SERVER["REQUEST_METHOD"] == "POST"){
-   require_once 'config.php';
+   require_once 'config_for_register.php';
    $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
    // Check connection

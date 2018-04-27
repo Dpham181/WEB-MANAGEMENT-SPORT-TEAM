@@ -1,4 +1,5 @@
 <?php
+  session_start();
   $game_id =(int)$_POST['score-gameid'];
   $team_id = (int)$_POST['score-teamid'];
   $score = (int)$_POST['edit-score'];

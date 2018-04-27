@@ -8,7 +8,7 @@ function get_random_word($min_length, $max_length) {
    // generate a random word
   $word = '';
   // remember to change this path to suit your system
-  $dictionary = '.\dic\words.txt';  // the ispell dictionary
+  $dictionary = './dic/words.txt';  // the ispell dictionary
   $fp = @fopen($dictionary, 'r');
   if(!$fp) {
     return false;

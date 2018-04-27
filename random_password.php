@@ -22,7 +22,7 @@ function reset_password($email) {
 
   if(!empty($new_passwordhash))  // Verify required fields are present
   {
-    require_once( 'config.php' );
+    require_once( 'config_for_register.php' );
     $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
     // Check connection

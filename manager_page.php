@@ -22,6 +22,7 @@
          die("ERROR: Could not connect. " . mysqli_connect_error());
      }
 
+     echo "$user_id";
      $query = "SELECT TEAM_NAME, TEAM_ID FROM MANAGER, TEAMS WHERE MUSER_ID = ? AND MANAGER_ID = TMANAGER_ID";
      $query = $link->prepare($query);
      $query->bind_param('i', $user_id);

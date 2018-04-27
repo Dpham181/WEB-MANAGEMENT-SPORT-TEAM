@@ -35,8 +35,6 @@ elseif($_SESSION['type'] === $checkdb[3][0]){
 
   define('DB_USERNAME', $checkdb[3][1]);
   define('DB_PASSWORD', $checkdb[3][2]);
-
-
 }
 
 
