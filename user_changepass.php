@@ -1,7 +1,6 @@
 <?php
 session_start();
   $email =$_SESSION['email'];
-  echo $email;
   $NEWPASS="";
     $oldpassword="";
    $oldpassword_err="";
@@ -54,7 +53,7 @@ if (!empty($_POST['oldpassword'])){
 
         }
         else {
-          $oldpassword=" Your old password doesnt match with our record";
+          $oldpassword_err=" Your old password doesnt match with our record";
 
         }
 
