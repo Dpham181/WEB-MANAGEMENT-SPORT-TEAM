@@ -6,6 +6,7 @@
   </head>
   <body>
     <?php
+
   require_once('./config.php');
   require_once('Address.php');
   require_once('PlayerStatistic.php');

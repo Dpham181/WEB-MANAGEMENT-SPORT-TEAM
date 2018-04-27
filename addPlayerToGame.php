@@ -1,4 +1,5 @@
 <?php
+session_start();
   require_once 'config.php';
   $db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 

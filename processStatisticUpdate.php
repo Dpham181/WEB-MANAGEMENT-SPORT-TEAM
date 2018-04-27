@@ -1,5 +1,4 @@
 <?php
-
 // create short variable names
 $name       = (int) $_POST['name_ID'];  // Database unique ID for player's name
 $time       = trim( preg_replace("/\t|\R/",' ',$_POST['time']) );
@@ -47,6 +46,7 @@ else
 
 if( ! empty($name) )  // Verify required fields are present
 {
+  session_start();
 
   require_once( 'config.php' );
   $db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -83,11 +83,12 @@ if( ! empty($name) )  // Verify required fields are present
       $ftm,
       $foul
       );
-    
+
     $stmt->execute();
   }
   $db->close();
 
 
-require('admin_page.php');
+header('location: admin_page.php');
+exit;
 ?>

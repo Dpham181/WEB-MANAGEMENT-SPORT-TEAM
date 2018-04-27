@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $ID       = (int) $_POST['user_id'];
 $type     = trim( preg_replace("/\t|\R/",' ',$_POST['type']) );
 

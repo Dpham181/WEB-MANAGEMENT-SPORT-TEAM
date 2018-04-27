@@ -1,4 +1,5 @@
 <?php
+
 require_once('config.php');
 // Connect to database
 /* Attempt to connect to MySQL database */

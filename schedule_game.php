@@ -4,7 +4,6 @@
     <title>schedule</title>
   </head>
   <body>
-    <!-- <h1 >Schedule all Games</h1> -->
 
     <?php
       require_once('config.php');
