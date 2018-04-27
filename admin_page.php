@@ -79,6 +79,8 @@
           <a class="dropdown-item" href="edit-profile.php">Profile</a>
           <a class="dropdown-item" href="admin_page.php">Refresh</a>
           <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="user_changepass.php">change password</a>
+
           <a class="dropdown-item" href="logout.php">Log out</a>
         </div>
       </li>
@@ -99,7 +101,7 @@
 
               </tr>
             </thead>
-            <?php //require_once ('admin_mailboxs.php') ?>
+            <?php require_once ('admin_mailboxs.php') ?>
 
           </table>
 

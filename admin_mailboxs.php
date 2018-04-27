@@ -1,8 +1,8 @@
 
 <?php
 $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
-$username = 'servicebasketballmanagement@gmail.com';
-$password = 'Danh2610';
+$username = 'basketballmanagementfeedback@gmail.com';
+$password = 'Thomas123456';
 
 /* try to connect */
 $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
@@ -14,10 +14,8 @@ $emails = imap_search($inbox,'ALL');
 if($emails) {
 
 	/* begin output var */
-	$output1 = '';
-  $output2 = '';
-  $output3 = '';
-  $output4 = '';
+	$output = '';
+
 
 	/* put the newest emails on top */
 	rsort($emails);
@@ -30,18 +28,22 @@ if($emails) {
 		$message = imap_fetchbody($inbox,$email_number,2);
 
 		/* output the email header information */
-		$output1.= $overview[0]->subject;
-		$output2.= $overview[0]->from;
-		$output3.= $overview[0]->date;
-    $output4.= $message;
+
+		$output.="<tr>\n";
+		$output.="<td>".$overview[0]->subject."</td>\n";
+
+		$output.= "<td>".$overview[0]->from."</td>\n";
+		$output.= "<td>".$overview[0]->date."</td>\n";
+    $output.= "<td>".$message."</td>\n";
+		$output.="</tr>\n";
+
 		/* output the email body */
 	}
 
-  echo "<tr>\n";
-  echo "<td>".$output1."</td>\n";
-  echo "<td>".$output2."</td>\n";
-  echo "<td>".$output3."</td>\n";
-  echo "<td>".$output4."</td>\n";
+  echo  $output;
+
+
+
 }
 
 /* close the connection */

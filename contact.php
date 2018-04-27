@@ -79,6 +79,9 @@
                                 <option value="service">General Customer Service</option>
                                 <option value="suggestions">Suggestions</option>
                                 <option value="product">Product Support</option>
+                                <option value="Promote to be Admin">Promote to be ADMIN</option>
+                                <option value="Promote to be Manager">Promote to be Manager</option>
+
                             </select>
                 </div>
               </div>

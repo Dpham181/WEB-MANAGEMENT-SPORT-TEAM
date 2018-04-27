@@ -24,7 +24,7 @@ $message = "Your password has been changed to ".$password."\r\n".
  * The IMAP section shows how to save this message to the 'Sent Mail' folder using IMAP commands.
  */
 //Import PHPMailer classes into the global namespace
-require './PHPMailer_linux/vendor/vendor/autoload.php';
+require './PHPMailer/vendor/vendor/autoload.php';
 //Create a new PHPMailer instance
 $mail = new PHPMailer;
 //Tell PHPMailer to use SMTP
@@ -68,7 +68,7 @@ $mail->msgHTML($message , "$password");
 //Replace the plain text body with one created manually
 $mail->AltBody = 'This is a plain-text message body';
 //Attach an image file
-$mail->addAttachment('danh');
+$mail->addAttachment('./logo/1.jpg');
 //send the message, check for errors
 if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
@@ -90,7 +90,7 @@ $message = $password;
  * The IMAP section shows how to save this message to the 'Sent Mail' folder using IMAP commands.
  */
 //Import PHPMailer classes into the global namespace
-require './PHPMailer_linux/vendor/vendor/autoload.php';
+require './PHPMailer/vendor/vendor/autoload.php';
 //Create a new PHPMailer instance
 $mail = new PHPMailer;
 //Tell PHPMailer to use SMTP

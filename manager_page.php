@@ -111,6 +111,11 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="edit-profile.php">Profile</a>
+              <a class="dropdown-item" href="contact.php">Contact</a>
+              <div class="dropdown-divider"></div>
+
+              <a class="dropdown-item" href="user_changepass.php">change password</a>
+
               <a class="dropdown-item" href="logout.php">Sign out</a>
             </div>
           </li>
