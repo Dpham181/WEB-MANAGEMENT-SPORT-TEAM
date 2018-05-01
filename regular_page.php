@@ -24,13 +24,16 @@
 <body>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="navbar-brand" href="regular_page.php">TEAM MANAGEMENT</a>
+      <a class="navbar-brand" href="regular_page.php">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule" aria-selected="false">Schedule Game</a>
+      <a class="nav-link" id="teams-tab" data-toggle="tab" href="#teams" role="tab" aria-controls="teams" aria-selected="false">Standings</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="upcome-tab" data-toggle="tab" href="#upcome" role="tab" aria-controls="upcome" aria-selected="false">Up Coming Games</a>
+      <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule" aria-selected="false">All Games</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="upcome-tab" data-toggle="tab" href="#upcome" role="tab" aria-controls="upcome" aria-selected="false">Upcoming Games</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="view-tab" data-toggle="tab" href="#view" role="tab" aria-controls="view" aria-selected="false">Player's Stats</a>
@@ -54,8 +57,14 @@
 
 
   <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade" id="teams" role="tabpanel" aria-labelledby="teams-tab">
+      <h1>STANDINGS</h1>
+      <div class="container">
+        <?php require ('user_view_teams.php'); ?>
+      </div>
+    </div>
     <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
-      <h1>SCHEDULE ALL GAMES</h1>
+      <h1>ALL GAMES</h1>
       <div class="container">
         <?php require ('schedule_game.php'); ?>
       </div>

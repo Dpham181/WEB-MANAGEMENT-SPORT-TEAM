@@ -101,7 +101,7 @@
 
               </tr>
             </thead>
-            <?php require_once ('admin_mailboxs.php') ?>
+            <?php //require_once ('admin_mailboxs.php') ?>
 
           </table>
 

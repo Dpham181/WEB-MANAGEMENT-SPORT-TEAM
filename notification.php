@@ -24,7 +24,7 @@ $message = "Your password has been changed to ".$password."\r\n".
  * The IMAP section shows how to save this message to the 'Sent Mail' folder using IMAP commands.
  */
 //Import PHPMailer classes into the global namespace
-require './PHPMailer/vendor/vendor/autoload.php';
+require './PHPMailer_linux/vendor/vendor/autoload.php';
 //Create a new PHPMailer instance
 $mail = new PHPMailer;
 //Tell PHPMailer to use SMTP
