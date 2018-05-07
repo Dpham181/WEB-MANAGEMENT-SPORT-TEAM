@@ -30,9 +30,7 @@ if( ! empty($ID ))
     $stmt->bind_param('s', $type);
     $stmt->execute();
 
-  $query = "INSERT INTO MANAGER (MUSER_ID) VALUES (?)";
-  $stmt = $link->prepare($query);
-  $stmt->bind_param('i', $ID);
+
   if($type === "A"){
     $stmt->execute();
 
@@ -41,6 +39,9 @@ if( ! empty($ID ))
     header('location: admin_page.php');
     exit;
   } elseif ($type === "M") {
+    $query = "INSERT INTO MANAGER (MUSER_ID) VALUES (?)";
+    $stmt = $link->prepare($query);
+    $stmt->bind_param('i', $ID);
     $stmt->execute();
 
     echo 'promote successfully';
